@@ -1,0 +1,142 @@
+diff --git a/src/Components/Assets/carr.png b/src/Components/Assets/carr.png
+deleted file mode 100644
+index 88de466..0000000
+Binary files a/src/Components/Assets/carr.png and /dev/null differ
+diff --git a/src/Components/login/Login.jsx b/src/Components/login/Login.jsx
+index 3dc89b7..c8b8550 100644
+--- a/src/Components/login/Login.jsx
++++ b/src/Components/login/Login.jsx
+@@ -3,31 +3,37 @@ import { FaUserAlt } from 'react-icons/fa';
+ import { MdEmail } from 'react-icons/md';
+ import { RiLockPasswordFill } from 'react-icons/ri';
+ import './login.css';  
++
+ function Login() {
+     const [isAdmin, setIsAdmin] = useState(false);
+     const [userId, setUserId] = useState('');
+     const [email, setEmail] = useState('');
+     const [password, setPassword] = useState('');
++    const [error, setError] = useState(''); // Define the error state here
+ 
+     const handleUserTypeChange = (e) => {
+         setIsAdmin(e.target.value === 'admin');
+-        // Clear fields when switching user types
+         setUserId('');
+         setEmail('');
+         setPassword('');
++        setError(''); // Clear error message when switching user types
+     };
+ 
+     const handleSubmit = (e) => {
+         e.preventDefault();
+         if (isAdmin) {
+-            console.log('Admin Login - UserId:', userId);
+-            console.log('Admin Login - Password:', password);
++            if (userId === 'admin' && password === 'admin') {
++                console.log('Admin Login Successful');
++                setError('');
++            } else {
++                setError('Invalid Admin Credentials');
++            }
+         } else {
+             console.log('Customer Login - UserId:', userId);
+             console.log('Customer Login - Email:', email);
+             console.log('Customer Login - Password:', password);
++            setError(''); // Reset error message for customer login
+         }
+-        // Add further login logic here
+     };
+ 
+     return (
+@@ -56,6 +62,8 @@ function Login() {
+                     Admin
+                 </label>
+             </div>
++           
++            {error && <div className="error-message">{error}</div>}
+             <form onSubmit={handleSubmit}>
+                 <div className="inputs">
+                     <div className="input">
+@@ -72,7 +80,7 @@ function Login() {
+                         <div className="input">
+                             <MdEmail className="icon" />
+                             <input
+-                                placeholder="Enter your email address"
++                                placeholder="name@example.com"
+                                 type="email"
+                                 value={email}
+                                 onChange={(e) => setEmail(e.target.value)}
+diff --git a/src/Components/login/login.css b/src/Components/login/login.css
+index 046391d..99571f1 100644
+--- a/src/Components/login/login.css
++++ b/src/Components/login/login.css
+@@ -6,7 +6,7 @@
+ }
+ 
+ body {
+-    background: url('../Assets/carr.png') no-repeat;
++    background: url('../Assets/carr.jpg') no-repeat;
+     background-size: cover;
+     background-position: center;
+     background-attachment: fixed;
+@@ -27,6 +27,7 @@ body {
+     background: rgba(186, 181, 181,0.5);
+     padding: 30px 20px; 
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
++    backdrop-filter: blur(5px);
+ }
+ 
+ 
+@@ -37,6 +38,8 @@ body {
+     gap: 9px;
+     width: 100%;
+     margin-top: 30px;
++    font-weight: bold;
++    font-style: italic;
+ }
+ 
+ .text {
+@@ -47,9 +50,9 @@ body {
+ }
+ 
+ .underline {
+-    width: 101px;
+-    height: 6px;
+-    background: black; 
++    width: 100%;
++    height: 1px;
++    background: rgb(159, 157, 138); 
+     border-radius: 9px;
+ }
+ 
+@@ -103,6 +106,7 @@ body {
+     gap: 20px;
+     margin-top: 20px;
+     font-size: 18px;
++    font-style: italic;
+     color: black;
+ }
+ 
+@@ -143,3 +147,22 @@ body {
+     background-color: #111;
+     transform: scale(1); 
+ }
++
++label {
++    cursor: pointer;
++    color: #333; 
++    transition: color 0.3s ease; 
++}
++
++label:hover {
++    color: #555; 
++}
++.error-message {
++    margin-top: 20px;
++    color: red;
++    font-size: 14px;
++    background-color: rgba(0, 0, 0, 0.5);
++    padding: 5px 10px;
++    border-radius: 15px;
++    font-family: 'Helvetica', sans-serif; 
++}
