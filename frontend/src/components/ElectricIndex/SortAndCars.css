@@ -1,0 +1,92 @@
+.sort-bar{
+    display:flex;
+    border: 1px solid black;
+    justify-content: space-between;
+    padding-left:150px;
+    padding-right:150px;
+    padding-top:30px;
+    padding-bottom:30px;
+}
+
+.sort-button{
+    border:none;
+    padding:10px 80px;
+    border: 1px solid black;
+    border-radius:10px;
+    cursor:pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sort-button:hover{
+    background-color: rgba(128, 128, 128, 0.364);
+}
+
+.car-cards{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns of equal width */
+    gap: 50px;
+    justify-content: space-between;
+    justify-content: space-around;
+    padding:30px 100px;
+}
+
+
+.options-box {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1; /* Ensure the box appears on top of other elements */
+  }
+  
+  .options-box label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .options-box1 {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .options-box1 label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .options-box2 {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .options-box2 label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .options-box3 {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .option {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .option.selected {
+    background-color: #f0f0f0;
+  }
