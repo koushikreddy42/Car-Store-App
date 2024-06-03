@@ -1,0 +1,42 @@
+body{
+    margin:0;
+}
+
+.header{
+    background-color: black;
+    display:flex;
+    padding-top: 40px;
+    padding-bottom:40px;
+    padding-left:60px;
+    
+}
+
+.header-logo{
+    margin-top:15px;
+}
+
+.logo-image{
+    height:35px;
+    cursor:pointer;
+}
+
+.category-div{
+    margin-left:50px;
+    
+}
+
+.category-button{
+    background-color: black;
+    color:white;
+    border:none;
+    border: 2px solid white;
+    padding:20px 30px;
+    margin-left:30px;
+    border-radius:50px;
+    cursor:pointer;
+    transition: background-color 0.3s ease;
+}
+
+.category-button:hover{
+    background-color: #404040;
+}
