@@ -166,3 +166,12 @@ label:hover {
     border-radius: 15px;
     font-family: 'Helvetica', sans-serif; 
 }
+.success-message {
+    margin-top: 20px;
+    color: rgb(17, 116, 17);
+    font-size: 14px;
+    background-color: rgba(234, 233, 233, 0.5);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-family: 'Helvetica', sans-serif; 
+}

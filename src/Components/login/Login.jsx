@@ -9,14 +9,16 @@ function Login() {
     const [userId, setUserId] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(''); // Define the error state here
+    const [error, setError] = useState(''); 
+    const [successMessage, setSuccessMessage]= useState('');
 
     const handleUserTypeChange = (e) => {
         setIsAdmin(e.target.value === 'admin');
         setUserId('');
         setEmail('');
         setPassword('');
-        setError(''); // Clear error message when switching user types
+        setError(''); 
+        setSuccessMessage('');
     };
 
     const handleSubmit = (e) => {
@@ -25,14 +27,19 @@ function Login() {
             if (userId === 'admin' && password === 'admin') {
                 console.log('Admin Login Successful');
                 setError('');
+                setSuccessMessage('Login Successful!');
+                
             } else {
-                setError('Invalid Admin Credentials');
+                setError('Invalid Admin Credentials!');
+                setSuccessMessage('');
             }
         } else {
             console.log('Customer Login - UserId:', userId);
             console.log('Customer Login - Email:', email);
             console.log('Customer Login - Password:', password);
-            setError(''); // Reset error message for customer login
+            setError(''); 
+            setSuccessMessage('Login Successful!');
+            
         }
     };
 
@@ -64,6 +71,7 @@ function Login() {
             </div>
            
             {error && <div className="error-message">{error}</div>}
+            {successMessage && <div className="success-message">{successMessage}</div>}
             <form onSubmit={handleSubmit}>
                 <div className="inputs">
                     <div className="input">
