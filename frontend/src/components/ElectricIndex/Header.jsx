@@ -1,18 +1,18 @@
 import React from 'react'
-import './Header.css'
+import styles from './Header.module.css'
 import logo from '../Assets/t1.png'
 
 export const Header = () => {
 
   return (
-    <div class="header">
-        <div class="header-logo">
-            <img src={logo} class="logo-image" alt=""></img>
+    <div className={styles.header}>
+        <div className={styles.header_logo}>
+            <img src={logo} class={styles.logo_image} alt=""></img>
         </div>
-        <div class="category-div">
-        <button class="category-button">EVs</button>
-        <button class="category-button">Gas</button>
-        <button class="category-button">Rent Cars</button>
+        <div class={styles.category_div}>
+        <button class={styles.category_button}>EVs</button>
+        <button class={styles.category_button}>Gas</button>
+        <button class={styles.category_button}>Rent Cars</button>
         </div>
     </div>
   )

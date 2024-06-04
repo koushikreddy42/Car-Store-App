@@ -22,13 +22,13 @@ p{
     font-family: 'Poppins', sans-serif;
 }
 
-.img-div{
+.img_div{
     display:flex;
     justify-content: center;
     margin : 30px 0px;
 }
 
-.details-div{
+.details_div{
     display:flex;
     justify-content: space-between;
     padding-left:40px;
@@ -43,7 +43,7 @@ p{
     justify-content: space-between;
 }
 
-.features-div {
+.features_div {
     margin-left:20px;
     display: grid;
     grid-template-rows: repeat(3, 1fr); /* 3 rows of equal height */
@@ -53,7 +53,7 @@ p{
     height:100px;
   }
 
-  .cost-div{
+  .cost_div{
     display:flex;
     align-items: center;
     margin-top:30px;

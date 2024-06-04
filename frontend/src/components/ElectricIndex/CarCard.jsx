@@ -1,27 +1,27 @@
 import React from 'react'
-import './CarCard.css'
+import styles from './CarCard.module.css'
 import bmw from '../Assets/bmw.jpg'
 export const CarCard = (props) => {
   return (
-    <div class="card">
-        <div className="title">{props.year} {props.title}</div>
-       <div className="img-div"><img src={bmw}></img></div>
+    <div className={styles.card}>
+        <div className={styles.title}>{props.year} {props.title}</div>
+       <div className={styles.img_div}><img src={bmw}></img></div>
        
-        <div className="details-div">
-            <div className="detail">
+        <div className={styles.details_div}>
+            <div className={styles.detail}>
                 <div>Top Speed</div>
                 <div>{props.topspeed}</div>
             </div>
-            <div className="detail">
+            <div className={styles.detail}>
                 <div>0-60mph</div>
                 <div>{props.time60}</div>
             </div>
-            <div className="detail">
+            <div className={styles.detail}>
                 <div>Range</div>
                 <div>{props.range}</div>
             </div>
         </div>
-        <div class="features-div">
+        <div className={styles.features_div}>
             <div class="grid-item">{props.colour}</div>
             <div class="grid-item">{props.interior}</div>
             <div class="grid-item">AutoPilot</div>
@@ -32,11 +32,11 @@ export const CarCard = (props) => {
         <p>
         {props.description}
         </p>
-        <div className="cost-div">
-            <div className="cost">
+        <div className={styles.cost_div}>
+            <div className={styles.cost}>
                 ${props.price}
             </div>
-            <button className="book">
+            <button className={styles.book}>
                 Book Now
             </button>
         </div>

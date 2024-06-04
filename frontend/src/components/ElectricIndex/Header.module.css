@@ -11,21 +11,21 @@ body{
     
 }
 
-.header-logo{
+.header_logo{
     margin-top:15px;
 }
 
-.logo-image{
+.logo_image{
     height:35px;
     cursor:pointer;
 }
 
-.category-div{
+.category_div{
     margin-left:50px;
     
 }
 
-.category-button{
+.category_button{
     background-color: black;
     color:white;
     border:none;
@@ -37,6 +37,6 @@ body{
     transition: background-color 0.3s ease;
 }
 
-.category-button:hover{
+.category_button:hover{
     background-color: #404040;
 }
