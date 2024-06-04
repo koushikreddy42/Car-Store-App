@@ -1,7 +1,8 @@
 import React from 'react'
-import './SortAndCars.css'
+import styles from './SortAndCars.module.css'
 import { CarCard } from './CarCard'
-import carData from '../../../db_data/electricmodel.json'
+import carDataev from '../../../db_data/electricmodel.json'
+import carDatagas from '../../../db_data/gasmodel.json'
 import  { useState } from 'react';
 export default function SortAndCars() {
     //price
@@ -54,17 +55,17 @@ const [showOptions, setShowOptions] = useState(false);
     setSelectedOption3(option);
     setShowOptions3(false);
   };
-
+  
   return (
     <div className="sort">
  
-        <div className="sort-bar">
-        <div className="price-div">
-      <button className="sort-button" onClick={handleButtonClick}>
+        <div className={styles.sort_bar}>
+        <div className={styles.price_div}>
+      <button className={styles.sort_button} onClick={handleButtonClick}>
         Price
       </button>
       {showOptions && (
-        <div className="options-box">
+        <div className={styles.options_box}>
           <label>
             <input
               type="radio"
@@ -105,11 +106,11 @@ const [showOptions, setShowOptions] = useState(false);
       )}
     </div>
     <div className="year-div">
-      <button className="sort-button" onClick={handleButtonClick1}>
+      <button className={styles.sort_button} onClick={handleButtonClick1}>
         Year
       </button>
       {showOptions1 && (
-        <div className="options-box1">
+        <div className={styles.options_box1}>
           <label>
             <input
               type="radio"
@@ -141,11 +142,11 @@ const [showOptions, setShowOptions] = useState(false);
       )}
     </div>
     <div className="range-div">
-      <button className="sort-button" onClick={handleButtonClick2}>
+      <button className= {styles.sort_button} onClick={handleButtonClick2}>
         Range
       </button>
       {showOptions2 && (
-        <div className="options-box2">
+        <div className={styles.options_box2}>
           <label>
             Range: {rangeValue} km
             <input
@@ -161,25 +162,25 @@ const [showOptions, setShowOptions] = useState(false);
       )}
     </div>
     <div className="sortby-div">
-      <button className="sort-button" onClick={handleButtonClick3}>
+      <button className={styles.sort_button} onClick={handleButtonClick3}>
         Sort By
       </button>
       {showOptions3 && (
-        <div className="options-box3">
+        <div className={styles.options_box3}>
           <div
-            className={`option ${selectedOption3 === 'priceHighToLow' ? 'selected' : ''}`}
+            className={`${styles.option} ${selectedOption3 === 'priceHighToLow' ? styles.selected : ''}`}
             onClick={() => handleOptionClick3('priceHighToLow')}
           >
             Price High to Low
           </div>
           <div
-            className={`option ${selectedOption3 === 'priceLowToHigh' ? 'selected' : ''}`}
+            className={`${styles.option} ${selectedOption3 === 'priceHighToLow' ? styles.selected : ''}`}
             onClick={() => handleOptionClick3('priceLowToHigh')}
           >
             Price Low to High
           </div>
           <div
-            className={`option ${selectedOption3 === 'latestyear' ? 'selected' : ''}`}
+            className={`${styles.option} ${selectedOption3 === 'priceHighToLow' ? styles.selected : ''}`}
             onClick={() => handleOptionClick3('latestyear')}
           >
             Latest Year
@@ -189,9 +190,9 @@ const [showOptions, setShowOptions] = useState(false);
     </div>
 
         </div>
-        <div className="car-cards">
+        <div className={styles.car_cards}>
             {
-                carData
+                carDataev
                 .filter((item) => {
                   const isValidPrice = () => {
                     switch (selectedOption) {

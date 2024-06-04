@@ -1,4 +1,4 @@
-.sort-bar{
+.sort_bar{
     display:flex;
     border: 1px solid black;
     justify-content: space-between;
@@ -8,7 +8,7 @@
     padding-bottom:30px;
 }
 
-.sort-button{
+.sort_button{
     border:none;
     padding:10px 80px;
     border: 1px solid black;
@@ -17,11 +17,11 @@
     transition: background-color 0.3s ease;
 }
 
-.sort-button:hover{
+.sort_button:hover{
     background-color: rgba(128, 128, 128, 0.364);
 }
 
-.car-cards{
+.car_cards{
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 columns of equal width */
     gap: 50px;
@@ -31,7 +31,7 @@
 }
 
 
-.options-box {
+.options_box {
     position: absolute;
     background-color: white;
     padding: 10px;
@@ -40,12 +40,12 @@
     z-index: 1; /* Ensure the box appears on top of other elements */
   }
   
-  .options-box label {
+  .options_box label {
     display: block;
     margin-bottom: 5px;
   }
 
-  .options-box1 {
+  .options_box1 {
     position: absolute;
     background-color: white;
     padding: 10px;
@@ -54,12 +54,12 @@
     z-index: 1;
   }
   
-  .options-box1 label {
+  .options_box1 label {
     display: block;
     margin-bottom: 5px;
   }
 
-  .options-box2 {
+  .options_box2 {
     position: absolute;
     background-color: white;
     padding: 10px;
@@ -68,12 +68,12 @@
     z-index: 1;
   }
   
-  .options-box2 label {
+  .options_box2 label {
     display: block;
     margin-bottom: 5px;
   }
 
-  .options-box3 {
+  .options_box3 {
     position: absolute;
     background-color: white;
     padding: 10px;
