@@ -1,5 +1,5 @@
-import { Header } from "./Header"
-import SortAndCars from "./SortAndCars"
+import { Header } from "../components/ElectricIndex/Header"
+import SortAndCars from "../components/ElectricIndex/SortAndCars"
 
 function ElectricIndex(){
     return (

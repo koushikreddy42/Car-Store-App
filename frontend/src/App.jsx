@@ -1,5 +1,7 @@
-import ElectricIndex from "./components/ElectricIndex/ElectricIndex"
-import Login from "./components/Login/Login"
+import ElectricIndex from "./pages/ElectricIndex"
+import GasIndex from "./pages/GasIndex";
+import Login from "./pages/Login"
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,8 +13,9 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route exact path="/" element={<ElectricIndex/>}/>
-          <Route exact path="/login" element={<Login/>}/>
+          <Route exact path="/electric" element={<ElectricIndex/>}/>
+          <Route exact path="/gas" element={<GasIndex/>}/>
+          <Route exact path="/" element={<Login/>}/>
         </Routes>
       </div>
     </Router>

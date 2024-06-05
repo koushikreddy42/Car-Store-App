@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './SortAndCars.module.css'
-import { CarCardEv } from './CarCardEv'
-import carDataEv from '../../../db_data/electricmodel.json'
+import {CarCardGas} from './CarCardGas'
+import carDataGas from '../../../db_data/gasmodel.json'
 import  { useState } from 'react';
 export default function SortAndCars() {
     //price
@@ -32,7 +32,7 @@ const [showOptions, setShowOptions] = useState(false);
 
   //range
   const [showOptions2, setShowOptions2] = useState(false);
-  const [rangeValue, setRangeValue] = useState(1000);
+  const [rangeValue, setRangeValue] = useState(60);
 
   const handleButtonClick2 = () => {
     setShowOptions2(!showOptions2);
@@ -55,7 +55,7 @@ const [showOptions, setShowOptions] = useState(false);
     setShowOptions3(false);
   };
 
-  let ev_html=carDataEv
+  let gas_html=carDataGas
   .filter((item) => {
     const isValidPrice = () => {
       switch (selectedOption) {
@@ -74,29 +74,31 @@ const [showOptions, setShowOptions] = useState(false);
 
     const isValidYear = () => {
       switch (selectedOption1) {
+        case '2017':
+          return item.year === 2017;
+        case '2018':
+          return item.year === 2018;
         case '2019':
           return item.year === 2019;
         case '2020':
-          return item.year === 2020;
-        case '2021':
-          return item.year === 2021;
+            return item.year === 2020;
         default:
           return true;
       }
     };
 
     const isValidRange = () => {
-      return item.range <= rangeValue;
+      return item.mileage <= rangeValue;
     };
 
     return isValidPrice() && isValidYear() && isValidRange();
   })
   .map((item) => (
-    <CarCardEv
+    <CarCardGas
       title={item.title}
       topspeed={item.topspeed}
       time60={item.time60}
-      range={item.range}
+      mileage={item.mileage}
       colour={item.colour}
       interior={item.interior}
       wheel={item.wheel}
@@ -104,6 +106,9 @@ const [showOptions, setShowOptions] = useState(false);
       price={item.price}
       imagePath={item.imagePath}
       year={item.year}
+      gearbox={item.gearbox}
+      transmission={item.transmission}
+      engine={item.engine}
     />
   ))
 
@@ -167,6 +172,24 @@ const [showOptions, setShowOptions] = useState(false);
           <label>
             <input
               type="radio"
+              value="2017"
+              checked={selectedOption1 === '2017'}
+              onChange={handleOptionChange1}
+            />
+            2017
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="2018"
+              checked={selectedOption1 === '2018'}
+              onChange={handleOptionChange1}
+            />
+            2018
+          </label>
+          <label>
+            <input
+              type="radio"
               value="2019"
               checked={selectedOption1 === '2019'}
               onChange={handleOptionChange1}
@@ -182,21 +205,12 @@ const [showOptions, setShowOptions] = useState(false);
             />
             2020
           </label>
-          <label>
-            <input
-              type="radio"
-              value="2021"
-              checked={selectedOption1 === '2021'}
-              onChange={handleOptionChange1}
-            />
-            2021
-          </label>
         </div>
       )}
     </div>
     <div className="range-div">
       <button className= {styles.sort_button} onClick={handleButtonClick2}>
-        Range
+        Mileage
       </button>
       {showOptions2 && (
         <div className={styles.options_box2}>
@@ -204,8 +218,8 @@ const [showOptions, setShowOptions] = useState(false);
             Range: {rangeValue} km
             <input
               type="range"
-              min="200"
-              max="500"
+              min="10"
+              max="50"
               step="10"
               value={rangeValue}
               onChange={handleRangeChange}
@@ -244,7 +258,7 @@ const [showOptions, setShowOptions] = useState(false);
 
         </div>
         <div className={styles.car_cards}>
-            {ev_html}
+            {gas_html}
         </div>
         
     </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './CarCard.module.css'
 import bmw from '../Assets/bmw.jpg'
-export const CarCard = (props) => {
+export const CarCardEv = (props) => {
   return (
     <div className={styles.card}>
         <div className={styles.title}>{props.year} {props.title}</div>
