@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
-import styles from './Login.module.css'
+import styles from '../components/Login/Login.module.css'
 
 function Login() {
     const [isAdmin, setIsAdmin] = useState(false);
