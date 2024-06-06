@@ -5,7 +5,7 @@
     padding: 0;
 }
 
-body {
+.boxdiv {
     background: url('../Assets/carr.jpg') no-repeat;
     background-size: cover;
     background-position: center;
@@ -100,7 +100,7 @@ body {
 }
 
 
-.user-type-toggle {
+.user_type_toggle {
     display: flex;
     gap: 20px;
     margin-top: 20px;
@@ -109,13 +109,13 @@ body {
     color: black;
 }
 
-.user-type-toggle label {
+.user_type_toggle label {
     cursor: pointer;
     color: #333; 
     transition: color 0.3s ease; 
 }
 
-.user-type-toggle label:hover {
+.user_type_toggle label:hover {
     color: #555;
 }
 
@@ -147,16 +147,16 @@ body {
     transform: scale(1); 
 }
 
-label {
+.options {
     cursor: pointer;
     color: #333; 
     transition: color 0.3s ease; 
 }
 
-label:hover {
+.options :hover {
     color: #555; 
 }
-.error-message {
+.error_message {
     margin-top: 20px;
     color: red;
     font-size: 14px;
@@ -165,7 +165,7 @@ label:hover {
     border-radius: 15px;
     font-family: 'Helvetica', sans-serif; 
 }
-.success-message {
+.success_message {
     margin-top: 20px;
     color: rgb(17, 116, 17);
     font-size: 14px;
