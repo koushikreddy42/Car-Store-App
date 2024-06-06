@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
-import './login.css';  
+import styles from './login.module.css'
 
 function Login() {
     const [isAdmin, setIsAdmin] = useState(false);
@@ -44,13 +44,14 @@ function Login() {
     };
 
     return (
-        <div className="container">
-            <div className="header">
-                <div className="text">Login</div>
-                <div className="underline"></div>
+        <div className={styles.boxdiv}>
+        <div className={styles.container}>
+            <div className={styles.header}>
+                <div className={styles.text}>Login</div>
+                <div className={styles.underline}></div>
             </div>
-            <div className="user-type-toggle">
-                <label>
+            <div className={styles.user_type_toggle}>
+                <label className={styles.options}>
                     <input
                         type="radio"
                         value="customer"
@@ -59,7 +60,7 @@ function Login() {
                     />
                     Customer
                 </label>
-                <label>
+                <label className={styles.options}>
                     <input
                         type="radio"
                         value="admin"
@@ -70,12 +71,12 @@ function Login() {
                 </label>
             </div>
            
-            {error && <div className="error-message">{error}</div>}
-            {successMessage && <div className="success-message">{successMessage}</div>}
+            {error && <div className={styles.error_message}>{error}</div>}
+            {successMessage && <div className={styles.success_message}>{successMessage}</div>}
             <form onSubmit={handleSubmit}>
-                <div className="inputs">
-                    <div className="input">
-                        <FaUserAlt className="icon" />
+                <div className={styles.inputs}>
+                    <div className={styles.input}>
+                        <FaUserAlt className={styles.icon} />
                         <input
                             placeholder="Enter UserId"
                             type="text"
@@ -85,8 +86,8 @@ function Login() {
                         />
                     </div>
                     {!isAdmin && (
-                        <div className="input">
-                            <MdEmail className="icon" />
+                        <div className={styles.input}>
+                            <MdEmail className={styles.icon} />
                             <input
                                 placeholder="name@example.com"
                                 type="email"
@@ -96,8 +97,8 @@ function Login() {
                             />
                         </div>
                     )}
-                    <div className="input">
-                        <RiLockPasswordFill className="icon" />
+                    <div className={styles.input}>
+                        <RiLockPasswordFill className={styles.icon} />
                         <input
                             placeholder="Enter your password"
                             type="password"
@@ -107,8 +108,9 @@ function Login() {
                         />
                     </div>
                 </div>
-                <button className="login" type="submit">Login</button>
+                <button className={styles.login} type="submit">Login</button>
             </form>
+        </div>
         </div>
     );
 }
