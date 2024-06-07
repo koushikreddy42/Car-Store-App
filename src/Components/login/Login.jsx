@@ -2,115 +2,111 @@ import React, { useState } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
-import styles from './login.module.css'
+import styles from './login.module.css';
 
 function Login() {
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [isLogin, setIsLogin] = useState(false);
     const [userId, setUserId] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(''); 
-    const [successMessage, setSuccessMessage]= useState('');
+    const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
-    const handleUserTypeChange = (e) => {
-        setIsAdmin(e.target.value === 'admin');
+    const switchToLogin = () => {
+        setIsLogin(true);
         setUserId('');
         setEmail('');
         setPassword('');
-        setError(''); 
+        setError('');
+        setSuccessMessage('');
+    };
+
+    const switchToSignUp = () => {
+        setIsLogin(false);
+        setUserId('');
+        setEmail('');
+        setPassword('');
+        setError('');
         setSuccessMessage('');
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (isAdmin) {
-            if (userId === 'admin' && password === 'admin') {
-                console.log('Admin Login Successful');
-                setError('');
-                setSuccessMessage('Login Successful!');
-                
-            } else {
-                setError('Invalid Admin Credentials!');
-                setSuccessMessage('');
-            }
-        } else {
-            console.log('Customer Login - UserId:', userId);
-            console.log('Customer Login - Email:', email);
-            console.log('Customer Login - Password:', password);
-            setError(''); 
+        if (isLogin) {
+            console.log('Login - UserId:', userId);
+            console.log('Login - Password:', password);
+            setError('');
             setSuccessMessage('Login Successful!');
-            
+        } else {
+            console.log('Sign Up - UserId:', userId);
+            console.log('Sign Up - Email:', email);
+            console.log('Sign Up - Password:', password);
+            setError('');
+            setSuccessMessage('Sign Up Successful!');
         }
     };
 
     return (
         <div className={styles.boxdiv}>
-        <div className={styles.container}>
-            <div className={styles.header}>
-                <div className={styles.text}>Login</div>
-                <div className={styles.underline}></div>
-            </div>
-            <div className={styles.user_type_toggle}>
-                <label className={styles.options}>
-                    <input
-                        type="radio"
-                        value="customer"
-                        checked={!isAdmin}
-                        onChange={handleUserTypeChange}
-                    />
-                    Customer
-                </label>
-                <label className={styles.options}>
-                    <input
-                        type="radio"
-                        value="admin"
-                        checked={isAdmin}
-                        onChange={handleUserTypeChange}
-                    />
-                    Admin
-                </label>
-            </div>
-           
-            {error && <div className={styles.error_message}>{error}</div>}
-            {successMessage && <div className={styles.success_message}>{successMessage}</div>}
-            <form onSubmit={handleSubmit}>
-                <div className={styles.inputs}>
-                    <div className={styles.input}>
-                        <FaUserAlt className={styles.icon} />
-                        <input
-                            placeholder="Enter UserId"
-                            type="text"
-                            value={userId}
-                            onChange={(e) => setUserId(e.target.value)}
-                            required
-                        />
-                    </div>
-                    {!isAdmin && (
+            <div className={styles.container}>
+                <div className={styles.header}>
+                    <div className={styles.text}>{isLogin ? 'Login' : 'Sign Up'}</div>
+                    <div className={styles.underline}></div>
+                </div>
+                {error && <div className={styles.error_message}>{error}</div>}
+                {successMessage && <div className={styles.success_message}>{successMessage}</div>}
+                <form onSubmit={handleSubmit}>
+                    <div className={styles.inputs}>
                         <div className={styles.input}>
-                            <MdEmail className={styles.icon} />
+                            <FaUserAlt className={styles.icon} />
                             <input
-                                placeholder="name@example.com"
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Enter UserId"
+                                type="text"
+                                value={userId}
+                                onChange={(e) => setUserId(e.target.value)}
                                 required
                             />
                         </div>
-                    )}
-                    <div className={styles.input}>
-                        <RiLockPasswordFill className={styles.icon} />
-                        <input
-                            placeholder="Enter your password"
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
+                        {!isLogin && (
+                            <div className={styles.input}>
+                                <MdEmail className={styles.icon} />
+                                <input
+                                    placeholder="name@example.com"
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                            </div>
+                        )}
+                        <div className={styles.input}>
+                            <RiLockPasswordFill className={styles.icon} />
+                            <input
+                                placeholder="Enter your password"
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                        </div>
                     </div>
+                    {isLogin && (
+                        <div className={styles.lost_password}>
+                            Lost Password? <a href="#">Click here</a>
+                        </div>
+                    )}
+                    
+                    <div className={styles.switch_buttons}>
+                    <button onClick={switchToLogin} className={styles.login}>
+                        Login
+                    </button>
+                    <button onClick={switchToSignUp} className={styles.signup}>
+                        Sign Up
+                    </button>
                 </div>
-                <button className={styles.login} type="submit">Login</button>
-            </form>
-        </div>
+                </form>
+                
+            </div>
         </div>
     );
 }

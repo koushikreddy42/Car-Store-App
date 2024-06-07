@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -17,19 +16,17 @@
     font-family: 'Arial', sans-serif;
 }
 
-
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
     border-radius: 15px;
-    background: rgba(186, 181, 181,0.5);
-    padding: 30px 20px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    background: rgba(186, 181, 181, 0.5);
+    padding: 30px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
 }
-
 
 .header {
     display: flex;
@@ -38,43 +35,40 @@
     gap: 9px;
     width: 100%;
     margin-top: 10px;
-    
 }
 
 .text {
     color: black;
     font-size: 48px;
     font-weight: 700;
-    font-family: 'Helvetica', sans-serif; 
+    font-family: 'Helvetica', sans-serif;
 }
 
 .underline {
     width: 100%;
     height: 1px;
-    background: rgb(159, 157, 138); 
+    background: rgb(159, 157, 138);
     border-radius: 9px;
 }
-
 
 .inputs {
     margin-top: 55px;
     display: flex;
     flex-direction: column;
     padding-right: 20px;
-    padding-left: 20px; 
+    padding-left: 20px;
     gap: 25px;
 }
-
 
 .input {
     display: flex;
     align-items: center;
     width: 350px;
     height: 50px;
-    background: rgba(237, 232, 232,0.8);
+    background: rgba(237, 232, 232, 0.8);
     border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    transition: box-shadow 0.3s ease; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
 .input:hover {
@@ -83,8 +77,8 @@
 
 .input .icon {
     margin-left: 15px;
-    color: #555; 
-    transition: color 0.3s ease; 
+    color: #555;
+    transition: color 0.3s ease;
 }
 
 .input input {
@@ -96,66 +90,60 @@
     color: black;
     margin-left: 15px;
     font-size: 15px;
-    font-family: 'Helvetica', sans-serif; 
+    font-family: 'Helvetica', sans-serif;
 }
 
-
-.user_type_toggle {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-    font-size: 18px;
-    font-style: italic;
-    color: black;
-}
-
-.user_type_toggle label {
-    cursor: pointer;
-    color: #333; 
-    transition: color 0.3s ease; 
-}
-
-.user_type_toggle label:hover {
-    color: #555;
-}
-
-
-.login {
+.login, .signup {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    margin-left: 150px;
+    margin-left: 10px;
     border: none;
     border-radius: 20px;
     padding: 10px 20px;
     cursor: pointer;
-    background-color: black; 
+    background-color: black;
     color: white;
     font-size: 16px;
     font-family: 'Helvetica', sans-serif;
-    transition: background-color 0.3s ease, transform 0.3s ease; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.login:hover {
-    background-color: #333; 
-    transform: scale(1.05); 
+.login:hover, .signup:hover {
+    background-color: #333;
+    transform: scale(1.05);
 }
 
-.login:active {
+.login:active, .signup:active {
     background-color: #111;
-    transform: scale(1); 
+    transform: scale(1);
 }
 
-.options {
+.switch_buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 50px;
+}
+
+.lost_password {
+    margin-top: 20px;
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+.lost_password a {
+    color: #007BFF;
+    text-decoration: none;
     cursor: pointer;
-    color: #333; 
-    transition: color 0.3s ease; 
+    transition: color 0.3s ease;
 }
 
-.options :hover {
-    color: #555; 
+.lost_password a:hover {
+    color: #0056b3;
 }
+
 .error_message {
     margin-top: 20px;
     color: red;
@@ -163,8 +151,9 @@
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5px 10px;
     border-radius: 15px;
-    font-family: 'Helvetica', sans-serif; 
+    font-family: 'Helvetica', sans-serif;
 }
+
 .success_message {
     margin-top: 20px;
     color: rgb(17, 116, 17);
@@ -172,5 +161,5 @@
     background-color: rgba(234, 233, 233, 0.5);
     padding: 5px 10px;
     border-radius: 15px;
-    font-family: 'Helvetica', sans-serif; 
+    font-family: 'Helvetica', sans-serif;
 }

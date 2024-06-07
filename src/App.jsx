@@ -3,8 +3,7 @@ import Home from './Components/home/home.jsx';
 function App(){
   return(
     <>
-    
-    <Home/>
+    <Login/>
     </>
 
   );
