@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './SortAndCars.module.css'
 import {CarCardGas} from './CarCardGas'
 import carDataGas from '../../../db_data/gasmodel.json'
-import  { useState } from 'react';
+import  { useState,useEffect } from 'react';
 export default function SortAndCars() {
     //price
 const [showOptions, setShowOptions] = useState(false);
@@ -55,7 +55,23 @@ const [showOptions, setShowOptions] = useState(false);
     setShowOptions3(false);
   };
 
-  let gas_html=carDataGas
+  const [gasModels, setGasModels] = useState([]);
+
+  useEffect(() => {
+    const fetchGasModels = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/gas"); // Replace with your actual API endpoint
+        const data = await response.json();
+        setGasModels(data);
+      } catch (error) {
+        console.error('Error fetching gas models:', error);
+      }
+    };
+
+    fetchGasModels();
+  }, []);
+
+  let gas_html=gasModels
   .filter((item) => {
     const isValidPrice = () => {
       switch (selectedOption) {

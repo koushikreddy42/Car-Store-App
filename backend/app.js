@@ -3,6 +3,7 @@ const cors=require('cors')
 const app=express();
 const connectDB=require('./db/connect')
 const electricRouter = require('./routes/electric_index');
+const gasRouter = require('./routes/gas_index');
 const mongoose=require('mongoose')
 
 //middleware
@@ -14,6 +15,7 @@ app.get('/',(req,res)=>{
     res.send('hello');
 })
 app.use('/api/electric',electricRouter)
+app.use('/api/gas',gasRouter)
 
 const port=8080;
 
