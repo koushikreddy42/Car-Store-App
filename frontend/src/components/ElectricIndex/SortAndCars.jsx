@@ -2,7 +2,8 @@ import React from 'react'
 import styles from './SortAndCars.module.css'
 import { CarCardEv } from './CarCardEv'
 import carDataEv from '../../../db_data/electricmodel.json'
-import  { useState } from 'react';
+import  { useState,useEffect } from 'react';
+
 export default function SortAndCars() {
     //price
 const [showOptions, setShowOptions] = useState(false);
@@ -55,7 +56,24 @@ const [showOptions, setShowOptions] = useState(false);
     setShowOptions3(false);
   };
 
-  let ev_html=carDataEv
+  const [electricModels, setElectricModels] = useState([]);
+
+  useEffect(() => {
+    const fetchElectricModels = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/electric"); // Replace with your actual API endpoint
+        const data = await response.json();
+        setElectricModels(data);
+      } catch (error) {
+        console.error('Error fetching electric models:', error);
+      }
+    };
+
+    fetchElectricModels();
+  }, []);
+
+
+  let ev_html=electricModels
   .filter((item) => {
     const isValidPrice = () => {
       switch (selectedOption) {
@@ -246,7 +264,6 @@ const [showOptions, setShowOptions] = useState(false);
         <div className={styles.car_cards}>
             {ev_html}
         </div>
-        
     </div>
   )
 }
