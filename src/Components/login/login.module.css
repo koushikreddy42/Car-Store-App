@@ -1,6 +1,6 @@
 
 
-.boxdiv {
+.pageContainer {
     background: url('../Assets/carr.jpg') no-repeat;
     background-size: cover;
     background-position: center;
@@ -12,6 +12,16 @@
     font-family: 'Arial', sans-serif;
 }
 
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px; 
+    height:100px;
+}
+
+
+
 .container {
     display: flex;
     flex-direction: column;
@@ -19,9 +29,10 @@
     margin-top: 50px;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.3);
-    padding: 30px 0px;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.6);
+    padding: 30px  20px;
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(5px);
+    border: solid  rgb(202, 196, 196) 2px;
     width: 100%;
     max-width: 400px;
 }
@@ -40,26 +51,25 @@
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    background-color:#e5e1e1  ;
+    background-color: #e5e1e1;
     color: white;
     font-size: 16px;
     font-family: 'Helvetica', sans-serif;
     transition: background-color 0.3s ease, transform 0.3s ease;
-
 }
 
 .toggle_button.active {
     background-color: rgba(0, 0, 0, 0.6);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
-.toggle_button.active:hover{
+
+.toggle_button.active:hover {
     background-color: rgba(0, 0, 0, 0.6);
 }
+
 .toggle_button:hover {
-    background-color:  rgba(147, 141, 141, 0.3);
+    background-color: rgba(147, 141, 141, 0.3);
 }
-
-
 
 .underline {
     width: 100%;
@@ -83,14 +93,14 @@
     align-items: center;
     width: 100%;
     height: 50px;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
 }
 
 .input:hover {
-    box-shadow: 0px 4px 8px rgba(255,255,255, 0.5);
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.5);
 }
 
 .input .icon {
@@ -110,11 +120,13 @@
     font-size: 15px;
     font-family: 'Helvetica', sans-serif;
 }
-.bttn{
-    align-items: center; 
+
+.bttn {
+    align-items: center;
     display: flex;
     justify-content: center;
 }
+
 .submit_button {
     display: flex;
     justify-content: center;
