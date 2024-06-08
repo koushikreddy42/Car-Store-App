@@ -5,7 +5,7 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import styles from './login.module.css';
 
 function Login() {
-    const [isLogin, setIsLogin] = useState(false);
+    const [isLogin, setIsLogin] = useState(true);
     const [userId, setUserId] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -50,9 +50,14 @@ function Login() {
         <div className={styles.boxdiv}>
             <div className={styles.container}>
                 <div className={styles.header}>
-                    <div className={styles.text}>{isLogin ? 'Login' : 'Sign Up'}</div>
-                    <div className={styles.underline}></div>
+                    <button onClick={switchToLogin} className={`${styles.toggle_button} ${isLogin ? styles.active : ''}`}>
+                        Login
+                    </button>
+                    <button onClick={switchToSignUp} className={`${styles.toggle_button} ${!isLogin ? styles.active : ''}`}>
+                        Sign Up
+                    </button>
                 </div>
+                <div className={styles.underline}></div>
                 {error && <div className={styles.error_message}>{error}</div>}
                 {successMessage && <div className={styles.success_message}>{successMessage}</div>}
                 <form onSubmit={handleSubmit}>
@@ -95,17 +100,12 @@ function Login() {
                             Lost Password? <a href="#">Click here</a>
                         </div>
                     )}
-                    
-                    <div className={styles.switch_buttons}>
-                    <button onClick={switchToLogin} className={styles.login}>
-                        Login
+                    <div className={styles.bttn}>
+                    <button type="submit" className={styles.submit_button}>
+                        {isLogin ? 'Login' : 'Sign Up'}
                     </button>
-                    <button onClick={switchToSignUp} className={styles.signup}>
-                        Sign Up
-                    </button>
-                </div>
+                    </div>
                 </form>
-                
             </div>
         </div>
     );

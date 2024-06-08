@@ -1,7 +1,5 @@
-
-
-.boxdiv {
-    background: url('../Assets/carr.jpg') no-repeat;
+.main{
+    background: url('../Assets/car.png') no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -12,153 +10,104 @@
     font-family: 'Arial', sans-serif;
 }
 
-.container {
+.box{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.3);
-    padding: 30px 0px;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(5px);
-    width: 100%;
-    max-width: 400px;
+    border-radius: 15px;
+    background: rgba(186, 181, 181, 0.5);
+    padding: 30px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
 }
-
-.header {
+.heading{
     display: flex;
-    justify-content: center;
-    gap: 0px;
-    width: 70%;
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 10px;
 }
-
-.toggle_button {
-    flex: 1;
-    padding: 10px 3px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    background-color:#e5e1e1  ;
-    color: white;
-    font-size: 16px;
+.maintxt {
+    color: black;
+    font-size: 48px;
+    font-weight: 700;
     font-family: 'Helvetica', sans-serif;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-
 }
-
-.toggle_button.active {
-    background-color: rgba(0, 0, 0, 0.6);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-.toggle_button.active:hover{
-    background-color: rgba(0, 0, 0, 0.6);
-}
-.toggle_button:hover {
-    background-color:  rgba(147, 141, 141, 0.3);
-}
-
-
-
-.underline {
+.line {
     width: 100%;
     height: 1px;
     background: rgb(159, 157, 138);
     border-radius: 9px;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
-
-.inputs {
-    margin-top: 20px;
+.inputss {
+    margin-top: 55px;
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
+    padding-right: 20px;
+    padding-left: 20px;
     gap: 25px;
 }
-
-.input {
+.inputt {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 350px;
     height: 50px;
-    background: rgba(0,0,0,0.6);
-    border-radius: 20px;
+    background: rgba(237, 232, 232, 0.8);
+    border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
 }
-
-.input:hover {
-    box-shadow: 0px 4px 8px rgba(255,255,255, 0.5);
+.inputt:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.input .icon {
+.inputt .pic {
     margin-left: 15px;
-    color: rgba(255, 255, 255, 0.5);
+    color: #555;
     transition: color 0.3s ease;
 }
 
-.input input {
+.inputt input {
     height: 50px;
     width: 100%;
     background: transparent;
     border: none;
     outline: none;
-    color: white;
+    color: black;
     margin-left: 15px;
     font-size: 15px;
     font-family: 'Helvetica', sans-serif;
 }
-.bttn{
-    align-items: center; 
+.submitt{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-.submit_button {
+.logButton{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
     border: none;
     border-radius: 20px;
-    padding: 10px 30px;
+    padding: 10px 20px;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background-color: black;
     color: white;
     font-size: 16px;
     font-family: 'Helvetica', sans-serif;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
-.submit_button:hover {
+.logButton:hover{
     background-color: #333;
     transform: scale(1.05);
 }
-
-.submit_button:active {
-    background-color: rgba(0, 0, 0, 0.3);
+.logButton:active{
+    background-color: #111;
     transform: scale(1);
 }
-
-.lost_password {
-    margin-top: 20px;
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.6);
-}
-
-.lost_password a {
-    color: #007BFF;
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.lost_password a:hover {
-    color: #05468a;
-}
-
 .error_message {
     margin-top: 20px;
     color: red;
