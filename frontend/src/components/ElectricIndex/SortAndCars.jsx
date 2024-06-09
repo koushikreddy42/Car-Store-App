@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './SortAndCars.module.css'
 import { CarCardEv } from './CarCardEv'
-import carDataEv from '../../../db_data/electricmodel.json'
 import  { useState,useEffect } from 'react';
 
 export default function SortAndCars() {
