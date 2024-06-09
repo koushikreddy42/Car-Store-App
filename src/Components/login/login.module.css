@@ -88,7 +88,7 @@
     gap: 25px;
 }
 
-.input {
+.login_input , .signup_input {
     display: flex;
     align-items: center;
     width: 100%;
@@ -99,17 +99,17 @@
     transition: box-shadow 0.3s ease;
 }
 
-.input:hover {
+.login_input:hover, .signup_input:hover{
     box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.5);
 }
 
-.input .icon {
+.login_input .icon , .signup_input .icon{
     margin-left: 15px;
     color: rgba(255, 255, 255, 0.5);
     transition: color 0.3s ease;
 }
 
-.input input {
+.login_input input, .signup_input input {
     height: 50px;
     width: 100%;
     background: transparent;
@@ -127,7 +127,7 @@
     justify-content: center;
 }
 
-.submit_button {
+.login_button, .signup_button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -144,12 +144,12 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.submit_button:hover {
+.login_button:hover,.signup_button:hover {
     background-color: #333;
     transform: scale(1.05);
 }
 
-.submit_button:active {
+.login_button:active,.signup_button:active {
     background-color: rgba(0, 0, 0, 0.3);
     transform: scale(1);
 }

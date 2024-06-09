@@ -6,7 +6,7 @@ import styles from './login.module.css';
 import logo from '../Assets/logo.png';
 
 function Login() {
-    const [isLogin, setIsLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState(false);
     const [userId, setUserId] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -34,7 +34,7 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isLogin) {
-            console.log('Login - UserId:', userId);
+            console.log('Login - Email:', email);
             console.log('Login - Password:', password);
             setError('');
             setSuccessMessage('Login Successful!');
@@ -63,19 +63,10 @@ function Login() {
                     {error && <div className={styles.error_message}>{error}</div>}
                     {successMessage && <div className={styles.success_message}>{successMessage}</div>}
                     <form onSubmit={handleSubmit}>
+                        
+                      {isLogin && ( <div>
                         <div className={styles.inputs}>
-                            <div className={styles.input}>
-                                <FaUserAlt className={styles.icon} />
-                                <input
-                                    placeholder="Enter UserId"
-                                    type="text"
-                                    value={userId}
-                                    onChange={(e) => setUserId(e.target.value)}
-                                    required
-                                />
-                            </div>
-                            {!isLogin && (
-                                <div className={styles.input}>
+                        <div className={styles.login_input}>
                                     <MdEmail className={styles.icon} />
                                     <input
                                         placeholder="name@example.com"
@@ -85,8 +76,7 @@ function Login() {
                                         required
                                     />
                                 </div>
-                            )}
-                            <div className={styles.input}>
+                                <div className={styles.login_input}>
                                 <RiLockPasswordFill className={styles.icon} />
                                 <input
                                     placeholder="Enter your password"
@@ -96,17 +86,63 @@ function Login() {
                                     required
                                 />
                             </div>
-                        </div>
-                        {isLogin && (
+                            </div>
                             <div className={styles.lost_password}>
                                 Lost Password? <a href="#">Click here</a>
                             </div>
-                        )}
-                        <div className={styles.bttn}>
-                        <button type="submit" className={styles.submit_button}>
-                            {isLogin ? 'Login' : 'Sign Up'}
+                            <div className={styles.bttn}>
+                        <button type="submit" className={styles.login_button}>
+                            Login
                         </button>
                         </div>
+
+                        </div> )}
+                        </form>
+
+
+                    <form onSubmit={handleSubmit}>
+                    {!isLogin && ( <div>
+                        <div className={styles.inputs}>
+                        <div className={styles.signup_input}>
+                                <FaUserAlt className={styles.icon} />
+                                <input
+                                    placeholder="Enter UserId"
+                                    type="text"
+                                    value={userId}
+                                    onChange={(e) => setUserId(e.target.value)}
+                                    required
+                                />
+                            </div>
+
+                        <div className={styles.signup_input}>
+                        <MdEmail className={styles.icon} />
+                        <input
+                            placeholder="name@example.com"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className={styles.signup_input}>
+                    <RiLockPasswordFill className={styles.icon} />
+                    <input
+                        placeholder="Enter your password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                        </div>
+                        </div>
+                        <div className={styles.bttn}>
+                    <button type="submit" className={styles.signup_button}>
+                        Sign up
+                    </button>
+                    </div>
+
+                    </div> )}
+
                     </form>
                 </div>
         </div>
