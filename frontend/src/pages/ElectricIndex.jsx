@@ -18,7 +18,6 @@ function ElectricIndex(){
                 }
             }).then(res=>setData(res.data)).catch(err=>console.log(err))
     },[])
-    if(data) console.log('hello')
         return (
             <>
             {data && <Header username={data.username} />}
