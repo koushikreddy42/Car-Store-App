@@ -4,6 +4,7 @@ const app=express();
 const connectDB=require('./db/connect')
 const electricRouter = require('./routes/electric_index');
 const gasRouter = require('./routes/gas_index');
+const authRouter = require('./routes/auth')
 const mongoose=require('mongoose')
 
 //middleware
@@ -16,6 +17,7 @@ app.get('/',(req,res)=>{
 })
 app.use('/api/electric',electricRouter)
 app.use('/api/gas',gasRouter)
+app.use('/api',authRouter)
 
 const port=8080;
 

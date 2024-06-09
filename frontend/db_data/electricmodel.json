@@ -2,7 +2,7 @@
   "_id": {
     "$oid": "5e7c93f06564b1f2a3b796f4"
   },
-  "imagePath": "../assets/1.jpg",
+  "imagePath": "../Assets/1.jpg",
   "title": "Tesla Model 3 Performance",
   "t1": "2020 Tesla Model 3",
   "t2": "Performance edition",

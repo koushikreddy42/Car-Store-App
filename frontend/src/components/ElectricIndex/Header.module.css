@@ -1,3 +1,5 @@
+
+
 body{
     margin:0;
 }
@@ -16,13 +18,15 @@ body{
 }
 
 .logo_image{
-    height:35px;
+    height:120px;
     cursor:pointer;
 }
 
 .category_div{
-    margin-left:50px;
-    
+    margin-left:20px;
+    display:flex;
+    align-items:center;
+    justify-content: space-evenly;
 }
 
 .category_button{
@@ -39,4 +43,25 @@ body{
 
 .category_button:hover{
     background-color: #404040;
+}
+
+.logout_button{
+    background-color: black;
+    color:red;
+    border:none;
+    border: 2px solid red;
+    padding:20px 30px;
+    border-radius:50px;
+    cursor:pointer;
+    transition: background-color 0.3s ease;
+    /* margin-left:400px; */
+}
+
+.logout_button:hover{
+    background-color: #404040;
+}
+
+.user{
+    color:white;
+
 }

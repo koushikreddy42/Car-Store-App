@@ -1,15 +1,32 @@
+import React, { useState,useContext,useEffect } from 'react';
 import { Header } from "../components/ElectricIndex/Header"
 import SortAndCars from "../components/ElectricIndex/SortAndCars"
+import { Navigate} from 'react-router-dom';
+import axios from 'axios';
+import { store } from '../App';
 
 function ElectricIndex(){
-    return (
-        <>
-        <Header/>
-        <SortAndCars/>
+    const [token,setToken]=useContext(store)
+    const [data,setData]=useState(null)
+    if(!token){
+        return <Navigate to='/sign'/>
+    }
+    useEffect(()=>{
+        axios.get('http://localhost:8080/api/myprofile',{
+                headers:{
+                    'x-token':token
+                }
+            }).then(res=>setData(res.data)).catch(err=>console.log(err))
+    },[])
+    if(data) console.log('hello')
+        return (
+            <>
+            {data && <Header username={data.username} />}
+            <SortAndCars />
         </>
-        
-        
-    )
+            
+            
+        )
 }
 
 export default ElectricIndex
