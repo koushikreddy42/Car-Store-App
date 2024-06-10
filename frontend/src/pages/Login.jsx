@@ -10,7 +10,7 @@ import { Navigate } from 'react-router-dom';
 
 function Login() {
     const [token,setToken]=useContext(store)
-    const [isLogin, setIsLogin] = useState(false);
+    const [isLogin, setIsLogin] = useState(true);
     const [userId, setUserId] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
