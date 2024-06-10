@@ -8,9 +8,6 @@ import { store } from '../App';
 function GasIndex(){
     const [token,setToken]=useContext(store)
     const [data,setData]=useState(null)
-    if(!token){
-        return <Navigate to='/sign'/>
-    }
     useEffect(()=>{
         axios.get('http://localhost:8080/api/myprofile',{
                 headers:{
@@ -18,6 +15,10 @@ function GasIndex(){
                 }
             }).then(res=>setData(res.data)).catch(err=>console.log(err))
     },[])
+    
+    if(!token){
+        return <Navigate to='/sign'/>
+    }
     return (
         <>
         {data && <Header username={data.username} />}
