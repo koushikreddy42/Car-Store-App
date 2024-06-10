@@ -1,0 +1,183 @@
+.app_container {
+  display: flex;
+  flex-direction: column;   
+  font-family: sans-serif;
+  min-height: 200vh;
+  background-color: rgb(255,251,255); /*246, 240, 232*/
+  padding: 0px;
+
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(0,5,0); 
+  color: white;
+  padding: 10px 20px;
+  
+}
+
+.wl_icon, .pf_icon{
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.wl_text, .pf_text {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 14px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s linear;
+}
+
+.wl_icon:hover .wl_text {
+  visibility: visible;
+  opacity: 1;
+}
+.pf_icon:hover .pf_text{
+  visibility: visible;
+  opacity: 1;
+}
+
+.nav_buttons {
+  display: flex;
+ 
+  gap: 10px;
+}
+
+.nav_button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 5px 10px;
+  margin-left: 10px;
+   
+  text-decoration: none;
+  transform: translateX(-850%);
+}
+.nav_button3{
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 5px 10px;
+  margin-left: 10px;
+  margin-right: 10px; 
+  text-decoration: none;
+  transform: translateX(-825%);
+}
+
+.nav_buttons a {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.nav_button:hover, .nav_button3:hover {
+  background-color: white;
+  color: black;
+}
+
+.logo h1 {
+  font-family:  "Merienda",cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 45px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+
+}
+
+ .main_content {
+  flex: 1;
+  margin-bottom: 0%;
+}
+
+
+.footer {
+  background-color: rgb(51, 30, 56);
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  text-align:left;
+  display: flex;
+  padding-left: 80px;
+  padding-right: 90px;
+  transform: translateY(-10%);
+  margin-bottom: 0%;
+}
+
+.footer_section:nth-child(1){
+  margin-right: 200px; /*80*/
+}
+
+.footer_section:nth-child(2){
+  margin-right: 40px ; /*-40*/
+}
+
+.footer_section:nth-child(3){
+  margin-left: 40px ; /*-10*/
+  
+}
+
+.footer_section h3 {
+  margin-bottom: 10px;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.footer_section {
+  flex: 1;
+  margin: 0px;
+}
+
+.footer p{
+  font-size: 14px;
+  margin: 5px;
+  color: rgb(206, 187, 201);
+}
+
+.footer a{
+  font-size: 14px;
+}
+
+.footer_links:hover a {
+  color: white;
+}
+
+.footer_links a{
+  color: rgb(206, 187, 201);
+}
+
+.social_icons i {
+  color: white;
+}
+
+.social_icons {
+  margin-top: -15px;
+  display: flex;
+  gap: 20px;
+}
+
+.footer_icon{
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.footer_icon:hover i {
+  color: rgb(206, 187, 201);
+}
