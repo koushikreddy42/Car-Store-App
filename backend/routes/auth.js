@@ -3,6 +3,13 @@ const router=express.Router()
 const registeruser= require('../models/RegisterUserModel')
 const jwt = require('jsonwebtoken')
 const middleware = require('../middleware/myprofile_middleware')
+const crypto = require('crypto')
+const sendVerificationEmail = require('../controllers/Mail');
+
+
+function generateVerificationToken() {
+  return crypto.randomBytes(20).toString('hex');
+}
 
 router.route('/register').post(async (req,res)=>{
     try {
@@ -11,12 +18,16 @@ router.route('/register').post(async (req,res)=>{
         if(exist){
             return res.status(400).send('User Already Exists')
         }
+        const verificationToken = generateVerificationToken();
         let newUser = new registeruser({
             username,
             email,
-            password
+            password,
+            verificationToken
         })
         await newUser.save();
+        sendVerificationEmail(email, verificationToken);
+        
         res.status(200).send('Registered Successfully')
     } catch (error) {
         console.log(error)
@@ -32,6 +43,9 @@ router.route('/login').post(async (req,res)=>{
         if(!exist){
             return res.status(400).send('User Not Found')
         }
+        if (!exist.isVerified) {
+            return res.status(400).send('Please verify your email before logging in');
+          }
         if(exist.password!==password){
             return res.status(400).send('Invalid credentials')
         }
