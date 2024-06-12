@@ -5,6 +5,7 @@ const connectDB=require('./db/connect')
 const electricRouter = require('./routes/electric_index');
 const gasRouter = require('./routes/gas_index');
 const authRouter = require('./routes/auth')
+const mailRouter = require('./routes/mail')
 const mongoose=require('mongoose')
 
 //middleware
@@ -15,9 +16,7 @@ app.use(express.json());
 app.get('/',(req,res)=>{
     res.send('hello');
 })
-app.use('/api/electric',electricRouter)
-app.use('/api/gas',gasRouter)
-app.use('/api',authRouter)
+app.use('/api',authRouter,electricRouter,gasRouter,mailRouter)
 
 const port=8080;
 
