@@ -15,6 +15,7 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [success, setSuccess]=useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
     const switchToLogin = () => {
@@ -23,6 +24,7 @@ function Login() {
         setEmail('');
         setPassword('');
         setError('');
+        setSuccess('');
         setSuccessMessage('');
     };
 
@@ -32,6 +34,7 @@ function Login() {
         setEmail('');
         setPassword('');
         setError('');
+        setSuccess('');
         setSuccessMessage('');
     };
 
@@ -39,26 +42,42 @@ function Login() {
         e.preventDefault();
         if (isLogin) {
             setError('');
-
+            setSuccess('');
             axios.post('http://localhost:8080/api/login', {
-                email: email,
-                password: password
-            }).then(res => {
-                setToken(res.data.token); // Set the token state
-                console.log('Token:', res.data.token);
-            }).catch(err => {
+              email: email,
+              password: password
+            })
+            .then(res => {
+              setToken(res.data.token); // Set the token state
+              console.log('Token:', res.data.token);
+            })
+            .catch(err => {
+              if (err.response && err.response.data) {
+                setError(err.response.data);
+              } else {
                 setError('Login failed');
-                console.error('Login error:', err);
+              }
+              console.error('Login error:', err);
             });
-        } else {
+          } else {
             setError('');
-            axios.post('http://localhost:8080/api/register',{
-                username:userId,
-                email:email,
-                password:password
-            }).then(
-            res=>alert(res.data))
-        }
+            setSuccess('');
+            axios.post('http://localhost:8080/api/register', {
+              username: userId,
+              email: email,
+              password: password
+            })
+            .then(res => {
+              setSuccess(res.data)
+            })
+            .catch(error => {
+                if (err.response && err.response.data) {
+                    setError(err.response.data);
+                  } else {
+                setError('An error occurred. Please try again.');
+              }
+            });
+          }
     };
 
     if (token) {
@@ -79,7 +98,7 @@ function Login() {
                     </div>
                     <div className={styles.underline}></div>
                     {error && <div className={styles.error_message}>{error}</div>}
-                    {successMessage && <div className={styles.success_message}>{successMessage}</div>}
+                    { success && <div className={styles.success_message}>{success}</div>}
                     <form onSubmit={handleSubmit}>
                         
                       {isLogin && ( <div>
@@ -122,15 +141,17 @@ function Login() {
                     {!isLogin && ( <div>
                         <div className={styles.inputs}>
                         <div className={styles.signup_input}>
-                                <FaUserAlt className={styles.icon} />
-                                <input
-                                    placeholder="Enter UserId"
-                                    type="text"
-                                    value={userId}
-                                    onChange={(e) => setUserId(e.target.value)}
-                                    required
-                                />
-                            </div>
+                            <FaUserAlt className={styles.icon} />
+                            <input
+                                placeholder="Enter UserId"
+                                type="text"
+                                value={userId}
+                                onChange={(e) => setUserId(e.target.value)}
+                                pattern="^[a-zA-Z][a-zA-Z0-9]*$"
+                                title="User ID must contain letters, may contain numbers, and must start with a letter."
+                                required
+                            />
+                        </div>
 
                         <div className={styles.signup_input}>
                         <MdEmail className={styles.icon} />
