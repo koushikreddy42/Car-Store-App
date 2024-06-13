@@ -38,10 +38,10 @@
     margin-top: 10px;
 }
 .maintxt {
-    color: black;
-    font-size: 48px;
-    font-weight: 700;
-    font-family: 'Helvetica', sans-serif;
+    color: rgb(34, 32, 32);
+    font-size: 40px;
+    font-weight: 500;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .line {
     width: 100%;

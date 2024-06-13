@@ -29,7 +29,7 @@ function AdminLog() {
             
             <div className={styles.box}>
                 <div className={styles.heading}>
-                    <div className={styles.maintxt}>Login</div>
+                    <div className={styles.maintxt}>Admin Login</div>
                     <div className={styles.line}></div>
                 </div>
                 {error && <div className={styles.error_message}>{error}</div>}
