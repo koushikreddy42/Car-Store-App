@@ -9,7 +9,14 @@
     min-height: 100vh;
     font-family: 'Arial', sans-serif;
 }
-
+.logopic{
+    
+        position: absolute;
+        top: 20px;
+        width: 200px; 
+        height:150px;
+    
+}
 .box{
     display: flex;
     flex-direction: column;

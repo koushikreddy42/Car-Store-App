@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import styles from './Admin.module.css';
+import logo from '../Assets/logo.png';
 
 function AdminLog() {
     const [userId, setUserId] = useState('');
@@ -24,6 +25,7 @@ function AdminLog() {
 
     return (
         <div className={styles.main}>
+            <img src={logo} alt="Logo" className={styles.logopic} />
             
             <div className={styles.box}>
                 <div className={styles.heading}>

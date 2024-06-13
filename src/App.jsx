@@ -5,7 +5,7 @@ import AdminLog from './Components/Adminlog/Admin.jsx'
 function App(){
   return(
     <>
-    <Login/>
+    <AdminLog/>
     </>
 
   );
