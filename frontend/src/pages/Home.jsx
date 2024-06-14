@@ -1,10 +1,11 @@
 import React, { useState,useContext,useEffect } from 'react';
 import { store } from '../App';
+import { Navigate,Link } from 'react-router-dom';
+import axios from 'axios';
 import styles from '../components/Home/Home.module.css'
 import videoBg from '../components/Assets/bgvideo.mp4'
 import logo from '../components/Assets/logo.png'
-import { Navigate,Link } from 'react-router-dom';
-import axios from 'axios';
+
 
 function Home(){
     const [token,setToken]=useContext(store)

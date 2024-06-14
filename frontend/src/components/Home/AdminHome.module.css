@@ -1,0 +1,53 @@
+.main_body {
+    background: url('../Assets/car1.png') no-repeat;
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+.icon{
+    height: 20px;
+}
+.logo{
+    position: absolute;
+        top: 20px;
+        width: 300px; 
+        height:150px;
+}
+.buttons_box {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+
+.evs, .gas, .customers {
+    border: solid rgb(115, 111, 111) 1px;
+    border-radius: 30px;
+    padding: 15px 80px;
+    background-color: rgba(255, 255, 255, 0.6);
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: black;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.evs:hover, .gas:hover, .customers:hover {
+    cursor: pointer;
+    border: solid rgb(108, 105, 105) 2px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.evs:active, .gas:active, .customers:active {
+    transform: scale(0.98);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    border: solid black 3px;
+    color: rgba(0, 0, 0, 0.6);
+}
