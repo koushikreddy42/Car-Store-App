@@ -2,9 +2,9 @@ const express = require('express')
 const cors=require('cors')
 const app=express();
 const connectDB=require('./db/connect')
-const electricRouter = require('./routes/electric_index');
-const gasRouter = require('./routes/gas_index');
+const carRouter = require('./routes/car_index');
 const authRouter = require('./routes/auth')
+const adminAuthRouter = require('./routes/admin_auth')
 const mailRouter = require('./routes/mail')
 const mongoose=require('mongoose')
 
@@ -16,7 +16,7 @@ app.use(express.json());
 app.get('/',(req,res)=>{
     res.send('hello');
 })
-app.use('/api',authRouter,electricRouter,gasRouter,mailRouter)
+app.use('/api',authRouter,adminAuthRouter,carRouter,mailRouter)
 
 const port=8080;
 
