@@ -3,6 +3,7 @@ import Home from './Components/home/home.jsx';
 import AdminLog from './Components/Adminlog/Admin.jsx'
 import Adminhome from './Components/Adminhome/Adminhome.jsx';
 import EvsForm from './Components/Forms/EvsForm.jsx'
+import GasForm from './Components/Forms/Gas.jsx'
 
 function App(){
   return(

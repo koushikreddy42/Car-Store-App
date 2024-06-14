@@ -1,13 +1,13 @@
-import styles from './EvsForm.module.css'
+import styles from './Gas.module.css'
         
-        function EvsForm() {
+        function GasForm() {
             return (
                 <div className={styles.page}>
-                    <form className={styles.evsform}>
-                    <div className={styles.box}>
-                    <h1 className={styles.heading}>Add Electric</h1>
-                    </div>
+                    <form className={styles.gasform}>
                     
+                    <div className={styles.lines}>
+                    <h1 className={styles.heading}>Add Gas</h1>
+                    </div>
                     
                     <div className={styles.row}>
                         <div className={styles.path}>
@@ -27,50 +27,75 @@ import styles from './EvsForm.module.css'
                         <div className={styles.title}>
                             <label>Title</label>
                             <div>
-                                <input placeholder='Tesla Model Y Long Range AWD' />
+                                <input placeholder='2019 Ford Mustang' />
                             </div>
                         </div>
                         <div className={styles.year}>
                             <label>Year</label>
-                            <div>
-                                <input type='number' max={2024} min={1990} placeholder='2024' />
-                            </div>
+                              <div>
+                              <input type='number' max={2024} min={1990} placeholder='2024' />
+                              </div>
+                                
+                            
                         </div>
-                    </div>
-                    <div className={styles.row}>
-                     <div className={styles.price}>
+                        <div className={styles.price}>
                        <label>Price</label>
                          <div>
-                            <input type='text' placeholder='54,000' />
+                            <input type='text' placeholder='58,100' />
                         </div>
                      </div>
+                    </div>
+                    <div className={styles.row}>
+                     
                      <div className={styles.speed}>
                        <label>Top Speed</label>
                          <div>
-                            <input type='text' placeholder='135' />
+                            <input type='text' placeholder='185' />
                         </div>
                      </div>
                      <div className={styles.time}>
                        <label>Time60</label>
                          <div>
-                            <input type='text' placeholder='4.8' />
+                            <input type='text' placeholder='3.8' />
                         </div>
                      </div>
-
+                     
                     </div>
                     <div className={styles.row} >
-                    <div className={styles.range}>
-                       <label>Range</label>
+                    <div className={styles.mileage}>
+                       <label>Mileage</label>
+                       <div>
+                       <input  type='text' placeholder='19' />
+                       </div>
                        
-                       <input  type='text' placeholder='346' />
                        
                     </div>
                     <div className={styles.color}>
                        <label>Color</label>
-                       
+                       <div>
                        <input type='text' placeholder='Black' />
+                       </div>
+                       
                        
                     </div>
+                    <div className={styles.engine}>
+                            <label>Engine</label>
+                            <div>
+                            <input type="number" step={0.1}  name="engine" placeholder="5.0" />
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div className={styles.row}>
+                        
+                        <div className={styles.gearbox}>
+                            <label>Gearbox</label>
+                            <input type="text" placeholder="6-Speed SelectShift" />
+                        </div>
+                            <div className={styles.transmission} >
+                        <label>Transmission</label>
+                        <input type="text"  placeholder="Automatic" />
+                        </div>
                     </div>
 
                     <div className={styles.row}>
@@ -82,7 +107,7 @@ import styles from './EvsForm.module.css'
                     
                     <div className={styles.wheel}>
                         <label>Wheel</label>
-                        <input type='text' placeholder="19'' Induction Wheels" />
+                        <input type='text' placeholder="18'' Aluminium Wheels" />
                     </div>
                     </div>
 
@@ -99,6 +124,6 @@ import styles from './EvsForm.module.css'
             );
         }
         
-        export default EvsForm;
+        export default GasForm;
         
     

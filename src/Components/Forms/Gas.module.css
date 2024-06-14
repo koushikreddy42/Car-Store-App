@@ -7,7 +7,7 @@
     font: 1em sans-serif;
     
 }
-.box{
+.lines{
     margin-right: 20px;
     border-top: solid 2px gray;
     border-bottom: solid 2px gray;
@@ -23,15 +23,16 @@
 }
 
 
-.evsform{
+.gasform{
+    width: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.path input,.title input,.year input,.price input,.speed input,.time input{
-   width: 80%;
+.path input,.title input,.year input,.price input,.speed input,.time input,.engine input,.gearbox input,.transmission input{
+   width: 90%;
    height: 25px;
    border: solid rgb(186, 180, 180) 1px;
    padding: 5px 10px;
@@ -39,9 +40,9 @@
    border-radius: 3px;
 }
 
-.range input,.color input,.interior input,.wheel input,.description input{
-    width: 80%;
-    height: 30px;
+.mileage input,.color input,.interior input,.wheel input,.description input{
+    width: 90%;
+    height: 25px;
     border: solid rgb(186, 180, 180) 1px;
     padding: 5px 10px;
     font-size: 15px;
@@ -53,16 +54,16 @@
     outline: none;
 }
 
-.range input:focus, .color input:focus,.interior input:focus,.wheel input:focus,.description input:focus{
+.mileage input:focus, .color input:focus,.interior input:focus,.wheel input:focus,.description input:focus,.engine input:focus,.gearbox input:focus,.transmission input:focus{
     box-shadow: 0px 0px 3px 3px rgb(129, 181, 234);
     outline: none;
 }
 
-.path, .title,.year,.price,.speed,.time,.range,.color,.interior,.wheel,.description{
+.path, .title,.year,.price,.speed,.time,.mileage,.color,.interior,.wheel,.description,.engine,.transmission,.gearbox{
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 100%;
+    width: 90%;
 }
 
 .row{
@@ -128,7 +129,7 @@
         gap: 10px;
     }
 
-    .path, .title, .year, .price, .speed, .time, .range, .color, .interior, .wheel, .description {
+    .path, .title, .year, .price, .speed, .time, .mileage, .color, .interior, .wheel, .description,.engine,.gearbox,.transmission {
         width: 100%;
     }
 
@@ -138,7 +139,7 @@
     }
 
     .path input, .title input, .year input, .price input, .speed input, .time input,
-    .range input, .color input, .interior input, .wheel input, .description input {
+    .mileage input, .color input, .interior input, .wheel input, .description input,.engine input,.gearbox input, .mileage input,.transmission input {
         width: 95%;
     }
 
