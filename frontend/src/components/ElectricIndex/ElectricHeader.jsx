@@ -15,7 +15,7 @@ export const Header = (props) => {
         <div class={styles.category_div}>
         <Link to="/electric"><button class={styles.category_button}>EVs</button></Link>
         <Link to="/gas"><button class={styles.category_button}>Gas</button></Link>
-        <button class={styles.category_button}>Rent</button>
+        <Link to="/electric-form"><button class={styles.category_button}>Sell</button></Link>
         <button className={styles.category_button}>
         <FaShoppingCart className="cart-icon" style={{ color: 'white' }} />
         <span>Cart</span>
