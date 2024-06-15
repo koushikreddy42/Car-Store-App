@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import styles from './BookNow.module.css';
-import t3p from './assets/images/t3p.png';
-import t3p2 from './assets/images/t3p2.png';
+import t3p from '../assets/images/t3p.png';
+import t3p2 from '../assets/images/t3p2.png';
 
 function BookNow(){
 

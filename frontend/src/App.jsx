@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import styles from './App.module.css';
-import BookNow from './BookNow';
-// import ElectricList from './ElectricList';
-// import GasList from './GasList';
+import BookNow from './Book Now Component/BookNow';
+// import ElectricList from './Electric List Component/ElectricList';
+// import GasList from './Gas List Component/GasList';
 
 function App() {
   const [showText, setShowText] = useState(false);
