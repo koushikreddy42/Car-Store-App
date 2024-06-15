@@ -113,7 +113,6 @@ function BookNow(){
         </div>
       </div>
         
-
     </div>
   );
 }

@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import styles from './App.module.css';
 import BookNow from './BookNow';
+// import ElectricList from './ElectricList';
+// import GasList from './GasList';
 
 function App() {
   const [showText, setShowText] = useState(false);
- 
+
   return (
-    <div className={styles.app_container}>
+    
+      <div className={styles.app_container}>
       <nav className={styles.navbar}>
         <div className={styles.logo}>
           <h1>AUTORIZZ</h1>
@@ -34,7 +37,6 @@ function App() {
       </nav>
        <main className={styles.main_content}>
         <BookNow/>
-        
       </main> 
       <footer className={styles.footer}>
         <div className={styles.footer_section}>
@@ -62,8 +64,9 @@ function App() {
         </div>
       </footer>
   
-    </div>
+      </div>
 
   );
+ 
 }
 export default App;
