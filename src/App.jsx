@@ -8,7 +8,7 @@ import GasForm from './Components/Forms/Gas.jsx'
 function App(){
   return(
     <>
-    <EvsForm/>
+  <GasForm/>
     </>
 
   );
