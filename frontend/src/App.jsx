@@ -4,6 +4,8 @@ import Login from "./pages/Login"
 import Home from "./pages/Home"
 import AdminLog from "./pages/AdminLog";
 import AdminHome from "./pages/AdminHome";
+import GasForm from "./pages/GasForm";
+import EvsForm from "./pages/EvsForm";
 import React,{useState,createContext} from 'react'
 
 import {
@@ -27,6 +29,8 @@ function App() {
           <Route exact path="/gas" element={<GasIndex/>}/>
           <Route exact path="/sign" element={<Login/>}/>
           <Route exact path="/home" element={<Home/>}/>
+          <Route exact path="/electric-form" element={<EvsForm/>}/>
+          <Route exact path="/gas-form" element={<GasForm/>}/>
           <Route exact path="/admin-sign" element={<AdminLog/>}/>
           <Route exact path="/admin-home" element={<AdminHome/>}/>
         </Routes>

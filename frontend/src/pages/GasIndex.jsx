@@ -1,5 +1,5 @@
 import React, { useState,useContext,useEffect } from 'react';
-import { Header } from "../components/ElectricIndex/Header"
+import { Header } from "../components/GasIndex/GasHeader"
 import SortAndCars from "../components/GasIndex/SortAndCars"
 import { Navigate} from 'react-router-dom';
 import axios from 'axios';
