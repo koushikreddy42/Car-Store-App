@@ -6,6 +6,8 @@ import AdminLog from "./pages/AdminLog";
 import AdminHome from "./pages/AdminHome";
 import GasForm from "./pages/GasForm";
 import EvsForm from "./pages/EvsForm";
+import ElectricList from "./pages/ElectricList";
+import GasList from "./pages/GasList";
 import React,{useState,createContext} from 'react'
 
 import {
@@ -33,6 +35,8 @@ function App() {
           <Route exact path="/gas-form" element={<GasForm/>}/>
           <Route exact path="/admin-sign" element={<AdminLog/>}/>
           <Route exact path="/admin-home" element={<AdminHome/>}/>
+          <Route exact path="/electric-list" element={<ElectricList/>}/>
+          <Route exact path="/gas-list" element={<GasList/>}/>
         </Routes>
     </Router>
     </store.Provider>

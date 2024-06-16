@@ -4,7 +4,7 @@ export const CarCardEv = (props) => {
   return (
     <div className={styles.card}>
         <div className={styles.title}>{props.year} {props.title}</div>
-       <div className={styles.img_div}><img className={styles.img} src={props.imagePath} ></img></div>
+       <div className={styles.img_div}><img className={styles.img} src={props.image} ></img></div>
        
         <div className={styles.details_div}>
             <div className={styles.detail}>

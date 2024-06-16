@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './SortAndCars.module.css'
 import {CarCardGas} from './CarCardGas'
-import carDataGas from '../../../db_data/gasmodel.json'
 import  { useState,useEffect } from 'react';
 export default function SortAndCars() {
     //price
@@ -60,7 +59,7 @@ const [showOptions, setShowOptions] = useState(false);
   useEffect(() => {
     const fetchGasModels = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/gas"); // Replace with your actual API endpoint
+        const response = await fetch("http://localhost:8080/api/gas-list"); // Replace with your actual API endpoint
         const data = await response.json();
         setGasModels(data);
       } catch (error) {
@@ -120,7 +119,7 @@ const [showOptions, setShowOptions] = useState(false);
       wheel={item.wheel}
       description={item.description}
       price={item.price}
-      imagePath={item.imagePath}
+      image={item.image}
       year={item.year}
       gearbox={item.gearbox}
       transmission={item.transmission}

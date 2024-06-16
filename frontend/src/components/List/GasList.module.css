@@ -1,0 +1,105 @@
+.bodyy h3 {
+    color: #212529;
+    font-size: 2rem;
+    position: absolute;
+    transform: translateY(-100%);
+  }
+
+.table td, .table th{
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid rgb(222,226,230);
+    
+}
+
+.bodyy *,
+.bodyy::after,
+.bodyy::before {
+  box-sizing: border-box;
+}
+
+
+
+.bodyy table {
+    border-collapse: collapse;
+  }
+
+.bodyy table {
+    border-collapse: collapse;
+}
+
+.tabular{
+    overflow-x: auto;
+}
+
+.tableStriped tbody tr:nth-child(odd) {
+    background-color: rgb(232, 232, 232);
+  }
+  
+.tableStriped tbody tr:nth-child(even) {
+    background-color: white;
+  }
+
+.bodyy{
+    margin : 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align : left;
+    background-color: #fff;
+}
+
+.image{
+    height: 3.5rem; 
+}
+
+.btn1, .btn2 {
+    color: #fff;
+    border-color: #343a40;
+    font-size: 1rem;
+    border-radius: .25rem;
+}
+
+.btn1:hover, .btn2:hover {
+    color: rgb(173, 173, 173);
+}
+
+.bodyy button{
+    margin-right: 3.5%;
+    margin-bottom: 1%;
+    position: relative;
+    transform: translateX(300%);
+}
+
+.record_list{
+    margin: 2.5%;
+    width: 120%;
+}
+
+.acceptbtn{
+    background-color: rgb(22, 223, 7);
+    border : none;
+    padding: 5px;
+    color: black;
+    align-items: center;
+    cursor: pointer;
+}
+
+.declinebtn{
+    background-color: red;
+    border : none;
+    padding: 5px;
+    color: black;
+    align-items: center;
+    cursor: pointer;
+}
+
+.acceptbtn:hover{
+    background-color: rgb(16, 182, 16);
+}
+
+.declinebtn:hover{
+    background-color: rgb(207, 12, 12);
+}
+ 

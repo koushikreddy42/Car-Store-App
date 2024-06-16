@@ -24,12 +24,14 @@ function AdminHome(){
         <div className={styles.main_body}>
             <img className={styles.logo}  src={logo}/>
              <div className={styles.buttons_box}>
-                <div className={styles.options}>
+                <Link to="/electric-list"><div className={styles.options}>
                     
-                    <button className={styles.evs}>  <img className={styles.icon} src={electric} /> EVs</button></div>
-                <div className={styles.options}>
+                    <button className={styles.evs}>  <img className={styles.icon} src={electric} /> EVs</button>
+                </div></Link>
+                <Link to="/gas-list"><div className={styles.options}>
                 
-                    <button className={styles.gas}><img  className={styles.icon}   src={fire} /> Gas</button></div>
+                    <button className={styles.gas}><img  className={styles.icon}   src={fire} /> Gas</button>
+                </div></Link>
                 <div className={styles.options}><button className={styles.customers}>Customers</button></div>
              </div>
         </div>
