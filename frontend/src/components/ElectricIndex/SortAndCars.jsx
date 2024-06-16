@@ -60,7 +60,7 @@ const [showOptions, setShowOptions] = useState(false);
   useEffect(() => {
     const fetchElectricModels = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/electric"); // Replace with your actual API endpoint
+        const response = await fetch("http://localhost:8080/api/electric-list"); // Replace with your actual API endpoint
         const data = await response.json();
         setElectricModels(data);
       } catch (error) {
@@ -119,7 +119,7 @@ const [showOptions, setShowOptions] = useState(false);
       wheel={item.wheel}
       description={item.description}
       price={item.price}
-      imagePath={item.imagePath}
+      image={item.image}
       year={item.year}
     />
   ))

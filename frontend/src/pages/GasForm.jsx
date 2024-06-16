@@ -1,42 +1,77 @@
-import { useState } from 'react';
+import { useState,useContext,useEffect } from 'react';
 import styles from '../components/Forms/GasForm.module.css';
+import axios from 'axios'
+import { Navigate} from 'react-router-dom';
+import { store } from '../App';
 
 function GasForm() {
   const [imagePath, setImagePath] = useState('');
   const [title, setTitle] = useState('');
   const [year, setYear] = useState('');
   const [price, setPrice] = useState('');
-  const [topSpeed, setTopSpeed] = useState('');
+  const [topspeed, setTopSpeed] = useState('');
   const [time60, setTime60] = useState('');
   const [mileage, setMileage] = useState('');
-  const [color, setColor] = useState('');
+  const [colour, setColor] = useState('');
   const [engine, setEngine] = useState('');
   const [gearbox, setGearbox] = useState('');
   const [transmission, setTransmission] = useState('');
   const [interior, setInterior] = useState('');
   const [wheel, setWheel] = useState('');
   const [description, setDescription] = useState('');
+  const [postImage, setPostImage] = useState( { myFile : ""})
+  const [token,setToken]=useContext(store)
+  const [data,setData]=useState(null)
 
-  const handleSubmit = (e) => { 
+  useEffect(()=>{
+    axios.get('http://localhost:8080/api/myprofile',{
+            headers:{
+                'x-token':token
+            }
+        }).then(res=>setData(res.data)).catch(err=>console.log(err))
+  },[])
+ 
+  if(!token){
+      return <Navigate to='/sign'/>
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission with the state values
-    console.log({
-      imagePath,
-      title,
-      year,
-      price,
-      topSpeed,
-      time60,
-      mileage,
-      color,
-      engine,
-      gearbox,
-      transmission,
-      interior,
-      wheel,
-      description,
-    });
+    
+    try {
+      const formData = {
+        image: postImage.myFile,
+        addedBy:data._id,
+        title,
+        year,
+        price,
+        topspeed,
+        time60,
+        mileage,
+        colour,
+        engine,
+        gearbox,
+        transmission,
+        interior,
+        wheel,
+        description,
+      };
+  
+      const response = await axios.post('http://localhost:8080/api/gas-form', formData);
+      console.log(response.data);
+      // Handle success or redirect to another page
+    } catch (error) {
+      console.error(error);
+      // Handle error
+    }
   };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setPostImage({ ...postImage, myFile : base64 })
+  }
+
 
   return (
     <div className={styles.page}>
@@ -59,7 +94,7 @@ function GasForm() {
           <div className={styles.upload}>
             <label className={styles.upload_text}>Upload image</label>
             <div>
-              <input type="file" accept="image/*" />
+              <input type="file" lable="Image" name="myFile" id='file-upload' accept='.jpg, .jpeg, .png' onChange={(e) => handleFileUpload(e)}/>
             </div>
           </div>
         </div>
@@ -108,7 +143,7 @@ function GasForm() {
               <input
                 type="text"
                 placeholder="185"
-                value={topSpeed}
+                value={topspeed}
                 onChange={(e) => setTopSpeed(e.target.value)}
               />
             </div>
@@ -144,7 +179,7 @@ function GasForm() {
               <input
                 type="text"
                 placeholder="Black"
-                value={color}
+                value={colour}
                 onChange={(e) => setColor(e.target.value)}
               />
             </div>
@@ -229,3 +264,16 @@ function GasForm() {
 }
 
 export default GasForm;
+
+function convertToBase64(file){
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result)
+    };
+    fileReader.onerror = (error) => {
+      reject(error)
+    }
+  })
+}
