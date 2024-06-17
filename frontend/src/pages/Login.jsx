@@ -124,9 +124,6 @@ function Login() {
                                 />
                             </div>
                             </div>
-                            <div className={styles.lost_password}>
-                                Lost Password? <a href="#">Click here</a>
-                            </div>
                             <div className={styles.bttn}>
                         <button type="submit" className={styles.login_button}>
                             Login

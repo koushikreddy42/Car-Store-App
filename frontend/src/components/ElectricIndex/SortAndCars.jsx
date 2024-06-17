@@ -60,7 +60,7 @@ const [showOptions, setShowOptions] = useState(false);
   useEffect(() => {
     const fetchElectricModels = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/electric-list"); // Replace with your actual API endpoint
+        const response = await fetch("http://localhost:8080/api/electric-listt"); // Replace with your actual API endpoint
         const data = await response.json();
         setElectricModels(data);
       } catch (error) {
@@ -111,7 +111,7 @@ const [showOptions, setShowOptions] = useState(false);
   .map((item) => (
     <CarCardEv
       title={item.title}
-      topspeed={item.topspeed}
+      topspeed={item.topspeed} 
       time60={item.time60}
       range={item.range}
       colour={item.colour}
@@ -121,6 +121,7 @@ const [showOptions, setShowOptions] = useState(false);
       price={item.price}
       image={item.image}
       year={item.year}
+      name={item.addedBy.username}
     />
   ))
 

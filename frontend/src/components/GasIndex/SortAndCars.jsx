@@ -59,7 +59,7 @@ const [showOptions, setShowOptions] = useState(false);
   useEffect(() => {
     const fetchGasModels = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/gas-list"); // Replace with your actual API endpoint
+        const response = await fetch("http://localhost:8080/api/gas-listt"); // Replace with your actual API endpoint
         const data = await response.json();
         setGasModels(data);
       } catch (error) {
@@ -124,6 +124,7 @@ const [showOptions, setShowOptions] = useState(false);
       gearbox={item.gearbox}
       transmission={item.transmission}
       engine={item.engine}
+      name={item.addedBy.username}
     />
   ))
 

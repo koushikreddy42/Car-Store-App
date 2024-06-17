@@ -81,16 +81,7 @@ function GasForm() {
         </div>
 
         <div className={styles.row}>
-          <div className={styles.path}>
-            <label>ImagePath(image/filename.extension)</label>
-            <div>
-              <input
-                placeholder="images/1.jpg"
-                value={imagePath}
-                onChange={(e) => setImagePath(e.target.value)}
-              />
-            </div>
-          </div>
+          
           <div className={styles.upload}>
             <label className={styles.upload_text}>Upload image</label>
             <div>
