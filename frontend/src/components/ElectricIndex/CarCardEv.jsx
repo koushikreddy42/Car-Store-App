@@ -3,7 +3,10 @@ import styles from './CarCard.module.css'
 export const CarCardEv = (props) => {
   return (
     <div className={styles.card}>
-        <div className={styles.title}>{props.year} {props.title}</div>
+        <div className="" style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+        <div className={styles.title}>{props.title}</div>
+        <div className="" style={{fontSize:"19px"}}>Owned by: {props.name}</div>
+        </div>
        <div className={styles.img_div}><img className={styles.img} src={props.image} ></img></div>
        
         <div className={styles.details_div}>
