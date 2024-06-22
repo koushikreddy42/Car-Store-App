@@ -16,10 +16,10 @@ function Footer() {
         </div>
         <div className={styles.footer_section}>
           <h3>Important Links</h3>
-          <span className={styles.footer_links}><a href="#home">Home</a></span><br/>
-          <span className={styles.footer_links}><a href="#profile">Your Account</a></span><br/>
-          <span className={styles.footer_links}><a href="#wishlist">Wishlist</a></span><br/>
-          <span className={styles.footer_links}><a href="#faq">FAQ <i class="fa-solid fa-comment fa-sm"></i></a></span>
+          <div className={styles.footer_links}><a href="#home">Home</a></div><br/>
+          <div className={styles.footer_links}><a href="#profile">Your Account</a></div><br/>
+          <div className={styles.footer_links}><a href="#wishlist">Wishlist</a></div><br/>
+          <div className={styles.footer_links}><a href="#services">Services</a></div><br/>
         </div>
         <div className={styles.footer_section}>
           <h3>Contact Info</h3>
