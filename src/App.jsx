@@ -10,7 +10,7 @@ import Wishlist from './Components/wishlist/wishlist.jsx'
 function App(){
   return(
     <>
-  <Wishlist/>
+  <GasForm/>
     </>
 
   );

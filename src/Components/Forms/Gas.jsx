@@ -10,110 +10,131 @@ import styles from './Gas.module.css'
                     </div>
                     
                     <div className={styles.row}>
-                        <div className={styles.path}>
+                        <div className={styles.info}>
                             <label>ImagePath(image/filename.extension)</label>
                             <div>
-                                <input placeholder='images/1.jpg' />
+                                <input className={styles.path} placeholder='images/1.jpg' />
                             </div>
                         </div>
-                        <div className={styles.upload}>
+                        <div className={styles.info}>
                             <label className={styles.upload_text}>Upload image</label>
                             <div>
-                                <input type="file" accept="image/*" />
+                                <input className={styles.upload} type="file" accept="image/*" />
                             </div>
                         </div>
                     </div>
                     <div className={styles.row}>
-                        <div className={styles.title}>
+                        <div className={styles.info}>
                             <label>Title</label>
                             <div>
-                                <input placeholder='2019 Ford Mustang' />
+                                <input className={styles.title}  placeholder='2019 Ford Mustang' />
                             </div>
                         </div>
-                        <div className={styles.year}>
+                        <div className={styles.info}>
                             <label>Year</label>
                               <div>
-                              <input type='number' max={2024} min={1990} placeholder='2024' />
+                              <input className={styles.year}  type='number' max={2024} min={1990} placeholder='2024' />
                               </div>
                                 
                             
                         </div>
-                        <div className={styles.price}>
+                        <div className={styles.info}>
                        <label>Price</label>
                          <div>
-                            <input type='text' placeholder='58,100' />
+                            <input className={styles.price}  type='text' placeholder='58,100' />
                         </div>
                      </div>
                     </div>
                     <div className={styles.row}>
                      
-                     <div className={styles.speed}>
+                     <div className={styles.info}>
                        <label>Top Speed</label>
                          <div>
-                            <input type='text' placeholder='185' />
+                            <input className={styles.speed}  type='text' placeholder='185' />
                         </div>
                      </div>
-                     <div className={styles.time}>
+                     <div className={styles.info}>
                        <label>Time60</label>
                          <div>
-                            <input type='text' placeholder='3.8' />
+                            <input className={styles.time}  type='text' placeholder='3.8' />
                         </div>
+                        
                      </div>
-                     
+                     <div className={styles.info}>
+                            <label>Technology</label>
+                            <div>
+                                <input className={styles.techno}  placeholder='Technology info' />
+                            </div>
+                        </div>
                     </div>
                     <div className={styles.row} >
-                    <div className={styles.mileage}>
+                    <div className={styles.info}>
                        <label>Mileage</label>
                        <div>
-                       <input  type='text' placeholder='19' />
+                       <input className={styles.mileage} type='text' placeholder='19' />
                        </div>
                        
                        
                     </div>
-                    <div className={styles.color}>
+                    <div className={styles.info}>
                        <label>Color</label>
                        <div>
-                       <input type='text' placeholder='Black' />
+                       <input className={styles.color}  type='text' placeholder='Black' />
                        </div>
                        
                        
                     </div>
-                    <div className={styles.engine}>
+                    <div className={styles.info}>
                             <label>Engine</label>
                             <div>
-                            <input type="number" step={0.1}  name="engine" placeholder="5.0" />
+                            <input className={styles.engine}  type="number" step={0.1}  name="engine" placeholder="5.0" />
                             </div>
                             
                         </div>
+                        
                     </div>
                     <div className={styles.row}>
                         
-                        <div className={styles.gearbox}>
+                        <div className={styles.info}>
                             <label>Gearbox</label>
-                            <input type="text" placeholder="6-Speed SelectShift" />
+                            <input className={styles.gearbox}  type="text" placeholder="6-Speed SelectShift" />
                         </div>
-                            <div className={styles.transmission} >
+                            <div className={styles.info} >
                         <label>Transmission</label>
-                        <input type="text"  placeholder="Automatic" />
+                        <input className={styles.transmission}  type="text"  placeholder="Automatic" />
                         </div>
+
                     </div>
 
                     <div className={styles.row}>
-                    <div className={styles.interior}>
+                    <div className={styles.info}>
+                            <label>Performance</label>
+                            <div>
+                                <input className={styles.performance}  placeholder='Performance description' />
+                            </div>
+                        </div>
+                    <div className={styles.info}>
                         <label>Interior</label>
-                        <input type='text' placeholder='Cream Oakwood Interior' />
+                        <input className={styles.interior}  type='text' placeholder='Cream Oakwood Interior' />
                     </div>
                     
                     
-                    <div className={styles.wheel}>
+                    <div className={styles.info}>
                         <label>Wheel</label>
-                        <input type='text' placeholder="18'' Aluminium Wheels" />
+                        <input  className={styles.wheel} type='text' placeholder="18'' Aluminium Wheels" />
                     </div>
+                    
                     </div>
+                    <div className={styles.info}>
+                            <label>Safety</label>
+                            <div>
+                                <input className={styles.safety}  placeholder='Safety Info' />
+                            </div>
+                        </div>
 
-                    <div className={styles.description}>
+                    <div className={styles.info}>
                         <label>Description</label>
-                        <input type='text' placeholder="Description Info" />
+                        <input className={styles.description}  type='text' placeholder="Description Info" />
                     </div>
                     <div class="btns">
             <button type="submit" className={styles.save}> Save </button>

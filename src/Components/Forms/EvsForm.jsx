@@ -10,85 +10,103 @@ import styles from './EvsForm.module.css'
                     
                     
                     <div className={styles.row}>
-                        <div className={styles.path}>
+                        <div className={styles.info}>
                             <label>ImagePath(image/filename.extension)</label>
                             <div>
-                                <input placeholder='images/1.jpg' />
+                                <input  className={styles.path} placeholder='images/1.jpg' />
                             </div>
                         </div>
-                        <div className={styles.upload}>
+                        <div className={styles.info}>
                             <label className={styles.upload_text}>Upload image</label>
                             <div>
-                                <input type="file" accept="image/*" />
+                                <input className={styles.upload}  type="file" accept="image/*" />
                             </div>
                         </div>
                     </div>
                     <div className={styles.row}>
-                        <div className={styles.title}>
+                        <div className={styles.info}>
                             <label>Title</label>
                             <div>
-                                <input placeholder='Tesla Model Y Long Range AWD' />
+                                <input  className={styles.title} placeholder='Tesla Model Y Long Range AWD' />
                             </div>
                         </div>
-                        <div className={styles.year}>
+                        <div className={styles.info}>
                             <label>Year</label>
                             <div>
-                                <input type='number' max={2024} min={1990} placeholder='2024' />
+                                <input className={styles.year} type='number' max={2024} min={1990} placeholder='2024' />
+                            </div>
+                        </div>
+                        <div className={styles.info}>
+                            <label>Performance</label>
+                            <div>
+                                <input className={styles.performance} placeholder='Performance Description' />
                             </div>
                         </div>
                     </div>
                     <div className={styles.row}>
-                     <div className={styles.price}>
+                     <div className={styles.info}>
                        <label>Price</label>
                          <div>
-                            <input type='text' placeholder='54,000' />
+                            <input className={styles.price} type='text' placeholder='54,000' />
                         </div>
                      </div>
-                     <div className={styles.speed}>
+                     <div className={styles.info}>
                        <label>Top Speed</label>
                          <div>
-                            <input type='text' placeholder='135' />
+                            <input className={styles.speed}  type='text' placeholder='135' />
                         </div>
                      </div>
-                     <div className={styles.time}>
+                     <div className={styles.info}>
                        <label>Time60</label>
                          <div>
-                            <input type='text' placeholder='4.8' />
+                            <input className={styles.time} type='text' placeholder='4.8' />
                         </div>
                      </div>
 
                     </div>
                     <div className={styles.row} >
-                    <div className={styles.range}>
+                    <div className={styles.info}>
                        <label>Range</label>
                        
-                       <input  type='text' placeholder='346' />
+                       <input className={styles.range} type='text' placeholder='346' />
                        
                     </div>
-                    <div className={styles.color}>
+                    
+                    <div className={styles.info}>
                        <label>Color</label>
                        
-                       <input type='text' placeholder='Black' />
+                       <input className={styles.color} type='text' placeholder='Black' />
                        
                     </div>
                     </div>
 
                     <div className={styles.row}>
-                    <div className={styles.interior}>
+                    <div className={styles.info}>
                         <label>Interior</label>
-                        <input type='text' placeholder='Cream Oakwood Interior' />
+                        <input className={styles.interior} type='text' placeholder='Cream Oakwood Interior' />
                     </div>
                     
                     
-                    <div className={styles.wheel}>
+                    <div className={styles.info}>
                         <label>Wheel</label>
-                        <input type='text' placeholder="19'' Induction Wheels" />
+                        <input className={styles.wheel} type='text' placeholder="19'' Induction Wheels" />
                     </div>
+                    <div className={styles.info}>
+                            <label>Technology</label>
+                            <div>
+                                <input className={styles.techno}  placeholder='Technology Info' />
+                            </div>
+                        </div>
                     </div>
-
-                    <div className={styles.description}>
+                    <div className={styles.info}>
+                            <label>Safety</label>
+                            <div>
+                                <input className={styles.safety}  placeholder='Safety Description' />
+                            </div>
+                        </div>
+                    <div className={styles.info}>
                         <label>Description</label>
-                        <input type='text' placeholder="Description Info" />
+                        <input className={styles.description} type='text' placeholder="Description Info" />
                     </div>
                     <div class="btns">
             <button type="submit" className={styles.save}> Save </button>
