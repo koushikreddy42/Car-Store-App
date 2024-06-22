@@ -72,12 +72,20 @@ function ElectricList(){
 
     return(
        <div className={styles.record_list}>
-            <div className={styles.header}>
-                <h3> Electric Cars </h3>
-                    
-                <button><a className={styles.btn1} href="#">Add Electric</a></button>
-                <button><a className={styles.btn2} href="#">Admin</a></button>
-            </div>       
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h3>Electric Cars</h3>
+                        </td>
+                        <td className={styles.btns}></td>
+                        <td className={styles.buttons}>
+                            <button className={styles.btn_dark}><a href="#addelectric">Add Electric</a></button>
+                            <button className={styles.btn_dark}><a href="#admin">Admin</a></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         <table className={`${styles.table} ${styles.tableStriped}`}>
             <thead>
                 <tr>

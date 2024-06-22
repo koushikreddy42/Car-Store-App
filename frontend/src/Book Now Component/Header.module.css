@@ -1,0 +1,98 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(0,5,0); 
+    color: white;
+    padding: 15px 20px;
+    
+  }
+  
+  .wl_icon, .pf_icon{
+    position: relative;
+    display: inline-block;
+    font-size: 120%;
+    margin-top: 5px;
+    transform: translateX(-70%);
+  }
+  
+  .wl_text, .pf_text {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.2s linear;
+  }
+  
+  .wl_icon:hover .wl_text {
+    visibility: visible;
+    opacity: 1;
+  }
+  .pf_icon:hover .pf_text{
+    visibility: visible;
+    opacity: 1;
+  }
+  .wl_icon i:hover, .pf_icon i:hover{
+    color: white;
+  }
+  
+  .nav_buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .nav_button {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 10px;
+    display: flex; 
+    justify-content: center;
+    text-decoration: none;
+    transform: translateX(-850%);
+  }
+  .nav_button3{
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 10px;
+    margin-right: 10px; 
+    text-decoration: none;
+    transform: translateX(-770%);
+  }
+  .nav_button i{
+    margin-right: 10%;
+  }
+  
+  .nav_buttons a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .nav_button:hover, .nav_button3:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  .logo h1 {
+    font-family:  "Merienda",cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 45px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+  
+  }

@@ -2,7 +2,7 @@ h3{
     color: #212529;
     font-size: 2rem;
     position: absolute;
-    transform: translateY(-100%);
+    transform: translateY(-140%);
 }
 
 .table td, .table th{
@@ -16,19 +16,14 @@ h3{
     box-sizing : border-box;
 }
 
-
-
 .table {
     margin-bottom: 1rem;
-    color : #212529;
+    color : #212529; 
 }
 
 table {
     border-collapse: collapse;
-}
-
-.tabular{
-    overflow-x: auto;
+    width: 120%;
 }
 
 .tableStriped tbody tr:nth-child(odd) {
@@ -53,37 +48,48 @@ body{
     height: 3.5rem; 
 }
 
-.btn1, .btn2 {
+.btns{
+    margin: 10px;
+    padding-left: 5rem;
+    padding-bottom: 3.5rem;
+}
+
+.btn_dark{
     color: #fff;
-    border-color: #343a40;
+    border-color: #343a30;
+    background-color: #343a40;
+    cursor: pointer;
     font-size: 1rem;
     border-radius: .25rem;
+    padding: .5rem .5rem;
+    margin-right: 1.5rem;
 }
 
-.btn1:hover, .btn2:hover {
+.buttons a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn_dark a:hover {
     color: rgb(173, 173, 173);
-}
-
-button{
-    margin-right: 3.5%;
-    margin-bottom: 1%;
-    position: relative;
-    transform: translateX(300%);
+    cursor: pointer;
 }
 
 .record_list{
     margin: 2.5%;
-    width: 120%;
+    overflow-x: auto;
 }
 
 .btn{
-    transform: translateX(0%);
     background-color: transparent;
     border-color: black;
     display: flex;
     color: black;
     align-items: center;
     cursor: pointer;
+    font-size: 1rem;
+    border-radius: .25rem;
+    padding: .5rem .5rem;  
 }
 
 .btn i{

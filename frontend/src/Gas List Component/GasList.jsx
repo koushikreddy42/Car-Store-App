@@ -85,12 +85,20 @@ function GasList(){
 
     return(
       <div className={styles.record_list}>
-            <div className={styles.header}>
-                <h3> Gas Cars </h3>
-                    
-                <button><a className={styles.btn1} href="#">Add Gas</a></button>
-                <button><a className={styles.btn2} href="#">Admin</a></button>
-            </div> 
+        <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h3>Gas Cars</h3>
+                        </td>
+                        <td className={styles.btns}></td>
+                        <td className={styles.buttons}>
+                            <button className={styles.btn_dark}><a href="#addgas">Add Gas</a></button>
+                            <button className={styles.btn_dark}><a href="#admin">Admin</a></button>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>    
         <div className = {styles.tabular}>    
         <table className={`${styles.table} ${styles.tableStriped}`}>
             <thead>
