@@ -7,9 +7,9 @@ import styles from './Header.module.css';
     const [showText, setShowText] = useState(false);
      
     return (
-      <nav className={styles.navbar}>
+      <section className={styles.navbar}>
         <div className={styles.logo}>
-          <h1>AUTORIZZ</h1>
+          <h1>AUTORIZZ</h1> 
         </div>
         <div className={styles.nav_buttons}>
           <button className={styles.nav_button}><i className="fa-solid fa-bolt"></i> EVs
@@ -18,6 +18,8 @@ import styles from './Header.module.css';
           </button>
           <button className={styles.nav_button3}>Rental
           </button>
+        </div>
+        <div className={styles.icons}>
           <div className={styles.wl_icon}
             onMouseEnter={() => setShowText(true)}
             onMouseLeave={() => setShowText(false)}>
@@ -31,7 +33,7 @@ import styles from './Header.module.css';
              {showText && <span className={styles.pf_text}>Profile</span>}
           </div>
         </div>
-      </nav> 
+      </section> 
     );
    } 
    export default Header;
