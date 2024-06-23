@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import PlaceOrder from './PlaceOrder';
 import styles from './BookNow.module.css';
 import t3p from '../assets/images/t3p.png';
 import t3p2 from '../assets/images/t3p2.png';
@@ -19,8 +20,13 @@ function BookNow(){
     setCurrentImageIndex(newIndex);
   };
 
+  const [isPlaceOrderOpen, setPlaceOrderOpen] = useState(false);
+  const openPlaceOrder = () => setPlaceOrderOpen(true);
+  const closePlaceOrder = () => setPlaceOrderOpen(false);
+
   return(
     <div className={styles.container}>
+      
       <div className={styles.carModel}>
         <h2> 2020 Tesla Model 3</h2>
         <p className={styles.perf}>Performance Edition</p>
@@ -39,7 +45,8 @@ function BookNow(){
         <hr className={styles.line} />
         <div className={styles.card}>
           <a href="#addtowishlist"><i className="fa-regular fa-heart fa-lg"></i></a>
-          <button className={styles.order}>Place Order</button>
+          <button className={styles.order} onClick={openPlaceOrder}>Place Order</button>
+          <PlaceOrder isOpen={isPlaceOrderOpen} onClose={closePlaceOrder}/>
         </div>
         <button className={styles.tdrive}>Book Test Drive <i class="fa-regular fa-calendar"></i></button>
       </div>
@@ -115,7 +122,7 @@ function BookNow(){
           </div>
         </div>
       </div>
-        
+      
     </div>
   );
 }
