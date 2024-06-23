@@ -9,6 +9,7 @@ const mailRouter = require('./routes/mail')
 const formRouter = require('./routes/form')
 const listRouter = require('./routes/list')
 const permissionRouter = require('./routes/permission')
+const wishListRouter = require('./routes/wishlist')
 const mongoose=require('mongoose')
 
 //middleware
@@ -20,7 +21,7 @@ app.use(express.json());
 app.get('/',(req,res)=>{
     res.send('hello');
 })
-app.use('/api',authRouter,adminAuthRouter,carRouter,mailRouter,formRouter,listRouter,permissionRouter)
+app.use('/api',authRouter,adminAuthRouter,carRouter,mailRouter,formRouter,listRouter,permissionRouter,wishListRouter)
 
 const port=8080;
 
