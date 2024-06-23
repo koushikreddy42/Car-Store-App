@@ -13,6 +13,8 @@
   font-size: 20px;
 }
 .pricetag{
+  font-family: "Nanum Myeongjo", serif;
+  font-style: normal;
   transform: translateX(10%);
 }
 .addtext{
@@ -35,7 +37,7 @@
 }
 
 .tax{
-  margin-top: -0.2%;
+  margin-top: 2%;
 }
 
 .line{
@@ -60,28 +62,39 @@
 }
 
 .order{
+  font-size: 1rem;
+  color: white;
+  padding: .55rem .5rem;
   width: 40%;
   margin-top: 15px;
   margin-bottom: 20px;
   border: 1px solid black;
+  border-radius: .25rem;
   cursor: pointer;
   transform: translateX(37%);
+  background-color: #343a30;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-.order:hover{
-  background-color: darkgray;
-  color: black;
-}
+
 .tdrive{
+  font-size: 1rem;
+  color: white;
+  padding: .55rem .5rem;
   width: 80%;
   border: 1px solid black;
+  border-radius: .25rem;
   cursor: pointer;
   transform: translateX(12.5%);
-  margin-bottom: 7%;
+  margin-bottom: 5%;
+  background-color: #343a30;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.tdrive i{
+  margin-left: .3rem;
+}
 .tdrive:hover, .order:hover{
-  background-color: darkgray;
+  background-color:rgb(251, 249, 245);
   color: black;
 }
 .carModel{
@@ -140,7 +153,7 @@ button:hover {
  align-content: center;
  margin: 20px auto;
  padding: 20px;
- transform: translate(65%, -1%);
+ transform: translate(62%, 0%);
  box-sizing: border-box;
  
 }
@@ -155,11 +168,14 @@ button:hover {
 }
 
 .descPara {
-  font-family: serif;
-  font-weight: 400;
-  font-style:normal;
-  font-size: 1.4vw;
-  margin-top: 5px;
+  margin-left: 1rem;
+  line-height: 1.5;
+  color: #343a30;
+  font-family: "Nanum Myeongjo", serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.3vw;
+  margin-top: 20px;
 }
 .endline{
   color: darkgray;
@@ -173,7 +189,7 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   margin: 20px 0;
-  transform: translate(11%,-490%);
+  transform: translate(11%,-660%);
   position: relative;
 }
 .midbox{
@@ -206,7 +222,7 @@ button:hover {
 }
 
 .box1 a, .box2 a, .box3 a {
-  font-size: 2vw;
+  font-size: 1.6vw;
   color: rgb(132, 131, 131);
   /* margin-bottom: 10px; */
 }
@@ -215,7 +231,7 @@ button:hover {
 }
 
 .num {
-  font-size: 2vw;
+  font-size: 1.8vw;
   font-weight: bold;
   margin-top: 0%;
   margin-bottom: 0%;
@@ -228,13 +244,15 @@ button:hover {
   margin-bottom: 0%;
 }
 .text2{
-  margin-top: 0%;
+  font-family: "Nanum Myeongjo", serif;
+  font-style: normal;
+  margin-top: 1.2%;
   margin-bottom: 0%;
 }
 
 .keyfeat{
   position: relative;
-  transform: translate(8%, -200%);
+  transform: translate(8%, -235%);
 
 }
 
@@ -254,8 +272,8 @@ button:hover {
   margin-left: 1%;
   margin-top: 0%;
   margin-bottom: 2%;
-  font-family: serif;
-  font-weight: 400;
+  font-family: "Nanum Myeongjo", serif;
+  font-weight: 600;
   font-style:normal;
   font-size: 1.4vw;
 }

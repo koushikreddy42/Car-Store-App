@@ -40,7 +40,7 @@ function BookNow(){
           <a href="#addtowishlist"><i className="fa-regular fa-heart fa-lg"></i></a>
           <button className={styles.order}>Place Order</button>
         </div>
-        <button className={styles.tdrive}>Book Test Drive</button>
+        <button className={styles.tdrive}>Book Test Drive <i class="fa-regular fa-calendar"></i></button>
       </div>
       
       <div className={styles.additionalDetails}>
@@ -50,7 +50,9 @@ function BookNow(){
           </div><hr className={styles.endline}/>
           <div className={styles.desc}>
             <h4 className={styles.descHeading}>Performance</h4>
-            <p className={styles.descPara}>Model 3 comes with the option of dual motor all-wheel drive, Performance Wheels and Brakes for total control, in all weather conditions and a spoiler improves stability at high speeds allowing Model 3 to accelerate from 0-60 mph in as little as 3.2 seconds.</p>
+            <p className={styles.descPara}><style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+</style>Model 3 comes with the option of dual motor all-wheel drive, Performance Wheels and Brakes for total control, in all weather conditions and a spoiler improves stability at high speeds allowing Model 3 to accelerate from 0-60 mph in as little as 3.2 seconds.</p>
           </div><hr className={styles.endline}/>
           <div className={styles.desc}>
             <h4 className={styles.descHeading}>Safety</h4>
