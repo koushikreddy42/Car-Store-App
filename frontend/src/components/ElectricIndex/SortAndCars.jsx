@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styles from './SortAndCars.module.css'
 import { CarCardEv } from './CarCardEv'
-import  { useState,useEffect } from 'react';
+import axios from 'axios';
+import { store } from '../../App'
 
 export default function SortAndCars() {
     //price 
@@ -55,22 +56,41 @@ const [showOptions, setShowOptions] = useState(false);
     setShowOptions3(false);
   };
 
-  const [electricModels, setElectricModels] = useState([]);
+  const [token] = useContext(store);
+const [electricModels, setElectricModels] = useState([]);
+const [favorites, setFavorites] = useState([]);
 
-  useEffect(() => {
-    const fetchElectricModels = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/electric-listt"); // Replace with your actual API endpoint
-        const data = await response.json();
-        setElectricModels(data);
-      } catch (error) {
-        console.error('Error fetching electric models:', error);
-      }
-    };
+useEffect(() => {
+  const fetchElectricModels = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/electric-listt");
+      const data = await response.json();
+      setElectricModels(data);
+    } catch (error) {
+      console.error('Error fetching electric models:', error);
+    }
+  };
 
-    fetchElectricModels();
-  }, []);
+  const fetchFavorites = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/favourites', {
+        headers: {
+          'x-token': token
+        }
+      });
+      setFavorites(response.data.favorites);
+    } catch (error) {
+      console.error('Error fetching favorites:', error);
+    }
+  };
 
+  const fetchData = async () => {
+    await fetchFavorites();
+    await fetchElectricModels();
+  };
+
+  fetchData();
+}, [token]);
 
   let ev_html=electricModels
   .filter((item) => {
@@ -122,6 +142,8 @@ const [showOptions, setShowOptions] = useState(false);
       image={item.image}
       year={item.year}
       name={item.addedBy.username}
+      _id={item._id}
+      isFavorite={favorites.some(fav => fav.car._id === item._id)}
     />
   ))
 

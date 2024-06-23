@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styles from './SortAndCars.module.css'
-import {CarCardGas} from './CarCardGas'
-import  { useState,useEffect } from 'react';
+import { CarCardGas } from './CarCardGas'
+import axios from 'axios';
+import { store } from '../../App'
 export default function SortAndCars() {
     //price
 const [showOptions, setShowOptions] = useState(false);
@@ -20,7 +21,7 @@ const [showOptions, setShowOptions] = useState(false);
   const [showOptions1, setShowOptions1] = useState(false);
   const [selectedOption1, setSelectedOption1] = useState('');
 
-  const handleButtonClick1 = () => {
+  const handleButtonClick1 = () => { 
     setShowOptions1(!showOptions1);
   };
 
@@ -54,22 +55,41 @@ const [showOptions, setShowOptions] = useState(false);
     setShowOptions3(false);
   };
 
-  const [gasModels, setGasModels] = useState([]);
+  const [token] = useContext(store);
+const [gasModels, setGasModels] = useState([]);
+const [favorites, setFavorites] = useState([]);
 
-  useEffect(() => {
-    const fetchGasModels = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/gas-listt"); // Replace with your actual API endpoint
-        const data = await response.json();
-        setGasModels(data);
-      } catch (error) {
-        console.error('Error fetching gas models:', error);
-      }
-    };
+useEffect(() => {
+  const fetchGasModels = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/gas-listt");
+      const data = await response.json();
+      setGasModels(data);
+    } catch (error) {
+      console.error('Error fetching gas models:', error);
+    }
+  };
 
-    fetchGasModels();
-  }, []);
+  const fetchFavorites = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/favourites', {
+        headers: {
+          'x-token': token
+        }
+      });
+      setFavorites(response.data.favorites);
+    } catch (error) {
+      console.error('Error fetching favorites:', error);
+    }
+  };
 
+  const fetchData = async () => {
+    await fetchFavorites();
+    await fetchGasModels();
+  };
+
+  fetchData();
+}, [token]);
   let gas_html=gasModels
   .filter((item) => {
     const isValidPrice = () => {
@@ -125,6 +145,8 @@ const [showOptions, setShowOptions] = useState(false);
       transmission={item.transmission}
       engine={item.engine}
       name={item.addedBy.username}
+      _id={item._id}
+      isFavorite={favorites.some(fav => fav.car._id === item._id)}
     />
   ))
 

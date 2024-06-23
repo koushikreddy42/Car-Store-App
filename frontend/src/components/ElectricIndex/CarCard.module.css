@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 .card{
     border: 3px solid rgba(128, 128, 128, 0.276);
-    height:750px;
+    height:770px;
     width:450px;
     padding:20px;
     font-family: 'Roboto', sans-serif;

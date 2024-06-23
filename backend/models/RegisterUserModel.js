@@ -10,6 +10,12 @@ var registeruser = new mongoose.Schema({
   addedGasCars: [{ type: mongoose.Schema.Types.ObjectId, ref: 'gascarmodel' }],
   boughtElectricCars: [{ type: mongoose.Schema.Types.ObjectId, ref: 'electriccarmodel' }],
   boughtGasCars: [{ type: mongoose.Schema.Types.ObjectId, ref: 'gascarmodel' }],
+  favourites: [
+    {
+      car: { type: mongoose.Schema.Types.ObjectId, refPath: 'favourites.carType' },
+      carType: { type: String, enum: ['gascarmodel', 'electriccarmodel'] }
+    }
+  ]
 });
 
 module.exports = mongoose.model("registeruser", registeruser, "registeruser");

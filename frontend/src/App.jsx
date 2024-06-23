@@ -8,6 +8,8 @@ import GasForm from "./pages/GasForm";
 import EvsForm from "./pages/EvsForm";
 import ElectricList from "./pages/ElectricList";
 import GasList from "./pages/GasList";
+import WishList from "./pages/WishList";
+// import Booking from "./pages/Booking"
 import React,{useState,createContext} from 'react'
 
 import {
@@ -37,6 +39,8 @@ function App() {
           <Route exact path="/admin-home" element={<AdminHome/>}/>
           <Route exact path="/electric-list" element={<ElectricList/>}/>
           <Route exact path="/gas-list" element={<GasList/>}/>
+          <Route exact path="/wishlist" element={<WishList/>}/>
+          {/* <Route exact path="/booking" element={<Booking/>}/> */}
         </Routes>
     </Router>
     </store.Provider>
