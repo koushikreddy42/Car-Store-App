@@ -17,8 +17,8 @@
   font-style: normal;
   transform: translateX(10%);
 }
+
 .addtext{
-  position: relative;
   display: flex;
   flex-direction: column;
   max-width: 30%;
@@ -27,7 +27,7 @@
   border-radius: 7px;
   padding: 20px;
   box-sizing: border-box;
- transform: translate(90%, -10%);
+  transform: translate(90%, -50%);
 }
 
 .price{
@@ -104,27 +104,24 @@
   color: black;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 2vw;
-  margin-bottom: -30px;
+  margin-bottom: -10px;
 }
 .carModel h2{
   margin-bottom: 0;
 }
 
 .imageSlider{
+  position: absolute;
   display: flex;
   align-items: center;
   margin: 4% 0;
-  margin-left: -3%;
-  position: absolute;
-  width: 70%;
-  height: 100%;
-  margin-top: 0%;
-  transform: translate(1%, -15%);
+  margin-left: -1%;
+  margin-top: 4%;
+  width : 40%;
 }
 
 img{
-  width: 60%;
-  height: 50%;
+  width: 110%;
   object-fit: cover;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -146,16 +143,15 @@ button:hover {
 }
 
 .additionalDetails {
+  position: relative;
  display: flex;
- flex: 1;
  max-width: 45%;
  flex-direction: column;
  align-content: center;
  margin: 20px auto;
  padding: 20px;
- transform: translate(62%, 0%);
+ transform: translate(65%, -7%);
  box-sizing: border-box;
- 
 }
 
 .descHeading {
@@ -180,16 +176,18 @@ button:hover {
 .endline{
   color: darkgray;
   width: 80%;
+  margin-top: 3%;
   margin-bottom: 5%;
 }
 
 .feat {
+  position: relative;
   display: flex;
   width: 42%;
   justify-content: space-between;
   align-items: center;
   margin: 20px 0;
-  transform: translate(11%,-660%);
+  transform: translate(13%,-880%);
   position: relative;
 }
 .midbox{
@@ -252,7 +250,7 @@ button:hover {
 
 .keyfeat{
   position: relative;
-  transform: translate(8%, -235%);
+  transform: translate(8%, -290%);
 
 }
 
@@ -282,22 +280,63 @@ button:hover {
   color: rgb(84, 84, 84);
 }
 
-@media (max-width: 768px) {
-  .order, .tdrive {
-    width: 30%;
+@media (min-width: 1200px) {
+  .carModel{
+    order: 1;
   }
 
-  .card {
-    flex-direction: column;
+  .imageSlider{
+    order: 2;
+    width : 40%;
+    height: auto;
+  }
+
+  .addtext{
+    order: 3;
+    margin-top: 10%;
+  }
+
+  .additionalDetails{
+    margin-top: -3%;
+  }
+
+  .feat{
+    margin-top: 12%;
+  }
+
+  .keyfeat{
+    margin-top: -4%;
   }
 
   .card a {
-    margin-left: 0;
+    margin-left: -15%;
     margin-bottom: 10px;
+  }
+
+  .box1, .box2, .box3 {
+    width: 26%;
+    margin-bottom: 0;
+  }
+  
+  .box1::after, .box2::after {
+    content: none;
+  }
+  
+  .num {
+    font-size: 2vw;
+  }
+  
+  .text {
+    font-size: 1.5vw;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1550px) {
+
+  .keyfeat{
+    margin-top: -10%;
+  }
+
   .carModel {
     font-size: 2vw;
   }
@@ -315,23 +354,11 @@ button:hover {
   }
 }
 
-@media (max-width: 768px) {
-  .box1, .box2, .box3 {
-    width: 26%;
-    margin-bottom: 0;
+@media (max-width: 1200px) {
+  .feat{
+    margin-top: 20%;
   }
-  
-  .box1::after, .box2::after {
-    content: none;
-  }
-  
-
-  
-  .num {
-    font-size: 2vw;
-  }
-  
-  .text {
-    font-size: 1.5vw;
+  .keyfeat{
+    margin-top: -20%;
   }
 }

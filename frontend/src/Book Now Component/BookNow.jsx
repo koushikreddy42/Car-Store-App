@@ -30,6 +30,7 @@ function BookNow(){
         <img src={images[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`}/>
         <button className ={styles.buttonRight} onClick={goToNext}>&gt;</button>
       </div>
+      
       <div className={styles.addtext}>
         <div className={styles.pricetag}>
           <p className={styles.price}>$ 54,000</p>
