@@ -4,6 +4,7 @@ import PlaceOrder from './PlaceOrder';
 import styles from './BookNow.module.css';
 import t3p from '../assets/images/t3p.png';
 import t3p2 from '../assets/images/t3p2.png';
+import { useEffect } from 'react';
 
 function BookNow(){
 
@@ -24,9 +25,20 @@ function BookNow(){
   const openPlaceOrder = () => setPlaceOrderOpen(true);
   const closePlaceOrder = () => setPlaceOrderOpen(false);
 
+  useEffect(() => {
+    if (isPlaceOrderOpen) {
+      document.body.style.overflow = 'hidden';
+      
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto'; 
+    };
+  }, [isPlaceOrderOpen]);
+
   return(
     <div className={styles.container}>
-      
       <div className={styles.carModel}>
         <h2> 2020 Tesla Model 3</h2>
         <p className={styles.perf}>Performance Edition</p>
@@ -45,10 +57,12 @@ function BookNow(){
         <hr className={styles.line} />
         <div className={styles.card}>
           <a href="#addtowishlist"><i className="fa-regular fa-heart fa-lg"></i></a>
-          <button className={styles.order} onClick={openPlaceOrder}>Place Order</button>
-          <PlaceOrder isOpen={isPlaceOrderOpen} onClose={closePlaceOrder}/>
+          <button className={styles.order} onClick={openPlaceOrder}>Place Order</button>  
+         
         </div>
+      
         <button className={styles.tdrive}>Book Test Drive <i class="fa-regular fa-calendar"></i></button>
+         
       </div>
       
       <div className={styles.additionalDetails}>
@@ -59,8 +73,8 @@ function BookNow(){
           <div className={styles.desc}>
             <h4 className={styles.descHeading}>Performance</h4>
             <p className={styles.descPara}><style>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
-</style>Model 3 comes with the option of dual motor all-wheel drive, Performance Wheels and Brakes for total control, in all weather conditions and a spoiler improves stability at high speeds allowing Model 3 to accelerate from 0-60 mph in as little as 3.2 seconds.</p>
+             @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+             </style>Model 3 comes with the option of dual motor all-wheel drive, Performance Wheels and Brakes for total control, in all weather conditions and a spoiler improves stability at high speeds allowing Model 3 to accelerate from 0-60 mph in as little as 3.2 seconds.</p>
           </div><hr className={styles.endline}/>
           <div className={styles.desc}>
             <h4 className={styles.descHeading}>Safety</h4>
@@ -122,7 +136,7 @@ function BookNow(){
           </div>
         </div>
       </div>
-      
+     <PlaceOrder isOpen={isPlaceOrderOpen} onClose={closePlaceOrder}/> 
     </div>
   );
 }
