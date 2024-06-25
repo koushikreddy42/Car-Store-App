@@ -255,12 +255,13 @@ button:hover {
   margin-left: 7%;
   margin-right: 15%;
   margin-top: 0%;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 .text2{
   width: max-content;
   font-family: "Nanum Myeongjo", serif;
   font-style: normal;
+  font-size: large;
   margin-top: 1.5%;
   margin-bottom: 0%;
   margin-left: 10%;
