@@ -164,7 +164,7 @@ button:hover {
  width: 95%;
  flex-direction: column;
  align-content: center;
- margin: 10% 20%;
+ margin: 10% 17%;
  padding: 2%;
  box-sizing: border-box;
 }
@@ -270,7 +270,7 @@ button:hover {
 
 .keyfeat{
   margin-top: 9%;
-  margin-left: 15%;
+  margin-left: 20%;
 }
 
 .keyhead{
@@ -291,7 +291,7 @@ button:hover {
   margin-bottom: -4%;
 }
 .icontxt p{
-  margin-left: 3%;
+  margin-left: 5%;
   font-family: "Nanum Myeongjo", serif;
   font-weight: 600;
   font-style:normal;
