@@ -11,12 +11,12 @@ function App() {
   return (
     
       <div className={styles.app_container}>
-        {/* <Header/> */}
+        <Header/>
        <main className={styles.main_content}>
         <BookNow/> 
         
       </main> 
-      {/* <Footer/> */}
+      <Footer/>
       </div>
 
   );
