@@ -13,18 +13,17 @@
   }
 
   .modalContent {
-    margin: 25%;
+    margin-top: 2%;
     margin-left: 0%;
     border-radius: 1.5rem;
     background-color: whitesmoke;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(245, 232, 232, 0.25);
-    height: 100%;
-    width:max-content;
+    width: 95%;
     padding: 20px;
     z-index: 1060;
-    
+    margin-bottom: 2%; 
   }
   
   .modalHeader {
@@ -33,21 +32,25 @@
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
     padding-bottom: 10px;
-    margin: 5%;
+    margin: 2.5%;
   }
   
   .modalTitle {
     color: rgb(51, 30, 56);
     margin: 0;
+    margin-top: -1%;
     font-size: 1.5em;
   }
 
   .modalHeader p{
     color: rgb(113, 69, 123);
+    margin-bottom: 0%;
+    margin-top: 2%;
   }
   
   .closeButton {
-    margin-top: -10%;
+    margin-right: -2%;
+    margin-top: -9%;
     background: none;
     border: none;
     font-size: 1.5em;
@@ -60,7 +63,7 @@
   }
   
   .modalBody {
-    margin: 5%;
+    margin: 2.5%;
   }
   
   .formGroup {
@@ -83,14 +86,14 @@
   }
 
   .line2{
-    margin-left: 13%;
+    margin-left: 10%;
   }
 
   .form_label{
     font-size: 1.05rem;
   }
 
-  .formControl, .formControl2, .formControl3 {
+  .formControl, .formControl2, .formControl3, .formControl4 {
     flex: 1 1 calc(50% - 10px);
     margin-right: 0%;
     margin-left: 4%;
@@ -105,7 +108,17 @@
   }
 
   .formControl2, .formControl3{
-    margin-left: 6.7%;
+    margin-left: 6.2%;
+  }
+
+  .formControl4{
+    margin-left: 13%;
+  }
+
+  .textline{
+    margin-top: -2%;
+    margin-bottom: -2%;
+    color: rgb(113, 69, 123);
   }
 
   .modalFooter {
@@ -113,6 +126,7 @@
     justify-content: flex-end;
     border-top: 1px solid #e5e5e5;
     padding-top: 10px;
+    margin-bottom: -1.5%;
   }
   
   .btn {
@@ -121,10 +135,35 @@
     border-radius: 4px;
     cursor: pointer;
   }
+
+  .btn:hover{
+    background-color: #444f58;
+  }
   
   .btnSecondary {
-    
     margin-right: 1rem;
     background-color: #444f58;
     color: white;
+  }
+
+  .btnPrimary{
+    margin-right: 2.4%;
+    background-color: rgb(113, 69, 123);  
+    color: white;
+  }
+
+  @media (max-height: 700px) {
+    .modalContent {
+      width: 90%;
+      padding: 13px;
+    }
+  
+    .formControl, .formControl2, .formControl3, .formControl4 {
+      padding: 5px;
+    }
+  
+    .btn {
+      margin-bottom: 1%;
+      padding: 5px 10px;
+    }
   }

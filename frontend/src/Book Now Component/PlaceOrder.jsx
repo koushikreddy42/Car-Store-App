@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './PlaceOrder.module.css';
 
-function PlaceOrder({ isOpen, onClose }){      
+function PlaceOrder({ isOpen, onClose }){ 
+    const [isChecked, setIsChecked] = useState(false);
+    
     if(!isOpen) return null;
+
+    const handleCheckboxChange = (event) => {
+      setIsChecked(event.target.checked);
+    }
 
     // const handleSubmit = (event) => {
     //     event.preventDefault();
@@ -46,11 +52,25 @@ function PlaceOrder({ isOpen, onClose }){
                 <div className={styles.line2}><input type="address" className={styles.formControl} id="useraddress" placeholder="Postal/ Zip Code" required />
                   <input type="address" className={styles.formControl} id="useraddress" placeholder="State" required /></div>
               </div>
+              <div className= {styles.textline}><p>* Please upload a merged document containing your 'ID Proof', 'Driver's License' and 'Address Proof'.</p></div>
+              <div className={styles.formGroup}>
+                <label className={styles.form_label}>Upload Documents:</label>
+                <input type="file" className={styles.formControl} id="uploadDocuments" />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.form_label}>Comments:</label>
+                <textarea className={styles.formControl4} id="comments" placeholder="Enter any additional requests or comments" />
+              </div>
+                  
+              <div className={styles.formGroup}>
+                <label className={styles.form_label}>
+                <input type="checkbox" id="confirm" onChange={handleCheckboxChange} required />I confirm that I have reviewed my order and agree to the terms and conditions.</label>
+              </div>
             </form>
           </div>
           <div className={styles.modalFooter}>
-            <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={onClose}>Close</button>
-            <button type="submit" className={`${styles.btn} ${styles.btnSecondary}`}>Submit</button>
+            {/* <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={onClose}>Close</button> */}
+            <button type="submit" className={`${styles.btn} ${isChecked ? styles.btnPrimary : styles.btnSecondary}`} disabled={!isChecked}>Submit</button>
           </div>
         </div>
       </div>
