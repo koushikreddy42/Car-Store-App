@@ -18,6 +18,10 @@ router.route('/electric-form').post(async (req, res) => {
             interior,
             wheel,
             description,
+            rangedescription,
+            technology,
+            safety,
+            performance,
             addedBy
         } = req.body;
 
@@ -33,6 +37,10 @@ router.route('/electric-form').post(async (req, res) => {
             interior,
             wheel,
             description,
+            rangedescription,
+            technology,
+            safety,
+            performance,
             addedBy
         });
 
@@ -69,6 +77,11 @@ router.route('/gas-form').post(async (req, res) => {
             transmission,
             interior,
             wheel,
+            safety,
+            technology,
+            performance,
+            cylinders,
+            drivetrain,
             description,
         } = req.body;
 
@@ -87,6 +100,11 @@ router.route('/gas-form').post(async (req, res) => {
             transmission,
             interior,
             wheel,
+            safety,
+            technology,
+            performance,
+            cylinders,
+            drivetrain,
             description,
         });
 

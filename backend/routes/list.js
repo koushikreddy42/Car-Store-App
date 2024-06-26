@@ -44,5 +44,47 @@ router.route('/electric-listt').get(async (req, res) => {
   }
 })
 
+router.get('/electric-listt/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({ message: 'Car ID is required' });
+    }
+
+    const car = await electriccarmodel.findById(id);
+
+    if (!car) {
+      return res.status(404).json({ message: 'Car not found' });
+    }
+
+    res.json(car);
+  } catch (error) {
+    console.error('Error fetching car:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+router.get('/gas-listt/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({ message: 'Car ID is required' });
+    }
+
+    const car = await gascarmodel.findById(id);
+
+    if (!car) {
+      return res.status(404).json({ message: 'Car not found' });
+    }
+
+    res.json(car);
+  } catch (error) {
+    console.error('Error fetching car:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 
 module.exports = router

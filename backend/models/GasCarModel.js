@@ -15,6 +15,11 @@ const gasCarModelSchema = new mongoose.Schema({
     interior: { type: String, required: true },
     wheel: { type: String, required: true },
     description: { type: String, required: true },
+    safety: { type: String},
+    technology: { type: String},
+    performance: { type: String},
+    cylinders: { type: Number},
+    drivetrain: { type: String},
     isDisplayed: {type:Boolean, default:false},
     isSold: {type:Boolean, default:false},
     addedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'registeruser', required: true }

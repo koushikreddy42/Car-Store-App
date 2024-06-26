@@ -1,6 +1,6 @@
 import React, { useState,useContext,useEffect } from 'react';
 import { store } from '../App';
-import { Navigate,Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import axios from 'axios'
 import styles from '../components/List/ElectricList.module.css';
 

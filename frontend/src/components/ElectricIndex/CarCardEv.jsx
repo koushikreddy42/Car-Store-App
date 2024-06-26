@@ -3,6 +3,7 @@ import { store } from '../../App';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import axios from 'axios';
 import styles from './CarCard.module.css';
+import { Link } from 'react-router-dom';
 
 export const CarCardEv = (props) => {
   const [isFavorite, setIsFavorite] = useState(props.isFavorite);
@@ -34,7 +35,7 @@ export const CarCardEv = (props) => {
   //     console.error('Error checking favorite status:', error);
   //   }
   // };
-
+  
   const toggleFavorite = async () => {
     try {
       if (isFavorite) {
@@ -55,6 +56,9 @@ export const CarCardEv = (props) => {
       console.error('Error toggling favorite:', error);
     }
   };
+
+  const param1 = props._id;
+  const param2='ev';
 
   return (
     <div className={styles.card}>
@@ -111,9 +115,10 @@ export const CarCardEv = (props) => {
         <div className={styles.cost}>
           ${props.price}
         </div>
-        <button className={styles.book}>
+        <Link to={`/electric-booking/${param1}/${param2}`}><button className={styles.book}>
           Book Now
         </button>
+        </Link>
       </div>
     </div>
   );

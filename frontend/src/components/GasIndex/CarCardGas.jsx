@@ -3,6 +3,7 @@ import { store } from '../../App';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import axios from 'axios';
 import styles from './CarCard.module.css';
+import { Link } from 'react-router-dom';
 export const CarCardGas = (props) => {
   const [isFavorite, setIsFavorite] = useState(props.isFavorite);
   const [token] = useContext(store);
@@ -54,6 +55,9 @@ export const CarCardGas = (props) => {
       console.error('Error toggling favorite:', error);
     }
   };
+
+  const param1 = props._id;
+  const param2='gas';
   return (
     <div className={styles.card}>
         <button
@@ -112,9 +116,10 @@ export const CarCardGas = (props) => {
             <div className={styles.cost}>
                 ${props.price}
             </div>
-            <button className={styles.book}>
-                Book Now
-            </button>
+            <Link to={`/gas-booking/${param1}/${param2}`}><button className={styles.book}>
+          Book Now
+        </button>
+        </Link>
         </div>
     </div>
   )

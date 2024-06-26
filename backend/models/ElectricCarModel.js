@@ -12,6 +12,10 @@ const electricCarModelSchema = new mongoose.Schema({
     interior: { type: String, required: true },
     wheel: { type: String, required: true },
     description: { type: String, required: true },
+    rangedescription: { type: String},
+    safety: { type: String},
+    technology: { type: String},
+    performance: { type: String},
     isDisplayed: {type:Boolean, default:false},
     isSold: {type:Boolean, default:false},
     addedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'registeruser', required: true }
