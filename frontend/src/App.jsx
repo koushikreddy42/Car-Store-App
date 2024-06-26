@@ -9,7 +9,9 @@ import EvsForm from "./pages/EvsForm";
 import ElectricList from "./pages/ElectricList";
 import GasList from "./pages/GasList";
 import WishList from "./pages/WishList";
-// import Booking from "./pages/Booking"
+import BookNow from "./pages/BookNow";
+import EvsBooking from "./pages/EvsBooking"
+import GasBooking from "./pages/GasBooking"
 import React,{useState,createContext} from 'react'
 
 import {
@@ -40,7 +42,9 @@ function App() {
           <Route exact path="/electric-list" element={<ElectricList/>}/>
           <Route exact path="/gas-list" element={<GasList/>}/>
           <Route exact path="/wishlist" element={<WishList/>}/>
-          {/* <Route exact path="/booking" element={<Booking/>}/> */}
+          <Route exact path="/book-now/:param1/:param2" element={<BookNow/>}/>
+          <Route exact path="/electric-booking/:param1/:param2" element={<EvsBooking/>}/>
+          <Route exact path="/gas-booking/:param1/:param2" element={<GasBooking/>}/>
         </Routes>
     </Router>
     </store.Provider>

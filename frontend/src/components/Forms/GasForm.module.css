@@ -31,7 +31,7 @@
     gap: 20px;
 }
 
-.path input,.title input,.year input,.price input,.speed input,.time input,.engine input,.gearbox input,.transmission input{
+.info input{
    width: 90%;
    height: 25px;
    border: solid rgb(186, 180, 180) 1px;
@@ -40,26 +40,16 @@
    border-radius: 3px;
 }
 
-.mileage input,.color input,.interior input,.wheel input,.description input{
-    width: 90%;
-    height: 25px;
-    border: solid rgb(186, 180, 180) 1px;
-    padding: 5px 10px;
-    font-size: 15px;
-    border-radius: 3px;
-}
 
-.path input:focus, .title input:focus,.year input:focus,.price input:focus,.speed input:focus,.time input:focus{
+
+.info input:focus{
     box-shadow: 0px 0px 3px 3px rgb(129, 181, 234);
     outline: none;
 }
 
-.mileage input:focus, .color input:focus,.interior input:focus,.wheel input:focus,.description input:focus,.engine input:focus,.gearbox input:focus,.transmission input:focus{
-    box-shadow: 0px 0px 3px 3px rgb(129, 181, 234);
-    outline: none;
-}
 
-.path, .title,.year,.price,.speed,.time,.mileage,.color,.interior,.wheel,.description,.engine,.transmission,.gearbox{
+
+.info{
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -73,16 +63,8 @@
     gap: 20px;
 }
 
-.upload,.year{
-   
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 15px;
-}
 
-.upload_container input[type="file"] { 
+.upload [type="file"] { 
     cursor: pointer;
     font-size: 15px;
 }
@@ -129,7 +111,7 @@
         gap: 10px;
     }
 
-    .path, .title, .year, .price, .speed, .time, .mileage, .color, .interior, .wheel, .description,.engine,.gearbox,.transmission {
+    .info{
         width: 100%;
     }
 
@@ -138,12 +120,8 @@
         gap: 10px;
     }
 
-    .path input, .title input, .year input, .price input, .speed input, .time input,
-    .mileage input, .color input, .interior input, .wheel input, .description input,.engine input,.gearbox input, .mileage input,.transmission input {
+    .info input {
         width: 95%;
     }
 
-    .upload, .year {
-        width: 100%;
-    }
 }
