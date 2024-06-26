@@ -54,18 +54,19 @@ import styles from './Gas.module.css'
                         </div>
                      </div>
                      <div className={styles.info}>
+                       <label>Cylinders</label>
+                         <div>
+                            <input className={styles.cylinders}  type='number' max={16} min={0} placeholder='11' />
+                        </div>
+                     </div>
+                     <div className={styles.info}>
                        <label>Time60</label>
                          <div>
                             <input className={styles.time}  type='text' placeholder='3.8' />
                         </div>
                         
                      </div>
-                     <div className={styles.info}>
-                            <label>Technology</label>
-                            <div>
-                                <input className={styles.techno}  placeholder='Technology info' />
-                            </div>
-                        </div>
+                     
                     </div>
                     <div className={styles.row} >
                     <div className={styles.info}>
@@ -91,6 +92,10 @@ import styles from './Gas.module.css'
                             </div>
                             
                         </div>
+                        <div className={styles.info}>
+                            <label>Drivetrain</label>
+                            <input className={styles.drive}  type="text" placeholder="RWD" />
+                        </div>
                         
                     </div>
                     <div className={styles.row}>
@@ -99,6 +104,7 @@ import styles from './Gas.module.css'
                             <label>Gearbox</label>
                             <input className={styles.gearbox}  type="text" placeholder="6-Speed SelectShift" />
                         </div>
+                       
                             <div className={styles.info} >
                         <label>Transmission</label>
                         <input className={styles.transmission}  type="text"  placeholder="Automatic" />
@@ -131,7 +137,12 @@ import styles from './Gas.module.css'
                                 <input className={styles.safety}  placeholder='Safety Info' />
                             </div>
                         </div>
-
+                        <div className={styles.info}>
+                            <label>Technology</label>
+                            <div>
+                                <input className={styles.techno}  placeholder='Technology info' />
+                            </div>
+                        </div>
                     <div className={styles.info}>
                         <label>Description</label>
                         <input className={styles.description}  type='text' placeholder="Description Info" />

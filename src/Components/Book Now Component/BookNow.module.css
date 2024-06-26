@@ -1,319 +1,369 @@
-.container{
-    margin: 20px auto;
-    /* margin-left: 100px;
-    margin-right: 100px; */
-    max-width: 90%;
-    max-height: 200vh;
-    color: black;
-    box-sizing:border-box;
-  }
-  
-  .perf{
-    margin-top: 0px;
-    font-size: 20px;
-  }
-  .pricetag{
-    transform: translateX(10%);
-  }
-  .addtext{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    max-width: 30%;
-    margin: 0 auto;
-    box-shadow: 10px 10px 50px rgb(199, 199, 199);
-    border-radius: 7px;
-    padding: 20px;
-    box-sizing: border-box;
-   transform: translate(90%, -10%);
-  }
-  
-  .price{
-    font-size: 2.5vw;
-    margin-top: 5%;
-    margin-bottom: 0;
-  }
-  
-  .tax{
-    margin-top: -0.2%;
-  }
-  
-  .line{
-    color: darkgray;
-    width: 80%;
-  }
-  
-  .card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .card a, .card a:hover {
-    color: black;
-    margin-bottom: 10px;
-    margin-left: -15%;
-    font-size: 1.5vw; /* Adjust this value to change the space between the icon and button */
-  }
-  .card a:active{
-    color: darkgray;
-  }
-  
-  .order{
-    width: 40%;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    border: 1px solid black;
-    cursor: pointer;
-    transform: translateX(37%);
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  .order:hover{
-    background-color: darkgray;
-    color: black;
-  }
-  .tdrive{
-    width: 80%;
-    border: 1px solid black;
-    cursor: pointer;
-    transform: translateX(12.5%);
-    margin-bottom: 7%;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  .tdrive:hover, .order:hover{
-    background-color: darkgray;
-    color: black;
-  }
+
+.container {
+  position: relative; /* Ensure stacking context */
+  margin: 20px auto;
+  max-width: 90%;
+  max-height: 200vh;
+  color: black;
+  box-sizing: border-box;
+  z-index: 1000; /* Lower than modal */
+}
+
+.perf{
+  margin-top: 0px;
+  font-size: 20px;
+}
+.pricetag{
+  font-family: "Nanum Myeongjo", serif;
+  font-style: normal;
+  transform: translateX(10%);
+}
+
+.addtext{
+  display: flex;
+  flex-direction: column;
+  max-width: 30%;
+  margin: 0 auto;
+  box-shadow: 10px 10px 50px rgb(199, 199, 199);
+  border-radius: 7px;
+  padding: 20px;
+  box-sizing: border-box;
+  transform: translate(90%, -50%);
+}
+
+.price{
+  font-size: 2.5vw;
+  margin-top: 5%;
+  margin-bottom: 0;
+}
+
+.tax{
+  margin-top: 2%;
+}
+
+.line{
+  color: darkgray;
+  width: 80%;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card a, .card a:hover {
+  color: black;
+  margin-bottom: 10px;
+  margin-left: -15%;
+  font-size: 1.5vw; /* Adjust this value to change the space between the icon and button */
+}
+.card a:active{
+  color: darkgray;
+}
+
+.order{
+  font-size: 1rem;
+  color: white;
+  padding: .55rem .5rem;
+  width: 40%;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  border-radius: .25rem;
+  cursor: pointer;
+  transform: translateX(37%);
+  background-color: #343a30;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+.tdrive{
+  font-size: 1rem;
+  color: white;
+  padding: .55rem .5rem;
+  width: 80%;
+  border: 1px solid black;
+  border-radius: .25rem;
+  cursor: pointer;
+  transform: translateX(12.5%);
+  margin-bottom: 5%;
+  background-color: #343a30;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tdrive i{
+  margin-left: .3rem;
+}
+.tdrive:hover, .order:hover{
+  background-color:rgb(251, 249, 245);
+  color: black;
+}
+.carModel{
+  display:flex;
+  flex-direction: column;
+  align-items:flex-start;
+  color: black;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 2vw;
+  margin-bottom: -10px;
+}
+.carModel h2{
+  margin-bottom: 0;
+}
+
+.imageSlider{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  margin: 4% 0;
+  margin-left: -1%;
+  margin-top: 4%;
+  width : 40%;
+}
+
+img{
+  width: 110%;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.buttonLeft, .buttonRight {
+  margin: 2%;
+  background-color: darkgray;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-color: black;
+}
+
+.additionalDetails {
+ position: relative;
+ display: flex;
+ max-width: 45%;
+ flex-direction: column;
+ align-content: center;
+ margin: 20px auto;
+ padding: 20px;
+ transform: translate(65%, -7%);
+ box-sizing: border-box;
+}
+
+.descHeading {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 500;
+  font-style:normal;
+  font-size: 2vw; 
+  margin-top: 0%;
+  margin-bottom: 0px;
+}
+
+.descPara {
+  margin-left: 1rem;
+  line-height: 1.5;
+  color: #343a30;
+  font-family: "Nanum Myeongjo", serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.3vw;
+  margin-top: 20px;
+}
+.endline{
+  color: darkgray;
+  width: 80%;
+  margin-top: 3%;
+  margin-bottom: 5%;
+}
+
+.feat {
+  position: relative;
+  display: flex;
+  width: 42%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  transform: translate(13%,-880%);
+  position: relative;
+}
+.midbox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.box1, .box2, .box3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 26%;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+ 
+}
+
+.box1::after, .box2::after {
+  width: 2px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.box1 a, .box2 a, .box3 a {
+  font-size: 1.6vw;
+  color: rgb(132, 131, 131);
+  /* margin-bottom: 10px; */
+}
+.box1 a:hover, .box2 a:hover, .box3 a:hover{
+  color: black;
+}
+
+.num {
+  font-size: 1.8vw;
+  font-weight: bold;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+.text {
+  font-size: 1.5vw;
+  margin-left: 5%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+.text2{
+  font-family: "Nanum Myeongjo", serif;
+  font-style: normal;
+  margin-top: 1.2%;
+  margin-bottom: 0%;
+}
+
+.keyfeat{
+  position: relative;
+  transform: translate(8%, -290%);
+
+}
+
+.keyhead{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 500;
+  font-style:normal;
+  font-size: 2vw; 
+}
+
+.icontxt{
+  display: flex;
+  /* align-items: center; */
+  margin-left: 2%;
+}
+.icontxt p{
+  margin-left: 1%;
+  margin-top: 0%;
+  margin-bottom: 2%;
+  font-family: "Nanum Myeongjo", serif;
+  font-weight: 600;
+  font-style:normal;
+  font-size: 1.4vw;
+}
+.icontxt a, .icontxt a:hover{
+  font-size: 1.5vw;
+  color: rgb(84, 84, 84);
+}
+
+
+@media (min-width: 1200px) {
   .carModel{
-    display:flex;
-    flex-direction: column;
-    align-items:flex-start;
-    color: black;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 2vw;
-    margin-bottom: -30px;
+    order: 1;
   }
-  .carModel h2{
-    margin-bottom: 0;
-  }
-  
+
   .imageSlider{
-    display: flex;
-    align-items: center;
-    margin: 4% 0;
-    margin-left: -3%;
-    position: absolute;
-    width: 70%;
-    height: 100%;
-    margin-top: 0%;
-    transform: translate(1%, -15%);
+    order: 2;
+    width : 40%;
+    height: auto;
   }
-  
-  img{
-    width: 60%;
-    height: 50%;
-    object-fit: cover;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  .addtext{
+    order: 3;
+    margin-top: 10%;
   }
-  
-  .buttonLeft, .buttonRight {
-    margin: 2%;
-    background-color: darkgray;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+
+  .additionalDetails{
+    margin-top: -3%;
   }
-  
-  button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    border-color: black;
+
+  .feat{
+    margin-top: 12%;
   }
-  
-  .additionalDetails {
-   display: flex;
-   flex: 1;
-   max-width: 45%;
-   flex-direction: column;
-   align-content: center;
-   margin: 20px auto;
-   padding: 20px;
-   transform: translate(65%, -1%);
-   box-sizing: border-box;
-   
+
+  .keyfeat{
+    margin-top: -4%;
   }
-  
-  .descHeading {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 500;
-    font-style:normal;
-    font-size: 2vw; 
-    margin-top: 0%;
-    margin-bottom: 0px;
+
+  .card a {
+    margin-left: -15%;
+    margin-bottom: 10px;
   }
-  
-  .descPara {
-    font-family: serif;
-    font-weight: 400;
-    font-style:normal;
-    font-size: 1.4vw;
-    margin-top: 5px;
-  }
-  .endline{
-    color: darkgray;
-    width: 80%;
-    margin-bottom: 5%;
-  }
-  
-  .feat {
-    display: flex;
-    width: 42%;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-    transform: translate(11%,-490%);
-    position: relative;
-  }
-  .midbox{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
+
   .box1, .box2, .box3 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 26%;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    text-align: center;
-    position: relative;
-   
+    margin-bottom: 0;
   }
   
   .box1::after, .box2::after {
-    width: 2px;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  
-  .box1 a, .box2 a, .box3 a {
-    font-size: 2vw;
-    color: rgb(132, 131, 131);
-    /* margin-bottom: 10px; */
-  }
-  .box1 a:hover, .box2 a:hover, .box3 a:hover{
-    color: black;
+    content: none;
   }
   
   .num {
     font-size: 2vw;
-    font-weight: bold;
-    margin-top: 0%;
-    margin-bottom: 0%;
   }
   
   .text {
     font-size: 1.5vw;
-    margin-left: 5%;
-    margin-top: 0%;
-    margin-bottom: 0%;
   }
-  .text2{
-    margin-top: 0%;
-    margin-bottom: 0%;
-  }
-  
+}
+
+@media (max-width: 1550px) {
+
   .keyfeat{
-    position: relative;
-    transform: translate(8%, -200%);
-  
+    margin-top: -10%;
   }
-  
-  .keyhead{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 500;
-    font-style:normal;
-    font-size: 2vw; 
+
+  .carModel {
+    font-size: 2vw;
   }
-  
-  .icontxt{
-    display: flex;
-    /* align-items: center; */
-    margin-left: 2%;
+
+  .price {
+    font-size: 2.5vw;
   }
-  .icontxt p{
-    margin-left: 1%;
-    margin-top: 0%;
-    margin-bottom: 2%;
-    font-family: serif;
-    font-weight: 400;
-    font-style:normal;
+
+  .descHeading {
+    font-size: 2vw;
+  }
+
+  .descPara {
     font-size: 1.4vw;
   }
-  .icontxt a, .icontxt a:hover{
-    font-size: 1.5vw;
-    color: rgb(84, 84, 84);
+}
+
+@media (max-width: 1200px) {
+
+  .feat{
+    margin-top: 20%;
   }
-  
-  @media (max-width: 768px) {
-    .order, .tdrive {
-      width: 30%;
-    }
-  
-    .card {
-      flex-direction: column;
-    }
-  
-    .card a {
-      margin-left: 0;
-      margin-bottom: 10px;
-    }
+  .keyfeat{
+    margin-top: -20%;
   }
-  
-  @media (max-width: 480px) {
-    .carModel {
-      font-size: 2vw;
-    }
-  
-    .price {
-      font-size: 2.5vw;
-    }
-  
-    .descHeading {
-      font-size: 2vw;
-    }
-  
-    .descPara {
-      font-size: 1.4vw;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .box1, .box2, .box3 {
-      width: 26%;
-      margin-bottom: 0;
-    }
-    
-    .box1::after, .box2::after {
-      content: none;
-    }
-    
-  
-    
-    .num {
-      font-size: 2vw;
-    }
-    
-    .text {
-      font-size: 1.5vw;
-    }
-  }
+}

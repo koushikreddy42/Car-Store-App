@@ -30,6 +30,7 @@ import styles from './EvsForm.module.css'
                                 <input  className={styles.title} placeholder='Tesla Model Y Long Range AWD' />
                             </div>
                         </div>
+                        
                         <div className={styles.info}>
                             <label>Year</label>
                             <div>
@@ -104,6 +105,13 @@ import styles from './EvsForm.module.css'
                                 <input className={styles.safety}  placeholder='Safety Description' />
                             </div>
                         </div>
+                        <div className={styles.info}>
+                            <label>RangeDesc</label>
+                            <div>
+                                <input className={styles.rangedesc}  placeholder='Range Description' />
+                            </div>
+                        </div>
+                        
                     <div className={styles.info}>
                         <label>Description</label>
                         <input className={styles.description} type='text' placeholder="Description Info" />

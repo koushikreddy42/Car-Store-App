@@ -6,6 +6,8 @@ import EvsForm from './Components/Forms/EvsForm.jsx'
 import GasForm from './Components/Forms/Gas.jsx'
 import BookNow from './Components/Book Now Component/BookNow.jsx'
 import Wishlist from './Components/wishlist/wishlist.jsx'
+import User from './Components/Dashboard/User.jsx'
+
 
 function App(){
   return(
