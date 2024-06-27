@@ -6,16 +6,18 @@ import PlaceOrder from './PlaceOrder'
 import styles from '../components/Booking/GasBooking.module.css'
 import t3p from '../components/Assets/t3p.png'
 import t3p2 from '../components/Assets/t3p2.png'
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 function Booking(){
 
-    const {param1,param2} = useParams()
+  const {param1,param2,param3} = useParams()
     const [token,setToken]=useContext(store)
     const [data,setData]=useState(null)
     const [car, setCar] = useState(null);
     const [error, setError] = useState(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const images = car ? [car.image, t3p2] : [];
+    const [isFavorite, setIsFavorite] = useState(param3 === 'true');
 
     const goToPrevious = () => {
       if (car) {
@@ -84,6 +86,27 @@ function Booking(){
       document.body.style.overflow = 'auto'; 
     };
   }, [isPlaceOrderOpen]);
+
+  const toggleFavorite = async () => {
+    try {
+      if (isFavorite) {
+        await axios.post('http://localhost:8080/api/remove-favourite', { carId: car._id }, {
+          headers: {
+            'x-token': token
+          }
+        });
+      } else {
+        await axios.post('http://localhost:8080/api/add-favourite', { carId: car._id, carType: 'gascarmodel' }, {
+          headers: {
+            'x-token': token
+          }
+        });
+      }
+      setIsFavorite(!isFavorite);
+    } catch (error) {
+      console.error('Error toggling favorite:', error);
+    }
+  };
 
   return(
   <div className={styles.container}>
@@ -189,7 +212,25 @@ function Booking(){
         </div>
         <hr className={styles.line} />
         <div className={styles.card}>
-          <a href="#addtowishlist"><i className="fa-regular fa-heart fa-lg"></i></a>
+        <button
+        onClick={toggleFavorite}
+        style={{
+          cursor: 'pointer',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'transparent',
+          border: 'none',
+          padding: '0px',
+          borderRadius: '50%',
+        }}
+      >
+        {isFavorite === true ? (
+  <AiFillHeart color="red" size={30} />
+) : (
+  <AiOutlineHeart color="#333" size={30} />
+)}
+      </button>
           <button className={styles.order} onClick={openPlaceOrder}>Place Order</button>  
         </div>
         <button className={styles.tdrive}>Book Test Drive <i class="fa-regular fa-calendar"></i></button> 

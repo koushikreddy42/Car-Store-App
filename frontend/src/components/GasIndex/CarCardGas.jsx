@@ -58,6 +58,7 @@ export const CarCardGas = (props) => {
 
   const param1 = props._id;
   const param2='gas';
+  const param3=isFavorite;
   return (
     <div className={styles.card}>
         <button
@@ -116,7 +117,7 @@ export const CarCardGas = (props) => {
             <div className={styles.cost}>
                 ${props.price}
             </div>
-            <Link to={`/gas-booking/${param1}/${param2}`}><button className={styles.book}>
+            <Link to={`/gas-booking/${param1}/${param2}/${param3}`}><button className={styles.book}>
           Book Now
         </button>
         </Link>
