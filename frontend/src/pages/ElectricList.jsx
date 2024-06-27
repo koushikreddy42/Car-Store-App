@@ -28,13 +28,15 @@ function ElectricList(){
       const response = await axios.get("http://localhost:8080/api/electric-list");
       setData(response.data);
     } catch (error) {
-      console.error('Error retrieving electric car data:', error);
+      console.error('Error retrieving electric car data:', error); 
     }
   };
   const handleAccept = async (carId) => {
     try {
       await axios.put(`http://localhost:8080/api/electric-list/accept/${carId}`);
-      setData(d => d.filter(car => car._id !== carId));
+      setData(prevData => prevData.map(car => 
+        car._id === carId ? { ...car, isDisplayed: true } : car
+      ));
     } catch (error) {
       console.error('Error accepting car:', error);
     }
@@ -57,7 +59,7 @@ function ElectricList(){
         <table className={`${styles.table} ${styles.tableStriped}`}>
             <thead>
                 <tr>
-                    <th>User</th>
+                    <th>Owner</th>
                     <th>Image</th>
                     <th>Title</th>
                     <th>Year</th>
@@ -88,7 +90,10 @@ function ElectricList(){
                     <td>{car.interior}</td>
                     <td>{car.wheel}</td>
                     <td>{car.description}</td>
-                    <td>
+                    {
+                      car.isDisplayed?(<td>Displayed</td>):
+                      (<>
+                      <td>
                        <button className={styles.acceptbtn} onClick={() => handleAccept(car._id)}>
                           Accept
                        </button>
@@ -98,6 +103,8 @@ function ElectricList(){
                           Decline
                        </button>
                     </td>
+                    </>)
+                    }
                   </tr>
 
                 ))}

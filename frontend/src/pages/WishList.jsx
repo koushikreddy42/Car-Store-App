@@ -4,7 +4,7 @@ import t3p from '../components/Assets/t3p.png';
 import wish from '../components/Assets/wishlist.png'
 import axios from 'axios';
 import { store } from '../App'
-import { Navigate} from 'react-router-dom';
+import { Link,Navigate} from 'react-router-dom';
 
 
 function WishList(){
@@ -80,7 +80,11 @@ function WishList(){
                         <div className={styles.price}>${fav.car.price}</div>
                     </div>
                     <div className={styles.bttns}>
-                        <button className={styles.view}>View</button>
+                    {fav.carType === 'electriccarmodel' ? 
+                    <Link to={`/electric-booking/${fav.car._id}/${'ev'}/${true}`} style={{ textDecoration: 'none' }}><button className={styles.view}>View</button></Link> 
+                    : <Link to={`/gas-booking/${fav.car._id}/${'gas'}/${true}`} style={{ textDecoration: 'none' }}><button className={styles.view}>View</button></Link>}
+                        
+                        
                         <button className={styles.remove} onClick={()=>removeFavorite(fav.car._id)}>Remove</button>
                     </div>
                 </div>

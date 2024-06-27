@@ -6,7 +6,7 @@ const registeruser = require('../models/RegisterUserModel');
 
 router.route('/gas-list').get(async (req, res) => {
     try {
-      const gasCars = await gascarmodel.find({ isDisplayed: false }).populate('addedBy','username').exec();
+      const gasCars = await gascarmodel.find().populate('addedBy','username').exec();
       res.send(gasCars);
     } catch (error) {
       console.error('Error retrieving gas car models:', error);
@@ -26,7 +26,7 @@ router.route('/gas-listt').get(async (req, res) => {
 
 router.route('/electric-list').get(async (req, res) => {
     try {
-      const gasCars = await electriccarmodel.find({ isDisplayed: false }).populate('addedBy','username').exec();
+      const gasCars = await electriccarmodel.find().populate('addedBy','username').exec();
       res.json(gasCars);
     } catch (error) {
       console.error('Error retrieving electric car models:', error);

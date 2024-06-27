@@ -82,7 +82,7 @@ router.route('/gas-form').post(async (req, res) => {
             performance,
             cylinders,
             drivetrain,
-            description,
+            description, 
         } = req.body;
 
         const newGasCar = new gascarmodel({

@@ -107,7 +107,7 @@
 
 .remove, .view {
     height: 40px;
-    width: 100%; /* Set width to 100% */
+    width: 100px; /* Set width to 100% */
     border-radius: 20px;
     display: flex;
     align-items: center;

@@ -34,7 +34,9 @@ function GasList(){
   const handleAccept = async (carId) => {
     try {
       await axios.put(`http://localhost:8080/api/gas-list/accept/${carId}`);
-      setData(d => d.filter(car => car._id !== carId));
+      setData(prevData => prevData.map(car => 
+        car._id === carId ? { ...car, isDisplayed: true } : car
+      ));
     } catch (error) {
       console.error('Error accepting car:', error);
     }
@@ -96,7 +98,10 @@ function GasList(){
                     <td>{car.interior}</td>
                     <td>{car.wheel}</td>
                     <td>{car.description}</td>
-                    <td>
+                    {
+                      car.isDisplayed?(<td>Displayed</td>):
+                      (<>
+                      <td>
                        <button className={styles.acceptbtn} onClick={() => handleAccept(car._id)}>
                           Accept
                        </button>
@@ -106,6 +111,8 @@ function GasList(){
                           Decline
                        </button>
                     </td>
+                    </>)
+                    }
                   </tr>
 
                 ))}

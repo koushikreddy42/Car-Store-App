@@ -43,8 +43,8 @@ function App() {
           <Route exact path="/gas-list" element={<GasList/>}/>
           <Route exact path="/wishlist" element={<WishList/>}/>
           <Route exact path="/book-now/:param1/:param2" element={<BookNow/>}/>
-          <Route exact path="/electric-booking/:param1/:param2" element={<EvsBooking/>}/>
-          <Route exact path="/gas-booking/:param1/:param2" element={<GasBooking/>}/>
+          <Route exact path="/electric-booking/:param1/:param2/:param3" element={<EvsBooking/>}/>
+          <Route exact path="/gas-booking/:param1/:param2/:param3" element={<GasBooking/>}/>
         </Routes>
     </Router>
     </store.Provider>

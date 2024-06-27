@@ -59,6 +59,7 @@ export const CarCardEv = (props) => {
 
   const param1 = props._id;
   const param2='ev';
+  const param3=isFavorite;
 
   return (
     <div className={styles.card}>
@@ -115,7 +116,7 @@ export const CarCardEv = (props) => {
         <div className={styles.cost}>
           ${props.price}
         </div>
-        <Link to={`/electric-booking/${param1}/${param2}`}><button className={styles.book}>
+        <Link to={`/electric-booking/${param1}/${param2}/${param3}`}><button className={styles.book}>
           Book Now
         </button>
         </Link>
