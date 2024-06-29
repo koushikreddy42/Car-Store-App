@@ -68,7 +68,7 @@ const BuyerDetails = () => {
         }
     ]);
 
-    const [view, setView] = useState('Requested');
+    const [view, setView] = useState('For sale');
 
     const handleAccept = (id) => {
         setData(data.map(buyer => buyer.id === id ? { ...buyer, status: 'Accepted' } : buyer));
