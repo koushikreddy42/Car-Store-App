@@ -8,13 +8,15 @@ import BookNow from './Components/Book Now Component/BookNow.jsx'
 import Wishlist from './Components/wishlist/wishlist.jsx'
 import User from './Components/Dashboard/User.jsx'
 import BuyerDetails from './Components/Dashboard/Buyer.jsx';
+import Buyers from './Components/Dashboard/Adminboard.jsx';
 
 
 function App(){
   return(
     <>
-  <BuyerDetails/>
-    </>
+     <BuyerDetails/>
+  </>
+   
 
   );
   

@@ -70,12 +70,18 @@ const BuyerDetails = () => {
 
     const [view, setView] = useState('For sale');
 
-    const handleAccept = (id) => {
+    const handleAccept = (id,FirstName) => {
+        const confirm = window.confirm(`Accept request from ${FirstName}?`);
+        if(confirm){
         setData(data.map(buyer => buyer.id === id ? { ...buyer, status: 'Accepted' } : buyer));
+        }
     };
 
-    const handleReject = (id) => {
+    const handleReject = (id,FirstName) => {
+        const confirm = window.confirm(`Reject request from ${FirstName}?`);
+        if(confirm){
         setData(data.map(buyer => buyer.id === id ? { ...buyer, status: 'Rejected' } : buyer));
+        }
     };
 
     const handleViewDocument = (url) => {
@@ -141,8 +147,8 @@ const BuyerDetails = () => {
                                         <td>
                                             {buyer.status === null ? (
                                                 <>
-                                                    <button className={styles.Accept} onClick={() => handleAccept(buyer.id)}>Accept</button>
-                                                    <button className={styles.Reject} onClick={() => handleReject(buyer.id)}>Reject</button>
+                                                    <button className={styles.Accept} onClick={() => handleAccept(buyer.id,buyer.FirstName)}>Accept</button>
+                                                    <button className={styles.Reject} onClick={() => handleReject(buyer.id,buyer.FirstName)}>Reject</button>
                                                 </>
                                             ) : (
                                                 <div className={buyer.status === 'Accepted' ? styles.statusAccepted : styles.statusRejected}>
