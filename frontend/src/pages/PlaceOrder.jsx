@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import styles from '../components/Booking/PlaceOrder.module.css';
+import axios from 'axios'
 
 function PlaceOrder({ isOpen, onClose }){ 
     const [isChecked, setIsChecked] = useState(false);
+    const [file,setFile] = useState("");
     
     if(!isOpen) return null;
 
@@ -16,10 +18,25 @@ function PlaceOrder({ isOpen, onClose }){
     //     onClose();
     // };
 
+    const submitForm = async(e)=>{
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append("file",file);
+      console.log(file)
+      const result = await axios.post('http://localhost:8080/api/upload-files',
+      formData,
+      {
+        headers : { "Content-Type": "multipart/form-data"},
+      }
+    )
+    console.log(result)
+    }
+
+
     return(
    
     <div className={styles.modal} role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
-      <div className={styles.modalOverlay}>
+      <form className={styles.modalOverlay} onSubmit={submitForm}>
         <div className={styles.modalContent}>
           <div className={styles.modalHeader}>
             <div className ={styles.modalheads}><h3 className={styles.modalTitle} id="exampleModalLabel">Vehicle Order Form</h3>
@@ -55,7 +72,9 @@ function PlaceOrder({ isOpen, onClose }){
               <div className= {styles.textline}><p>* Please upload a merged document containing your 'ID Proof', 'Driver's License' and 'Address Proof'.</p></div>
               <div className={styles.formGroup}>
                 <label className={styles.form_label}>Upload Documents:</label>
-                <input type="file" className={styles.formControl} id="uploadDocuments" />
+                <input type="file" className={styles.formControl} id="uploadDocuments" accept="application/pdf"
+                onChange={(e)=>setFile(e.target.files[0])}
+                />
               </div>
               <div className={styles.formGroup}>
                 <label className={styles.form_label}>Comments:</label>
@@ -73,7 +92,7 @@ function PlaceOrder({ isOpen, onClose }){
             <button type="submit" className={`${styles.btn} ${isChecked ? styles.btnPrimary : styles.btnSecondary}`} disabled={!isChecked}>Submit</button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
      
     );

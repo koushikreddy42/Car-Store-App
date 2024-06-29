@@ -13,6 +13,9 @@ import BookNow from "./pages/BookNow";
 import EvsBooking from "./pages/EvsBooking"
 import GasBooking from "./pages/GasBooking"
 import React,{useState,createContext} from 'react'
+import BuyerDetails from "./pages/Buyer";
+import User from "./pages/User";
+import Buyers from "./pages/Adminboard";
 
 import {
   BrowserRouter as Router,
@@ -45,6 +48,9 @@ function App() {
           <Route exact path="/book-now/:param1/:param2" element={<BookNow/>}/>
           <Route exact path="/electric-booking/:param1/:param2/:param3" element={<EvsBooking/>}/>
           <Route exact path="/gas-booking/:param1/:param2/:param3" element={<GasBooking/>}/>
+          <Route exact path="/dashboard-buyer" element={<BuyerDetails/>}/>
+          <Route exact path="/dashboard-user" element={<User/>}/>
+          <Route exact path="/dashboard-admin" element={<Buyers/>}/>
         </Routes>
     </Router>
     </store.Provider>
