@@ -14,7 +14,7 @@ import Buyers from './Components/Dashboard/Adminboard.jsx';
 function App(){
   return(
     <>
-     <BuyerDetails/>
+     <Buyers/>
   </>
    
 
