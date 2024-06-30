@@ -1,103 +1,83 @@
-import React, { useState } from 'react';
-import styles from '../components/Dashboard/Orders.module.css'
-import t3p from '../components/Assets/t3p.png'
+import React from 'react';
+import styles from '../components/Dashboard/Orders.module.css';
+import t3p from '../components/Assets/t3p.png';
+import { Link } from 'react-router-dom';
 
-const OrderDetails = () => {
-    const [data, setData] = useState([
-        {
-            id: 1,
-            image: t3p,
-            model: 'Tesla Model 3 Performance',
-            year: '2020',
-            price: '54,000',
-            topSpeed: '162',
-            time60: '3.2',
-            range: '300',
-            color: 'Solid Black Paint',
-            interior: 'Black Premium Interior',
-            wheel: "20'' Aero Wheels",
-            description: 'Model 3 comes with the option of dual motor all-wheel drive, Performance Wheels and Brakes for total control, in all weather conditions and a spoiler improves stability at high speeds allowing Model 3 to accelerate from 0-60 mph in as little as 3.2 seconds.',
-            status: "Sold"
-        },
-        {
-            id: 2,
-            image: t3p,
-            model: 'Tesla Model 3 Standard Plus',
-            year: '2020',
-            price: '41,000',
-            topSpeed: '140',
-            time60: '5.3',
-            range: '250',
-            color: 'Pearl White Paint',
-            interior: 'Black Premium Interior',
-            wheel: "18'' Aero Wheels",
-            description: 'Model 3 comes with the option of dual motor all-wheel drive, Performance Wheels and Brakes for total control, in all weather conditions and a spoiler improves stability at high speeds allowing Model 3 to accelerate from 0-60 mph in as little as 3.2 seconds.',
-            status: "Not Sold"
-        },
-        {
-            id: 3,
-            image: t3p,
-            model: 'Tesla Model S Performance',
-            year: '2020',
-            price: '102,000',
-            topSpeed: '165',
-            time60: '2.4',
-            range: '348',
-            color: 'Red Metallic Paint',
-            interior: 'Black Premium Interior',
-            wheel: "20'' Silver Alloy Wheels",
-            description: "Model S sets an industry standard for performance and safety. Telsa's all-electric powertrain delivers unparalleled performance in all weather conditions - with Dual Motor All-Wheel Drive, adaptive air suspension and ludicrous acceleration.",
-            status: "Not Sold"
-        },
-        {
-            id: 4,
-            image: t3p,
-            model: 'Tesla Model S Long Range',
-            year: '2020',
-            price: '81,000',
-            topSpeed: '155',
-            time60: '3.7',
-            range: '391',
-            color: 'Matte Grey Paint',
-            interior: 'Dark Ash Wood Interior',
-            wheel: "19'' Tempest Wheels",
-            description: "Model S sets an industry standard for performance and safety. Telsa's all-electric powertrain delivers unparalleled performance in all weather conditions - with Dual Motor All-Wheel Drive, adaptive air suspension and ludicrous acceleration.",
-            status: "Sold"
-        }
-    ]);
+const OrderDetails = ({ orderDetails }) => {
+    console.log(orderDetails);
 
+    // Check if orderDetails is undefined or null
+    if (!orderDetails) {
+        return <div className={styles.OrderDetails}>Loading...</div>;
+    }
+
+    // Destructure electricCarOrders and gasCarOrders from orderDetails with default empty arrays
+    const { electricCarOrders = [], gasCarOrders = [] } = orderDetails;
 
     return (
         <div className={styles.OrderDetails}>
             <h2>Order Details</h2>
             <p>Here you can find your order details...</p>
-                        {data.length > 0 && (
-                            <button className={styles.button}>Buy More</button>
-                        )}
-                        {data.length === 0 && (
-                            <button className={styles.button}>Start Buying</button>
-                        )}
-                        <div className={styles.cardsContainer}>
-                            {data.map(car => (
-                                <div key={car.id} className={styles.card}>
-                                    <img className={styles.car_img} src={car.image} alt={car.model} />
-                                    <div className={styles.car_details}>
-                                        <div className={styles.car_title}>{car.year} {car.model}</div>
-                                        <div className={styles.others}>
-                                            <div>Electric</div>
-                                            <div>Top speed {car.topSpeed}</div>
-                                            <div className={styles.color}>{car.color}</div>
-                                        </div>
-                                        <div className={styles.price}>Rs.{car.price}</div>
+
+            {(electricCarOrders.length > 0 || gasCarOrders.length > 0) ? (
+                <>
+                    <button className={styles.button}>Buy More</button>
+                    <div className={styles.cardsContainer}>
+                        {/* Render electric car orders */}
+                        {electricCarOrders.map((order) => (
+                            <div key={order._id} className={styles.card}>
+                                <img className={styles.car_img} src={order.car.image} alt={order.car.model} />
+                                <div className={styles.car_details}>
+                                    <div className={styles.car_title}>{order.car.title}</div>
+                                    <div className={styles.others}>
+                                        <div>Electric</div>
+                                        <div>Top speed {order.car.topspeed}</div>
+                                        <div className={styles.color}>{order.car.colour}</div>
                                     </div>
-                                    <div className={styles.bttns}>
-                                        
-                                        <button className={styles.view}>View</button>
-                                    </div>
+                                    <div className={styles.price}>Rs.{order.car.price}</div>
+                                    
                                 </div>
-                            ))}
-                        </div>
-                        </div>         
+                                <div className={styles.bttns}>
+                                
+                                    <Link to={`/electric-booking/${order.car._id}/${'ev'}/${false}`} style={{ textDecoration: 'none' }}>
+                                        <button className={styles.view}>View</button>
+                                    </Link>
+                                    {order.status==='pending' && <div className={styles.status}>Pending</div>}
+                                    {order.status==='declined' && <div className={styles.status}>Declined</div>}
+                                    {order.status==='accepted' && <div className={styles.status}>Accepted</div>}
+                                </div>
+                            </div>
+                        ))}
+
+                        {/* Render gas car orders */}
+                        {gasCarOrders.map((order) => (
+                            <div key={order._id} className={styles.card}>
+                                <img className={styles.car_img} src={order.car.image} alt={order.car.model} />
+                                <div className={styles.car_details}>
+                                    <div className={styles.car_title}>{order.car.title}</div>
+                                    <div className={styles.others}>
+                                        <div>Gas</div>
+                                        <div>Top speed {order.car.topspeed}</div>
+                                        <div className={styles.color}>{order.car.colour}</div>
+                                    </div>
+                                    <div className={styles.price}>Rs.{order.car.price}</div>
+                                </div>
+                                <div className={styles.bttns}>
+                                    <Link to={`/gas-booking/${order.car._id}/${'gas'}/${false}`} style={{ textDecoration: 'none' }}>
+                                        <button className={styles.view}>View</button>
+                                    </Link>
+                                    {order.status==='pending' && <div className={styles.status}>Pending</div>}
+                                    {order.status==='declined' && <div className={styles.status}>Declined</div>}
+                                    {order.status==='accepted' && <div className={styles.status}>Accepted</div>}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </>
+            ) : (
+                <button className={styles.button}>Start Buying</button>
+            )}
+        </div>
     );
 }
 

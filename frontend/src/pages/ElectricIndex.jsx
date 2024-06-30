@@ -19,7 +19,7 @@ function ElectricIndex(){
     
     if(!token){
         return <Navigate to='/sign'/>
-    }
+    } 
         return (
             <>
             {data && <Header username={data.username} />}

@@ -1,15 +1,57 @@
-import React, { useState } from 'react';
-import styles from '../components/Dashboard/User.module.css'
-import logo from '../components/Assets/logo.png'
-import t3p from '../components/Assets/t3p.png'
-import OrderDetails from './Orders.jsx'
-
-
+import React, { useState, useContext, useEffect } from 'react';
+import { Link,Navigate } from 'react-router-dom';
+import axios from 'axios';
+import { store } from '../App';
+import styles from '../components/Dashboard/User.module.css'; 
+import logo from '../components/Assets/logo.png';
+import t3p from '../components/Assets/t3p.png';
+import OrderDetails from './Orders.jsx';
 
 function User() {
-    const [isOrderOpen, setOrderOpen] = useState(false);
+    const [isOrderOpen, setOrderOpen] = useState(true);
     const openOrder = () => setOrderOpen(true);
     const closeOrder = () => setOrderOpen(false);
+    const [token, setToken] = useContext(store);
+    const [userdata, setUserData] = useState(null);
+    const [orderDetails, setOrderDetails] = useState([]);
+
+    useEffect(() => {
+        if (!token) return;
+
+        axios.get('http://localhost:8080/api/myprofile', {
+            headers: {
+                'x-token': token
+            }
+        }).then(res => setUserData(res.data))
+          .catch(err => console.log(err));
+    }, [token]);
+
+    useEffect(() => {
+        if (!token || !userdata) return;
+
+        const fetchOrders = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/api/orders', {
+                    headers: {
+                        'x-token': token,
+                        'x-user-id': userdata._id
+                    }
+                });
+                setOrderDetails(response.data);
+                console.log(response.data);
+                console.log(`Order details:${orderDetails}`)
+            } catch (error) {
+                console.error("Error fetching orders:", error);
+            }
+        };
+
+        fetchOrders();
+    }, [token, userdata]);
+
+    if (!token) {
+        return <Navigate to='/sign' />;
+    }
+
     const [data, setData] = useState([
         {
             id: 1,
@@ -74,12 +116,10 @@ function User() {
     ]);
 
     const startSelling = () => {
-        // Functionality to start selling
         console.log('Start selling');
     };
 
     const sellAgain = () => {
-        // Functionality to sell again
         console.log('Sell again');
     };
 
@@ -89,12 +129,12 @@ function User() {
                 <img className={styles.logo} src={logo} alt="Logo" />
                 <div className={`${styles.orders} ${isOrderOpen ? styles.selected : ''}`} onClick={openOrder}>Orders</div>
                 <div className={`${styles.sales} ${!isOrderOpen ? styles.selected : ''}`} onClick={closeOrder}>Sell</div>
+                <Link to="/dashboard-buyer"><div>Requests</div></Link>
                 <button className={styles.welcome}>Welcome User</button>
             </div>
             <div className={styles.details}>
-                
-                     {isOrderOpen ? (
-                        <OrderDetails />
+                {isOrderOpen ? (
+                    <OrderDetails orderDetails={orderDetails} />
                 ) : (
                     <div className={styles.salesDetails}>
                         <h2>Sales</h2>

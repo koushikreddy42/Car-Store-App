@@ -49,7 +49,7 @@ function App() {
           <Route exact path="/electric-booking/:param1/:param2/:param3" element={<EvsBooking/>}/>
           <Route exact path="/gas-booking/:param1/:param2/:param3" element={<GasBooking/>}/>
           <Route exact path="/dashboard-buyer" element={<BuyerDetails/>}/>
-          <Route exact path="/dashboard-user" element={<User/>}/>
+          <Route exact path="/dashboard" element={<User/>}/>
           <Route exact path="/dashboard-admin" element={<Buyers/>}/>
         </Routes>
     </Router>

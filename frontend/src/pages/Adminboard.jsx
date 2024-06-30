@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState,useContext,useEffect } from 'react';
+import { store } from '../App';
+import { Navigate,Link } from 'react-router-dom';
+import axios from 'axios';
 import styles from '../components/Dashboard/Adminboard.module.css'
 import logo from '../components/Assets/logo.png'
 import { FaCheck, FaTimes } from 'react-icons/fa';
 
 const Buyers = () => {
+    const [adminToken,setAdminToken]=useContext(store)
+    const [admindata,setAdminData]=useState(null)
+    const [buyingFormData, setBuyingFormData] = useState([]);
+    if(!adminToken){
+        return <Navigate to='/admin-sign'/>
+    }
+    useEffect(()=>{
+        axios.get('http://localhost:8080/api/admin-myprofile',{
+                headers:{
+                    'x-token':adminToken
+                }
+            }).then(res=>setAdminData(res.data)).catch(err=>console.log(err))
+    },[])
     const [data, setData] = useState([
         {
             id: 1,
@@ -68,28 +84,73 @@ const Buyers = () => {
         }
     ]);
 
+    useEffect(() => {
+        axios.get('http://localhost:8080/api/get-filess')
+            .then(res => {
+                if (res.data.status === 'ok') {
+                    setBuyingFormData(res.data.data);
+                    // console.log(res.data.data); // This logs the updated buyingFormData
+                } else {
+                    console.error('Error fetching buying form data:', res.data.status);
+                }
+            })
+            .catch(err => console.error('Error fetching buying form data:', err));
+    }, []);
+    
+    // Logging useEffect to see the updated buyingFormData
+    useEffect(() => {
+        console.log(buyingFormData); // This will log the updated state of buyingFormData
+    }, [buyingFormData]);
+
     const [view, setView] = useState('For sale');
 
     
-    const handleVerify = (id) => {
+    const handleVerify = (buyerId, carType, carId,formId) => {
         const confirm = window.confirm('Are you sure? Request will be sent to the car owner.');
         if (confirm) {
-            setData(data.map(buyer => buyer.id === id ? { ...buyer, status: 'Verified' } : buyer));
-        }
+            axios.post('http://localhost:8080/api/admin-accept', { buyerId, carType, carId, formId })
+              .then(response => {
+                // Assuming the backend responds with a message or updated data
+                console.log(response.data); // Log or handle response as needed
+        
+                // Update frontend data if needed
+                setBuyingFormData(buyingFormData.map(buyer => buyer._id === formId ? { ...buyer, adminVerified: 'accepted' } : buyer));
+              })
+              .catch(error => {
+                console.error('Error cancelling request:', error);
+                // Handle error response if necessary
+              });
+          }
     };
     
 
-    const handleCancel = (id) => {
+    const handleCancel = (buyerId, carType, carId,formId) => {
         const confirm = window.confirm('Are you sure? You want to cancel the request?');
-        if(confirm){
-        setData(data.map(buyer => buyer.id === id ? { ...buyer, status: 'Cancelled' } : buyer));
+        
+        if (confirm) {
+          axios.post('http://localhost:8080/api/admin-cancel', { buyerId, carType, carId, formId })
+            .then(response => {
+              // Assuming the backend responds with a message or updated data
+              console.log(response.data); // Log or handle response as needed
+      
+              // Update frontend data if needed
+              setBuyingFormData(buyingFormData.map(buyer => buyer._id === formId ? { ...buyer, adminVerified: 'declined' } : buyer));
+            })
+            .catch(error => {
+              console.error('Error cancelling request:', error);
+              // Handle error response if necessary
+            });
         }
-    };
+      };
 
-    const handleViewDocument = (url) => {
+    const handleViewDocument = (filename) => {
+        const baseUrl = 'http://localhost:8080';
+        const url = `${baseUrl}/files/${encodeURIComponent(filename)}`;
+        console.log(url); // Log the constructed URL for debugging
         window.open(url, '_blank');
     };
     const pendingRequests = data.filter(buyer => buyer.status === null).length;
+    
 
 
     return (
@@ -97,7 +158,7 @@ const Buyers = () => {
             <div className={styles.header}>
                 <img className={styles.logo} src={logo} alt="Logo" />
                 <div>Pending Requests: {pendingRequests}</div>
-                <button className={styles.welcome}>Welcome User</button>
+                <button className={styles.welcome}>Welcome Admin</button>
             </div>
             <div className={styles.startline}>
                 <h2>Buyers Details</h2>
@@ -106,8 +167,8 @@ const Buyers = () => {
                     <option value="Sold">Sold</option>
                 </select>
             </div>
-            {view === 'For sale' ? (
-                data.length > 0 ? (
+            {view === 'For sale'  ? (
+                buyingFormData.length > 0 ? (
                     <div className={styles.tableContainer}>
                         <table className={styles.table}>
                             <thead>
@@ -125,40 +186,38 @@ const Buyers = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map(buyer => (
+                                {buyingFormData.map(buyer => (
                                     <tr key={buyer.id}>
-                                        <td>{buyer.carmodel}</td>
-                                        <td>{buyer.carprice}</td>
-                                        <td>{buyer.FirstName}</td>
-                                        <td>{buyer.LastName}</td>
-                                        <td>{buyer.Email}</td>
+                                        <td>{buyer.carDetails.title}</td>
+                                        <td>{buyer.carDetails.price}</td>
+                                        <td>{buyer.firstName}</td>
+                                        <td>{buyer.lastName}</td>
+                                        <td>{buyer.email}</td>
                                         <td>{buyer.phone}</td>
                                         <td>
-                                            {buyer.address.houseNumber}, {buyer.address.streetAddress},{buyer.address.city}<br />
-                                            {buyer.address.region}, {buyer.address.state}, {buyer.address.zipCode}
+                                            {buyer.houseNo}, {buyer.streetAddress},{buyer.city}<br />
+                                            {buyer.region}, {buyer.state}, {buyer.postalCode}
                                         </td>
                                         <td>
-                                            {buyer.documents.map((doc, index) => (
-                                                <button className={styles.docs} key={index} onClick={() => handleViewDocument(doc)}>
-                                                    View Document {index + 1}
-                                                </button>
-                                            ))}
-                                        </td>
+                                        <button className={styles.docs} onClick={() => handleViewDocument(buyer.pdf)}>
+                                            View Document
+                                        </button>
+                                    </td>
                                         <td>{buyer.comments}</td>
                                         <td>
-                                            {buyer.status === null ? (
+                                            {buyer.adminVerified === 'pending' ? (
                                                 <>
-                                                    <button className={styles.Verify} onClick={() => handleVerify(buyer.id)}>Verify</button>
-                                                    <button className={styles.Cancel} onClick={() => handleCancel(buyer.id)}>Cancel</button>
+                                                    <button className={styles.Verify} onClick={() => handleVerify(buyer.buyerId,buyer.carType,buyer.carDetails._id,buyer._id)}>Verify</button>
+                                                    <button className={styles.Cancel} onClick={() => handleCancel(buyer.buyerId,buyer.carType,buyer.carDetails._id,buyer._id)}>Cancel</button>
                                                 </>
                                             ) : (
-                                                <div className={buyer.status === 'Verified' ? styles.statusVerified : styles.statusCancelled}>
-                                                    {buyer.status === 'Verified' ? (
+                                                <div className={buyer.adminVerified === 'accepted' ? styles.statusVerified : styles.statusCancelled}>
+                                                    {buyer.adminVerified === 'accepted' ? (
                                                         <FaCheck className={styles.statusIcon} />
                                                     ) : (
                                                         <FaTimes className={styles.statusIcon} />
                                                     )}
-                                                      {buyer.status}
+                                                       
                                                 </div>
                                             )}
                                         </td>

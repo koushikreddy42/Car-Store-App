@@ -1,10 +1,28 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const buyingformschema = new mongoose.Schema(
+// Update schema to include both electricCarId and gasCarId
+const buyingFormSchema = new mongoose.Schema(
     {
-        pdf:String,
+        firstName: String,
+        lastName: String,
+        email: String,
+        phone: String,
+        houseNo: String,
+        streetAddress: String,
+        city: String,
+        region: String,
+        postalCode: String,
+        state: String,
+        comments: String,
+        pdf: String,
+        carType: String,
+        buyerId: { type: mongoose.Schema.Types.ObjectId, ref: 'registeruser' },
+        electricCarId: { type: mongoose.Schema.Types.ObjectId, ref: 'electriccarmodel', default: null },
+        gasCarId: { type: mongoose.Schema.Types.ObjectId, ref: 'gascarmodel', default: null },
+        adminVerified: { type: String, default: 'pending' },
+        ownerVerified: { type: String, default: 'pending' }
     },
-    {collection:"buyingform"}
-)
+    { collection: "buyingform" }
+);
 
-mongoose.model("buyingform",buyingformschema)
+mongoose.model("buyingform", buyingFormSchema);

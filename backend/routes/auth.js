@@ -7,7 +7,7 @@ const crypto = require('crypto')
 const sendVerificationEmail = require('../controllers/Mail');
 
 
-function generateVerificationToken() {
+function generateVerificationToken() { 
   return crypto.randomBytes(20).toString('hex');
 }
 

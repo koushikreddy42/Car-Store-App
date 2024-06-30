@@ -1,9 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
+import axios from 'axios';
+import { store } from '../App';
 import styles from '../components/Dashboard/Buyer.module.css'
 import logo from '../components/Assets/logo.png'
 import { FaCheck, FaTimes } from 'react-icons/fa';
 
 const BuyerDetails = () => {
+    const [token, setToken] = useContext(store);
+    const [userdata, setUserData] = useState(null);
+    const [buyingFormData, setBuyingFormData] = useState([]);
+    useEffect(() => {
+        if (!token) return;
+
+        axios.get('http://localhost:8080/api/myprofile', {
+            headers: {
+                'x-token': token
+            }
+        }).then(res => setUserData(res.data))
+          .catch(err => console.log(err));
+    }, [token]);
+
+
+    if (!token) {
+        return <Navigate to='/sign' />;
+    }
     const [data, setData] = useState([
         {
             id: 1,
@@ -68,23 +89,70 @@ const BuyerDetails = () => {
         }
     ]);
 
+
+    useEffect(() => {
+        if (!userdata) return;
+
+        const userId = userdata._id;
+        axios.get(`http://localhost:8080/api/get-requests?userId=${userId}`)
+            .then(res => {
+                if (res.data.status === 'ok') {
+                    setBuyingFormData(res.data.data);
+                } else {
+                    console.error('Error fetching buying form data:', res.data.status);
+                }
+            })
+            .catch(err => console.error('Error fetching buying form data:', err));
+    }, [userdata]);
+
+    // Log the updated buyingFormData whenever it changes
+    useEffect(() => {
+        console.log(buyingFormData);
+    }, [buyingFormData]);
+
     const [view, setView] = useState('For sale');
 
-    const handleAccept = (id,FirstName) => {
-        const confirm = window.confirm(`Accept request from ${FirstName}?`);
-        if(confirm){
-        setData(data.map(buyer => buyer.id === id ? { ...buyer, status: 'Accepted' } : buyer));
+    const handleAccept = (buyerId, carType, carId,formId) => {
+        const confirm = window.confirm('Are you sure? Request will be sent to the car owner.');
+        if (confirm) {
+            axios.post('http://localhost:8080/api/owner-accept', { buyerId, carType, carId, formId })
+              .then(response => {
+                // Assuming the backend responds with a message or updated data
+                console.log(response.data); // Log or handle response as needed
+        
+                // Update frontend data if needed
+                setBuyingFormData(buyingFormData.map(buyer => buyer._id === formId ? { ...buyer, ownerVerified: 'accepted' } : buyer));
+              })
+              .catch(error => {
+                console.error('Error cancelling request:', error);
+                // Handle error response if necessary
+              });
+          }
+    };
+
+    const handleReject = (buyerId, carType, carId,formId) => {
+        const confirm = window.confirm('Are you sure? You want to cancel the request?');
+        
+        if (confirm) {
+          axios.post('http://localhost:8080/api/owner-cancel', { buyerId, carType, carId, formId })
+            .then(response => {
+              // Assuming the backend responds with a message or updated data
+              console.log(response.data); // Log or handle response as needed
+      
+              // Update frontend data if needed
+              setBuyingFormData(buyingFormData.map(buyer => buyer._id === formId ? { ...buyer, ownerVerified: 'declined' } : buyer));
+            })
+            .catch(error => {
+              console.error('Error cancelling request:', error);
+              // Handle error response if necessary
+            });
         }
     };
 
-    const handleReject = (id,FirstName) => {
-        const confirm = window.confirm(`Reject request from ${FirstName}?`);
-        if(confirm){
-        setData(data.map(buyer => buyer.id === id ? { ...buyer, status: 'Rejected' } : buyer));
-        }
-    };
-
-    const handleViewDocument = (url) => {
+    const handleViewDocument = (filename) => {
+        const baseUrl = 'http://localhost:8080';
+        const url = `${baseUrl}/files/${encodeURIComponent(filename)}`;
+        console.log(url); // Log the constructed URL for debugging
         window.open(url, '_blank');
     };
     const pendingRequests = data.filter(buyer => buyer.status === null).length;
@@ -95,18 +163,17 @@ const BuyerDetails = () => {
             <div className={styles.header}>
                 <img className={styles.logo} src={logo} alt="Logo" />
                 <div>Pending Requests: {pendingRequests}</div>
-                <button className={styles.welcome}>Welcome User</button>
+                <button className={styles.welcome}>Welcome Admin</button>
             </div>
             <div className={styles.startline}>
-                <h2>Buyers</h2>
-                <p>Here you can find the Buyers details...</p>
+                <h2>Buyers Details</h2>
                 <select className={styles.viewSelector} value={view} onChange={(e) => setView(e.target.value)}>
                     <option value="For sale">For sale</option>
                     <option value="Sold">Sold</option>
                 </select>
             </div>
-            {view === 'For sale' ? (
-                data.length > 0 ? (
+            {view === 'For sale'  ? (
+                buyingFormData.length > 0 ? (
                     <div className={styles.tableContainer}>
                         <table className={styles.table}>
                             <thead>
@@ -124,40 +191,38 @@ const BuyerDetails = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map(buyer => (
+                                {buyingFormData.map(buyer => (
                                     <tr key={buyer.id}>
-                                        <td>{buyer.carmodel}</td>
-                                        <td>{buyer.carprice}</td>
-                                        <td>{buyer.FirstName}</td>
-                                        <td>{buyer.LastName}</td>
-                                        <td>{buyer.Email}</td>
+                                        <td>{buyer.carDetails.title}</td>
+                                        <td>{buyer.carDetails.price}</td>
+                                        <td>{buyer.firstName}</td>
+                                        <td>{buyer.lastName}</td>
+                                        <td>{buyer.email}</td>
                                         <td>{buyer.phone}</td>
                                         <td>
-                                            {buyer.address.houseNumber}, {buyer.address.streetAddress},{buyer.address.city}<br />
-                                            {buyer.address.region}, {buyer.address.state}, {buyer.address.zipCode}
+                                            {buyer.houseNo}, {buyer.streetAddress},{buyer.city}<br />
+                                            {buyer.region}, {buyer.state}, {buyer.postalCode}
                                         </td>
                                         <td>
-                                            {buyer.documents.map((doc, index) => (
-                                                <button className={styles.docs} key={index} onClick={() => handleViewDocument(doc)}>
-                                                    View Document {index + 1}
-                                                </button>
-                                            ))}
-                                        </td>
+                                        <button className={styles.docs} onClick={() => handleViewDocument(buyer.pdf)}>
+                                            View Document
+                                        </button>
+                                    </td>
                                         <td>{buyer.comments}</td>
                                         <td>
-                                            {buyer.status === null ? (
+                                            {buyer.ownerVerified === 'pending' ? (
                                                 <>
-                                                    <button className={styles.Accept} onClick={() => handleAccept(buyer.id,buyer.FirstName)}>Accept</button>
-                                                    <button className={styles.Reject} onClick={() => handleReject(buyer.id,buyer.FirstName)}>Reject</button>
+                                                    <button className={styles.Accept} onClick={() => handleAccept(buyer.buyerId,buyer.carType,buyer.carDetails._id,buyer._id)}>Accept</button>
+                                                    <button className={styles.Reject} onClick={() => handleReject(buyer.buyerId,buyer.carType,buyer.carDetails._id,buyer._id)}>Reject</button>
                                                 </>
                                             ) : (
-                                                <div className={buyer.status === 'Accepted' ? styles.statusAccepted : styles.statusRejected}>
-                                                    {buyer.status === 'Accepted' ? (
+                                                <div className={buyer.ownerVerified === 'accepted' ? styles.statusAccepted : styles.statusRejected}>
+                                                    {buyer.ownerVerified === 'accepted' ? (
                                                         <FaCheck className={styles.statusIcon} />
                                                     ) : (
                                                         <FaTimes className={styles.statusIcon} />
                                                     )}
-                                                    {buyer.status}
+                                                      
                                                 </div>
                                             )}
                                         </td>
