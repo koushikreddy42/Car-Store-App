@@ -42,6 +42,7 @@ function Booking(){
                 }
             }).then(res=>setData(res.data)).catch(err=>console.log(err))
     },[])
+    if(data)console.log(data)
     
     if(!token){
         return <Navigate to='/sign'/>
@@ -111,7 +112,7 @@ function Booking(){
   return(
   <div className={styles.container}>
     {
-        car?(
+        car&&data?(
             <>
     <div className={styles.row}>
 
@@ -250,7 +251,7 @@ function Booking(){
      
 
     </div>
-     <PlaceOrder isOpen={isPlaceOrderOpen} onClose={closePlaceOrder}/>
+     <PlaceOrder isOpen={isPlaceOrderOpen} onClose={closePlaceOrder} carType="ev" buyerId={data._id} carId={car._id}/>
      </>) : (
         <p>Loading...</p> // Placeholder for when car data is being fetched
       )

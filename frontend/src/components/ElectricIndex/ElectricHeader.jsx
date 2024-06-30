@@ -9,22 +9,23 @@ export const Header = (props) => {
   const [token,setToken]=useContext(store)
   return (
     <div className={styles.header}>
-        <div className={styles.header_logo}>
+        <div className={styles.header_logo}> 
             <img src={logo} class={styles.logo_image} alt=""></img>
         </div>
         <div class={styles.category_div}>
         <Link to="/electric"><button class={styles.category_button}>EVs</button></Link>
         <Link to="/gas"><button class={styles.category_button}>Gas</button></Link>
         <Link to="/electric-form"><button class={styles.category_button}>Sell</button></Link>
+        <Link to="/dashboard"><button class={styles.category_button}>Dashboard</button></Link>
         <Link to="/wishlist">
         <button className={styles.category_button}>
-        <FaShoppingCart className="cart-icon" style={{ color: 'white' }} />
+        
         <span>WishList</span>
         </button>
         </Link>
         <button class={styles.category_button} style={{ color: 'red', border: '1px solid red'  }} onClick={()=>setToken(null)}>Logout</button>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', color: 'white',marginLeft:100 }}>
+        <div style={{ display: 'flex', alignItems: 'center', color: 'white',marginLeft:50 }}>
       <FaUser style={{ fontSize: '1.2em', marginRight: '10px', color: 'white' }} />
       <span style={{ fontSize: '1.2em', fontWeight: '500', color: 'white',fontFamily: 'Roboto, sans-serif' }}>Welcome {props.username}</span>
     </div>

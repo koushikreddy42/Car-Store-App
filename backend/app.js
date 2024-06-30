@@ -10,18 +10,19 @@ const formRouter = require('./routes/form')
 const listRouter = require('./routes/list')
 const permissionRouter = require('./routes/permission')
 const wishListRouter = require('./routes/wishlist')
+const uploadRouter = require('./routes/buying_form')
 const mongoose=require('mongoose')
 
 //middleware
 app.use(cors());
 app.use(express.json());
-
+app.use("/files",express.static("files"))
 
 //routes
 app.get('/',(req,res)=>{
     res.send('hello');
 })
-app.use('/api',authRouter,adminAuthRouter,carRouter,mailRouter,formRouter,listRouter,permissionRouter,wishListRouter)
+app.use('/api',authRouter,adminAuthRouter,carRouter,mailRouter,formRouter,listRouter,permissionRouter,wishListRouter,uploadRouter)
 
 const port=8080;
 

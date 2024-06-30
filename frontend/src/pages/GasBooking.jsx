@@ -108,10 +108,12 @@ function Booking(){
     }
   };
 
+  if(data) console.log(data._id)
+
   return(
   <div className={styles.container}>
     {
-        car?(
+        car&&data?(
             <>
     <div className={styles.row}>
 
@@ -262,7 +264,7 @@ function Booking(){
      
 
     </div>
-     <PlaceOrder isOpen={isPlaceOrderOpen} onClose={closePlaceOrder}/>
+    <PlaceOrder isOpen={isPlaceOrderOpen} onClose={closePlaceOrder} carType="gas" buyerId={data._id} carId={car._id}/>
      </>) : (
         <p>Loading...</p> // Placeholder for when car data is being fetched
       )

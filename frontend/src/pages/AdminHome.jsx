@@ -8,7 +8,7 @@ import fire from '../components/Assets/fire.png'
 import electric from '../components/Assets/evs.png'
 
 function AdminHome(){
-    const [adminToken,setAdminToken]=useContext(store)
+    const [adminToken,setAdminToken]=useContext(store) 
     const [data,setData]=useState(null)
     if(!adminToken){
         return <Navigate to='/admin-sign'/>
@@ -32,7 +32,7 @@ function AdminHome(){
                 
                     <button className={styles.gas}><img  className={styles.icon}   src={fire} /> Gas</button>
                 </div></Link>
-                <div className={styles.options}><button className={styles.customers}>Customers</button></div>
+                <Link to="/dashboard-admin"><div className={styles.options}><button className={styles.customers}>Orders</button></div></Link>
              </div>
         </div>
     );
