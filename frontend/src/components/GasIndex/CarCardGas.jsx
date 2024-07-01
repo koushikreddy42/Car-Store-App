@@ -60,6 +60,7 @@ export const CarCardGas = (props) => {
   const param2='gas';
   const param3=isFavorite;
   return (
+    data&&
     <div className={styles.card}>
         <button
         onClick={toggleFavorite}
@@ -96,12 +97,12 @@ export const CarCardGas = (props) => {
                 <div>0-60mph</div>
                 <div>{props.time60}</div>
             </div>
-            <div className={styles.detail}>
+            <div className={styles.detail}> 
                 <div>Mileage</div>
                 <div>{props.mileage}</div>
             </div>
         </div>
-        <div className={styles.features_div}>
+        <div className={styles.features_div}> 
             <div class="grid-item">{props.engine}L Turbo Engine</div>
             <div class="grid-item">{props.colour}</div>
             <div class="grid-item">{props.gearbox} Transmission</div>
@@ -117,10 +118,18 @@ export const CarCardGas = (props) => {
             <div className={styles.cost}>
                 ${props.price}
             </div>
-            <Link to={`/gas-booking/${param1}/${param2}/${param3}`}><button className={styles.book}>
-          Book Now
-        </button>
-        </Link>
+            {
+              props.isSold ? (
+                <div className={styles.booked}>Sold</div>
+              ):(
+   props.ownerId===data._id?(<div className={styles.booked}>In Sale</div>):(
+    <>
+      <Link to={`/gas-booking/${param1}/${param2}/${param3}`}>
+        <button className={styles.book}>Book Now</button>
+      </Link>
+    </>
+  ))
+}
         </div>
     </div>
   )

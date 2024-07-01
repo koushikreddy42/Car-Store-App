@@ -330,16 +330,33 @@ router.post('/owner-accept', async (req, res) => {
       const electricOrder = user.electricCarOrders.find(order => order.car.toString() === carId);
       if (electricOrder && electricOrder.status === 'pending') {
         electricOrder.status = 'accepted';
+      
       } else {
         return res.status(404).json({ message: 'Electric car order not found or not pending' });
       }
+      const car = await ElectricCarModel.findById(carId);
+
+      if (!car) {
+      return res.status(404).json({ message: 'Electric Car not found' });
+      }
+
+      car.isSold = true;
+      await car.save();
     } else if (carType === 'gas') {
       const gasOrder = user.gasCarOrders.find(order => order.car.toString() === carId);
       if (gasOrder && gasOrder.status === 'pending') {
         gasOrder.status = 'accepted';
       } else {
-        return res.status(404).json({ message: 'Electric car order not found or not pending' });
+        return res.status(404).json({ message: 'Gas car order not found or not pending' });
       }
+      const car = await GasCarModel.findById(carId);
+
+      if (!car) {
+      return res.status(404).json({ message: 'Gas Car not found' });
+      }
+
+      car.isSold = true;
+      await car.save();
     } else {
       return res.status(400).json({ message: 'Invalid car type' });
     }

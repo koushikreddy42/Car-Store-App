@@ -147,6 +147,8 @@ useEffect(() => {
       name={item.addedBy.username}
       _id={item._id}
       isFavorite={favorites.some(fav => fav.car._id === item._id)}
+      isSold={item.isSold}
+      ownerId={item.addedBy._id}
     />
   ))
 

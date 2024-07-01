@@ -68,14 +68,14 @@ const OrderDetails = ({ orderDetails }) => {
                                     </Link>
                                     {order.status==='pending' && <div className={styles.status}>Pending</div>}
                                     {order.status==='declined' && <div className={styles.status}>Declined</div>}
-                                    {order.status==='accepted' && <div className={styles.status}>Accepted</div>}
+                                    {order.status==='accepted' && <div className={styles.status}>Sold</div>}
                                 </div>
                             </div>
                         ))}
                     </div>
                 </>
             ) : (
-                <button className={styles.button}>Start Buying</button>
+                <Link to="/electric"><button className={styles.button}>Start Buying</button></Link>
             )}
         </div>
     );
