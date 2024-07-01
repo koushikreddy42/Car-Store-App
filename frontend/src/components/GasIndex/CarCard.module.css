@@ -76,6 +76,12 @@ p{
     transition: background-color 0.3s ease;
   }
 
+  .booked{
+    padding:13px 30px;
+    border-radius:30px;
+    border:1px solid;
+  }
+
   .book:hover{
     background-color: rgba(128, 128, 128, 0.364);
   }

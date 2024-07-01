@@ -149,7 +149,7 @@ const Buyers = () => {
         console.log(url); // Log the constructed URL for debugging
         window.open(url, '_blank');
     };
-    const pendingRequests = data.filter(buyer => buyer.status === null).length;
+    const pendingRequests = buyingFormData.filter(buyer => buyer.adminVerified === 'pending').length;
     
 
 
@@ -230,7 +230,7 @@ const Buyers = () => {
                     <p>No buyers yet!</p>
                 )
             ) : (
-                data.length > 0 ? (
+                buyingFormData.length > 0 ? (
                     <div className={styles.tableContainer}>
                         <table className={styles.table}>
                             <thead>
@@ -247,25 +247,24 @@ const Buyers = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map(buyer => (
+                                {buyingFormData.map(buyer => (
+                                    buyer.ownerVerified==='accepted'&&
                                     <tr key={buyer.id}>
-                                        <td>{buyer.carmodel}</td>
-                                        <td>{buyer.carprice}</td>
-                                        <td>{buyer.FirstName}</td>
-                                        <td>{buyer.LastName}</td>
-                                        <td>{buyer.Email}</td>
+                                        <td>{buyer.carDetails.title}</td>
+                                        <td>{buyer.carDetails.price}</td>
+                                        <td>{buyer.firstName}</td>
+                                        <td>{buyer.lastName}</td>
+                                        <td>{buyer.email}</td>
                                         <td>{buyer.phone}</td>
                                         <td>
-                                            {buyer.address.houseNumber}, {buyer.address.streetAddress},{buyer.address.city}<br />
-                                            {buyer.address.region}, {buyer.address.state}, {buyer.address.zipCode}
+                                            {buyer.houseNo}, {buyer.streetAddress},{buyer.city}<br />
+                                            {buyer.region}, {buyer.state}, {buyer.postalCode}
                                         </td>
                                         <td>
-                                            {buyer.documents.map((doc, index) => (
-                                                <button className={styles.docs} key={index} onClick={() => handleViewDocument(doc)}>
-                                                    View Document {index + 1}
-                                                </button>
-                                            ))}
-                                        </td>
+                                        <button className={styles.docs} onClick={() => handleViewDocument(buyer.pdf)}>
+                                            View Document
+                                        </button>
+                                    </td>
                                         <td>{buyer.comments}</td>
                                     </tr>
                                 ))}
@@ -274,8 +273,7 @@ const Buyers = () => {
                     </div>
                 ) : (
                     <p>No buyers yet!</p>
-                )
-            )}
+                ))}
         </div>
     );
 }

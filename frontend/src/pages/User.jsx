@@ -8,7 +8,7 @@ import t3p from '../components/Assets/t3p.png';
 import OrderDetails from './Orders.jsx';
 
 function User() {
-    const [isOrderOpen, setOrderOpen] = useState(true);
+    const [isOrderOpen, setOrderOpen] = useState(false);
     const openOrder = () => setOrderOpen(true);
     const closeOrder = () => setOrderOpen(false);
     const [token, setToken] = useContext(store);
@@ -52,69 +52,128 @@ function User() {
         return <Navigate to='/sign' />;
     }
 
-    const [data, setData] = useState([
-        {
-            id: 1,
-            image: t3p,
-            model: 'Tesla Model 3 Performance',
-            year: '2020',
-            price: '54,000',
-            topSpeed: '162',
-            time60: '3.2',
-            range: '300',
-            color: 'Solid Black Paint',
-            interior: 'Black Premium Interior',
-            wheel: "20'' Aero Wheels",
-            description: 'Model 3 comes with the option of dual motor all-wheel drive, Performance Wheels and Brakes for total control, in all weather conditions and a spoiler improves stability at high speeds allowing Model 3 to accelerate from 0-60 mph in as little as 3.2 seconds.',
-            status: "Sold"
-        },
-        {
-            id: 2,
-            image: t3p,
-            model: 'Tesla Model 3 Standard Plus',
-            year: '2020',
-            price: '41,000',
-            topSpeed: '140',
-            time60: '5.3',
-            range: '250',
-            color: 'Pearl White Paint',
-            interior: 'Black Premium Interior',
-            wheel: "18'' Aero Wheels",
-            description: 'Model 3 comes with the option of dual motor all-wheel drive, Performance Wheels and Brakes for total control, in all weather conditions and a spoiler improves stability at high speeds allowing Model 3 to accelerate from 0-60 mph in as little as 3.2 seconds.',
-            status: "Not Sold"
-        },
-        {
-            id: 3,
-            image: t3p,
-            model: 'Tesla Model S Performance',
-            year: '2020',
-            price: '102,000',
-            topSpeed: '165',
-            time60: '2.4',
-            range: '348',
-            color: 'Red Metallic Paint',
-            interior: 'Black Premium Interior',
-            wheel: "20'' Silver Alloy Wheels",
-            description: "Model S sets an industry standard for performance and safety. Telsa's all-electric powertrain delivers unparalleled performance in all weather conditions - with Dual Motor All-Wheel Drive, adaptive air suspension and ludicrous acceleration.",
-            status: "Not Sold"
-        },
-        {
-            id: 4,
-            image: t3p,
-            model: 'Tesla Model S Long Range',
-            year: '2020',
-            price: '81,000',
-            topSpeed: '155',
-            time60: '3.7',
-            range: '391',
-            color: 'Matte Grey Paint',
-            interior: 'Dark Ash Wood Interior',
-            wheel: "19'' Tempest Wheels",
-            description: "Model S sets an industry standard for performance and safety. Telsa's all-electric powertrain delivers unparalleled performance in all weather conditions - with Dual Motor All-Wheel Drive, adaptive air suspension and ludicrous acceleration.",
-            status: "Sold"
-        }
-    ]);
+    // const [data, setData] = useState([
+    //     {
+    //         id: 1,
+    //         image: t3p,
+    //         model: 'Tesla Model 3 Performance',
+    //         year: '2020',
+    //         price: '54,000',
+    //         topSpeed: '162',
+    //         time60: '3.2',
+    //         range: '300',
+    //         color: 'Solid Black Paint',
+    //         interior: 'Black Premium Interior',
+    //         wheel: "20'' Aero Wheels",
+    //         description: 'Model 3 comes with the option of dual motor all-wheel drive, Performance Wheels and Brakes for total control, in all weather conditions and a spoiler improves stability at high speeds allowing Model 3 to accelerate from 0-60 mph in as little as 3.2 seconds.',
+    //         status: "Sold"
+    //     },
+    //     {
+    //         id: 2,
+    //         image: t3p,
+    //         model: 'Tesla Model 3 Standard Plus',
+    //         year: '2020',
+    //         price: '41,000',
+    //         topSpeed: '140',
+    //         time60: '5.3',
+    //         range: '250',
+    //         color: 'Pearl White Paint',
+    //         interior: 'Black Premium Interior',
+    //         wheel: "18'' Aero Wheels",
+    //         description: 'Model 3 comes with the option of dual motor all-wheel drive, Performance Wheels and Brakes for total control, in all weather conditions and a spoiler improves stability at high speeds allowing Model 3 to accelerate from 0-60 mph in as little as 3.2 seconds.',
+    //         status: "Not Sold"
+    //     },
+    //     {
+    //         id: 3,
+    //         image: t3p,
+    //         model: 'Tesla Model S Performance',
+    //         year: '2020',
+    //         price: '102,000',
+    //         topSpeed: '165',
+    //         time60: '2.4',
+    //         range: '348',
+    //         color: 'Red Metallic Paint',
+    //         interior: 'Black Premium Interior',
+    //         wheel: "20'' Silver Alloy Wheels",
+    //         description: "Model S sets an industry standard for performance and safety. Telsa's all-electric powertrain delivers unparalleled performance in all weather conditions - with Dual Motor All-Wheel Drive, adaptive air suspension and ludicrous acceleration.",
+    //         status: "Not Sold"
+    //     },
+    //     {
+    //         id: 4,
+    //         image: t3p,
+    //         model: 'Tesla Model S Long Range',
+    //         year: '2020',
+    //         price: '81,000',
+    //         topSpeed: '155',
+    //         time60: '3.7',
+    //         range: '391',
+    //         color: 'Matte Grey Paint',
+    //         interior: 'Dark Ash Wood Interior',
+    //         wheel: "19'' Tempest Wheels",
+    //         description: "Model S sets an industry standard for performance and safety. Telsa's all-electric powertrain delivers unparalleled performance in all weather conditions - with Dual Motor All-Wheel Drive, adaptive air suspension and ludicrous acceleration.",
+    //         status: "Sold"
+    //     }
+    // ]);
+    const [electricData, setElectricData] = useState([]);
+    const [gasData, setGasData] = useState([]);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            if (userdata) {
+                console.log(userdata._id);
+                try {
+                    const response = await axios.get(`http://localhost:8080/api/owner-cars?userId=${userdata._id}`);
+                    const { electricCars, gasCars } = response.data;
+
+                    // Map electric cars
+                    const mappedElectricCars = electricCars.map((car, index) => ({
+                        id: index + 1,
+                        image: car.image,
+                        model: car.title,
+                        year: car.year,
+                        price: car.price,
+                        topSpeed: car.topspeed,
+                        time60: car.time60,
+                        range: car.range,
+                        color: car.colour,
+                        interior: car.interior,
+                        wheel: car.wheel,
+                        description: car.description,
+                        status: car.isSold?'Sold':'In Sale'
+                    }));
+
+                    // Map gas cars
+                    const mappedGasCars = gasCars.map((car, index) => ({
+                        id: index + 1,
+                        image: car.image,
+                        model: car.title,
+                        year: car.year,
+                        price: car.price,
+                        topSpeed: car.topspeed,
+                        time60: car.time60,
+                        range: car.range,
+                        color: car.colour,
+                        interior: car.interior,
+                        wheel: car.wheel,
+                        description: car.description,
+                        status: car.isSold?'Sold':'In Sale'
+                    }));
+
+                    // Update state
+                    setElectricData(mappedElectricCars);
+                    setGasData(mappedGasCars);
+                    // setLoading(false);
+                } catch (err) {
+                    console.error("Error fetching cars:", err);
+                    // setError(err.message);
+                    // setLoading(false);
+                }
+            }
+        };
+
+        fetchData();
+    }, [userdata]);
+    // if(electricData.length>0) console.log(electricData)
     const startSelling = () => {
         console.log('Start selling');
     };
@@ -122,15 +181,18 @@ function User() {
     const sellAgain = () => {
         console.log('Sell again');
     };
+    const combinedData = [...electricData, ...gasData];
+    console.log(combinedData)
 
     return (
+        userdata&&
         <div className={styles.page}>
             <div className={styles.header}>
                 <img className={styles.logo} src={logo} alt="Logo" />
                 <div className={`${styles.orders} ${isOrderOpen ? styles.selected : ''}`} onClick={openOrder}>Orders</div>
                 <div className={`${styles.sales} ${!isOrderOpen ? styles.selected : ''}`} onClick={closeOrder}>Sell</div>
                 <Link to="/dashboard-buyer"><div>Requests</div></Link>
-                <button className={styles.welcome}>Welcome User</button>
+                <button className={styles.welcome}>Welcome {userdata.username}</button>
             </div>
             <div className={styles.details}>
                 {isOrderOpen ? (
@@ -139,9 +201,9 @@ function User() {
                     <div className={styles.salesDetails}>
                         <h2>Sales</h2>
                         <p>Here you can find the sales information...</p>
-                        {data.length > 0 ? (
+                        {combinedData.length > 0 ? (
                             <>
-                                <button onClick={sellAgain} className={styles.button}>Sell Again</button>
+                                {/* <button onClick={sellAgain} className={styles.button}>Sell Again</button> */}
                                 <div className={styles.tableContainer}>
                                     <table className={styles.table}>
                                         <thead>
@@ -158,11 +220,11 @@ function User() {
                                                 <th>Wheel</th>
                                                 <th>Description</th>
                                                 <th>Status</th>
-                                                <th>Buyer Details</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {data.map(car => (
+                                            {combinedData.map(car => (
                                                 <tr key={car.id}>
                                                     <td>
                                                         <img className={styles.image} src={car.image} alt={car.model} />
@@ -178,9 +240,7 @@ function User() {
                                                     <td>{car.wheel}</td>
                                                     <td>{car.description}</td>
                                                     <td>{car.status}</td>
-                                                    <td>
-                                                        <button className={styles.view}>View</button>
-                                                    </td>
+                                                    
                                                 </tr>
                                             ))}
                                         </tbody>

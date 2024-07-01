@@ -94,7 +94,7 @@ const BuyerDetails = () => {
         if (!userdata) return;
 
         const userId = userdata._id;
-        axios.get(`http://localhost:8080/api/get-requests?userId=${userId}`)
+        axios.get(`http://localhost:8080/api/get-requests?userId=${userId}`) 
             .then(res => {
                 if (res.data.status === 'ok') {
                     setBuyingFormData(res.data.data);
@@ -123,7 +123,7 @@ const BuyerDetails = () => {
                 // Update frontend data if needed
                 setBuyingFormData(buyingFormData.map(buyer => buyer._id === formId ? { ...buyer, ownerVerified: 'accepted' } : buyer));
               })
-              .catch(error => {
+              .catch(error => { 
                 console.error('Error cancelling request:', error);
                 // Handle error response if necessary
               });
@@ -155,15 +155,16 @@ const BuyerDetails = () => {
         console.log(url); // Log the constructed URL for debugging
         window.open(url, '_blank');
     };
-    const pendingRequests = data.filter(buyer => buyer.status === null).length;
+    const pendingRequests = buyingFormData.filter(buyer => buyer.ownerVerified === 'pending').length;
 
 
     return (
+        userdata&&
         <div className={styles.BuyerDetails}>
             <div className={styles.header}>
                 <img className={styles.logo} src={logo} alt="Logo" />
                 <div>Pending Requests: {pendingRequests}</div>
-                <button className={styles.welcome}>Welcome Admin</button>
+                <button className={styles.welcome}>Welcome {userdata.username}</button>
             </div>
             <div className={styles.startline}>
                 <h2>Buyers Details</h2>
@@ -235,7 +236,7 @@ const BuyerDetails = () => {
                     <p>No buyers yet!</p>
                 )
             ) : (
-                data.length > 0 ? (
+                buyingFormData.length > 0 ? (
                     <div className={styles.tableContainer}>
                         <table className={styles.table}>
                             <thead>
@@ -252,25 +253,24 @@ const BuyerDetails = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map(buyer => (
+                                {buyingFormData.map(buyer => (
+                                    buyer.ownerVerified==='accepted'&&
                                     <tr key={buyer.id}>
-                                        <td>{buyer.carmodel}</td>
-                                        <td>{buyer.carprice}</td>
-                                        <td>{buyer.FirstName}</td>
-                                        <td>{buyer.LastName}</td>
-                                        <td>{buyer.Email}</td>
+                                        <td>{buyer.carDetails.title}</td>
+                                        <td>{buyer.carDetails.price}</td>
+                                        <td>{buyer.firstName}</td>
+                                        <td>{buyer.lastName}</td>
+                                        <td>{buyer.email}</td>
                                         <td>{buyer.phone}</td>
                                         <td>
-                                            {buyer.address.houseNumber}, {buyer.address.streetAddress},{buyer.address.city}<br />
-                                            {buyer.address.region}, {buyer.address.state}, {buyer.address.zipCode}
+                                            {buyer.houseNo}, {buyer.streetAddress},{buyer.city}<br />
+                                            {buyer.region}, {buyer.state}, {buyer.postalCode}
                                         </td>
                                         <td>
-                                            {buyer.documents.map((doc, index) => (
-                                                <button className={styles.docs} key={index} onClick={() => handleViewDocument(doc)}>
-                                                    View Document {index + 1}
-                                                </button>
-                                            ))}
-                                        </td>
+                                        <button className={styles.docs} onClick={() => handleViewDocument(buyer.pdf)}>
+                                            View Document
+                                        </button>
+                                    </td>
                                         <td>{buyer.comments}</td>
                                     </tr>
                                 ))}
