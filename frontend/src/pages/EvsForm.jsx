@@ -55,7 +55,8 @@ function EvsForm() {
         safety,
         performance,
         image: postImage.myFile,
-        addedBy:data._id
+        addedBy:data._id,
+        isAdmin:false
       };
   
       const response = await axios.post('http://localhost:8080/api/electric-form', formData);

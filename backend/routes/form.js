@@ -3,6 +3,7 @@ const router = express.Router();
 const electriccarmodel = require('../models/ElectricCarModel');
 const gascarmodel = require('../models/GasCarModel');
 const registeruser = require('../models/RegisterUserModel');
+const adminuser = require('../models/AdminUserModel')
 
 router.route('/electric-form').post(async (req, res) => {
     try {
@@ -22,7 +23,8 @@ router.route('/electric-form').post(async (req, res) => {
             technology,
             safety,
             performance,
-            addedBy
+            addedBy,
+            isAdmin
         } = req.body;
 
         const newElectricCar = new electriccarmodel({
@@ -41,17 +43,33 @@ router.route('/electric-form').post(async (req, res) => {
             technology,
             safety,
             performance,
-            addedBy
+            addedBy,
+            isAdmin,
+            isDisplayed: isAdmin
         });
 
         const savedElectricCar = await newElectricCar.save();
 
         // Update the user's addedCars array
-        await registeruser.findByIdAndUpdate(
-            addedBy,
-            { $push: { addedElectricCars: savedElectricCar._id } },
-            { new: true }
-        );
+        if (isAdmin) {
+            // Find the admin user (assuming there's only one)
+            const admin = await adminuser.findOne();
+            if (admin) {
+                // Update the admin's addedElectricCars array
+                await adminuser.findByIdAndUpdate(
+                    admin._id,
+                    { $push: { addedElectricCars: savedElectricCar._id } },
+                    { new: true }
+                );
+            }
+        } else {
+            // Update the regular user's addedCars array
+            await registeruser.findByIdAndUpdate(
+                addedBy,
+                { $push: { addedElectricCars: savedElectricCar._id } },
+                { new: true }
+            );
+        }
 
         res.json('Successfully uploaded car');
     } catch (error) {
@@ -82,7 +100,8 @@ router.route('/gas-form').post(async (req, res) => {
             performance,
             cylinders,
             drivetrain,
-            description, 
+            description,
+            isAdmin 
         } = req.body;
 
         const newGasCar = new gascarmodel({
@@ -106,16 +125,32 @@ router.route('/gas-form').post(async (req, res) => {
             cylinders,
             drivetrain,
             description,
+            isAdmin,
+            isDisplayed: isAdmin
         });
 
         const savedGasCar = await newGasCar.save();
 
         // Update the user's addedCars array
-        await registeruser.findByIdAndUpdate(
-            addedBy,
-            { $push: { addedGasCars: savedGasCar._id } },
-            { new: true }
-        );
+        if (isAdmin) {
+            // Find the admin user (assuming there's only one)
+            const admin = await adminuser.findOne();
+            if (admin) {
+                // Update the admin's addedElectricCars array
+                await adminuser.findByIdAndUpdate(
+                    admin._id,
+                    { $push: { addedGasCars: savedGasCar._id } },
+                    { new: true }
+                );
+            }
+        } else {
+            // Update the regular user's addedCars array
+            await registeruser.findByIdAndUpdate(
+                addedBy,
+                { $push: { addedGasCars: savedGasCar._id } },
+                { new: true }
+            );
+        }
 
         res.json('Successfully uploaded car');
     } catch (error) {

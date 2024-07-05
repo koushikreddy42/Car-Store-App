@@ -264,10 +264,10 @@ function Booking(){
      
 
     </div>
-    <PlaceOrder isOpen={isPlaceOrderOpen} onClose={closePlaceOrder} carType="gas" buyerId={data._id} carId={car._id}/>
+    <PlaceOrder isOpen={isPlaceOrderOpen} onClose={closePlaceOrder} carType="gas" buyerId={data._id} carId={car._id} isAdmin={car.isAdmin}/>
      </>) : (
         <p>Loading...</p> // Placeholder for when car data is being fetched
-      )
+      ) 
      }
   </div>
   );

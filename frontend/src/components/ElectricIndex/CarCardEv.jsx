@@ -87,7 +87,9 @@ export const CarCardEv = (props) => {
       </button>
       <div className="" style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
         <div className={styles.title}>{props.title}</div>
-        <div className="" style={{fontSize:"19px"}}>Owned by: {props.name}</div>
+        <div className="" style={{fontSize:"19px"}}>
+  {props.isAdmin ? "Owned by: Admin" : `Owned by: ${props.name}`}
+</div>
       </div>
       <div className={styles.img_div}><img className={styles.img} src={props.image} alt={props.title} /></div>
       
@@ -103,7 +105,7 @@ export const CarCardEv = (props) => {
         <div className={styles.detail}>
           <div>Range</div>
           <div>{props.range}</div>
-        </div>
+        </div> 
       </div>
       <div className={styles.features_div}>
         <div className="grid-item">{props.colour}</div>

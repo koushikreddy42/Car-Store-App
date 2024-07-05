@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../components/Booking/PlaceOrder.module.css';
 import axios from 'axios';
 
-function PlaceOrder({ isOpen, onClose, carType, buyerId, carId }) { 
+function PlaceOrder({ isOpen, onClose, carType, buyerId, carId, isAdmin }) { 
     const [isChecked, setIsChecked] = useState(false);
     const [formData, setFormData] = useState({
         firstName: '',
@@ -11,15 +11,16 @@ function PlaceOrder({ isOpen, onClose, carType, buyerId, carId }) {
         phone: '',
         houseNo: '',
         streetAddress: '',
-        city: '',
+        city: '',   
         region: '',
         postalCode: '',
         state: '',
-        comments: '',
+        comments: '', 
         file: null,
         carType: carType,
         buyerId: buyerId,
-        carId: carId
+        carId: carId,
+        isAdmin: isAdmin
     });
 
     if (!isOpen) return null;

@@ -82,6 +82,7 @@ useEffect(() => {
       console.error('Error fetching favorites:', error);
     }
   };
+  
 
   const fetchData = async () => {
     await fetchFavorites();
@@ -149,10 +150,11 @@ useEffect(() => {
       isFavorite={favorites.some(fav => fav.car._id === item._id)}
       isSold={item.isSold}
       ownerId={item.addedBy._id}
+      isAdmin={item.isAdmin}
     />
   ))
 
-  
+  console.log(gasModels)
   
   return (
     <div className="sort">

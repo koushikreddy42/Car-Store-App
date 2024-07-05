@@ -18,7 +18,8 @@ const electricCarModelSchema = new mongoose.Schema({
     performance: { type: String},
     isDisplayed: {type:Boolean, default:false},
     isSold: {type:Boolean, default:false},
-    addedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'registeruser', required: true }
+    addedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'registeruser', required: true },
+    isAdmin:{type:Boolean,deault:false}
 });
 
 module.exports = mongoose.model("electriccarmodel", electricCarModelSchema, "electriccarmodel");

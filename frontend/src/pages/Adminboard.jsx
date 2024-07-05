@@ -80,7 +80,7 @@ const Buyers = () => {
                 zipCode: '62703'
             },
             documents: ['https://example.com/doc5.pdf', 'https://example.com/doc6.pdf'],
-            comments:"-"
+            comments:"-" 
         }
     ]);
 
@@ -105,10 +105,10 @@ const Buyers = () => {
     const [view, setView] = useState('For sale');
 
     
-    const handleVerify = (buyerId, carType, carId,formId) => {
+    const handleVerify = (buyerId, carType, carId,formId, isAdmin) => {
         const confirm = window.confirm('Are you sure? Request will be sent to the car owner.');
         if (confirm) {
-            axios.post('http://localhost:8080/api/admin-accept', { buyerId, carType, carId, formId })
+            axios.post('http://localhost:8080/api/admin-accept', { buyerId, carType, carId, formId, isAdmin })
               .then(response => {
                 // Assuming the backend responds with a message or updated data
                 console.log(response.data); // Log or handle response as needed
@@ -207,8 +207,8 @@ const Buyers = () => {
                                         <td>
                                             {buyer.adminVerified === 'pending' ? (
                                                 <>
-                                                    <button className={styles.Verify} onClick={() => handleVerify(buyer.buyerId,buyer.carType,buyer.carDetails._id,buyer._id)}>Verify</button>
-                                                    <button className={styles.Cancel} onClick={() => handleCancel(buyer.buyerId,buyer.carType,buyer.carDetails._id,buyer._id)}>Cancel</button>
+                                                    <button className={styles.Verify} onClick={() => handleVerify(buyer.buyerId,buyer.carType,buyer.carDetails._id,buyer._id,buyer.isAdmin)}>Verify</button>
+                                                    <button className={styles.Cancel} onClick={() => handleCancel(buyer.buyerId,buyer.carType,buyer.carDetails._id,buyer._id,buyer.isAdmin)}>Cancel</button>
                                                 </>
                                             ) : (
                                                 <div className={buyer.adminVerified === 'accepted' ? styles.statusVerified : styles.statusCancelled}>
