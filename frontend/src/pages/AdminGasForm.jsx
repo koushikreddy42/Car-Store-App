@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Navigate} from 'react-router-dom';
 import { store } from '../App';
 
-function GasForm() {
+function AdminGasForm() {
   const [imagePath, setImagePath] = useState('');
   const [title, setTitle] = useState('');
   const [year, setYear] = useState('');
@@ -25,20 +25,18 @@ function GasForm() {
   const [cylinders,setCylinders] = useState('');
   const [drivetrain,setDriveTrain] = useState('');
   const [postImage, setPostImage] = useState( { myFile : ""})
-  const [token,setToken]=useContext(store)
-  const [data,setData]=useState(null)
-
-  useEffect(()=>{
-    axios.get('http://localhost:8080/api/myprofile',{
-            headers:{
-                'x-token':token
-            }
-        }).then(res=>setData(res.data)).catch(err=>console.log(err))
-  },[])
- 
-  if(!token){
-      return <Navigate to='/sign'/>
-  }
+  const [adminToken,setAdminToken]=useContext(store) 
+    const [data,setData]=useState(null)
+    if(!adminToken){
+        return <Navigate to='/admin-sign'/>
+    }
+    useEffect(()=>{
+        axios.get('http://localhost:8080/api/admin-myprofile',{
+                headers:{
+                    'x-token':adminToken
+                }
+            }).then(res=>setData(res.data)).catch(err=>console.log(err))
+    },[])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,7 +63,7 @@ function GasForm() {
         cylinders,
         drivetrain,
         description,
-        isAdmin:false
+        isAdmin:true,
       };
   
       const response = await axios.post('http://localhost:8080/api/gas-form', formData);
@@ -326,7 +324,7 @@ function GasForm() {
   );
 }
 
-export default GasForm;
+export default AdminGasForm;
 
 function convertToBase64(file){
   return new Promise((resolve, reject) => {

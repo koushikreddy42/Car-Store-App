@@ -14,6 +14,8 @@ const OrderDetails = ({ orderDetails }) => {
     // Destructure electricCarOrders and gasCarOrders from orderDetails with default empty arrays
     const { electricCarOrders = [], gasCarOrders = [] } = orderDetails;
 
+    console.log(gasCarOrders,electricCarOrders)
+
     return (
         <div className={styles.OrderDetails}>
             <h2>Order Details</h2>
@@ -44,7 +46,7 @@ const OrderDetails = ({ orderDetails }) => {
                                     </Link>
                                     {order.status==='pending' && <div className={styles.status}>Pending</div>}
                                     {order.status==='declined' && <div className={styles.status}>Declined</div>}
-                                    {order.status==='accepted' && <div className={styles.status}>Accepted</div>}
+                                    {order.status==='accepted' && <div className={styles.status}>Sold</div>}
                                 </div>
                             </div>
                         ))}
@@ -64,7 +66,7 @@ const OrderDetails = ({ orderDetails }) => {
                                 </div>
                                 <div className={styles.bttns}>
                                     <Link to={`/gas-booking/${order.car._id}/${'gas'}/${false}`} style={{ textDecoration: 'none' }}>
-                                        <button className={styles.view}>View</button>
+                                        <button className={styles.view}>View</button> 
                                     </Link>
                                     {order.status==='pending' && <div className={styles.status}>Pending</div>}
                                     {order.status==='declined' && <div className={styles.status}>Declined</div>}

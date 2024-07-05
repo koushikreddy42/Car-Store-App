@@ -137,7 +137,7 @@ useEffect(() => {
       colour={item.colour}
       interior={item.interior}
       wheel={item.wheel}
-      description={item.description}
+      description={item.description} 
       price={item.price}
       image={item.image}
       year={item.year}
@@ -146,6 +146,7 @@ useEffect(() => {
       isFavorite={favorites.some(fav => fav.car._id === item._id)}
       isSold={item.isSold}
       ownerId={item.addedBy._id}
+      isAdmin={item.isAdmin}
     />
   ))
 

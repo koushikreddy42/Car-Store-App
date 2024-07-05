@@ -6,6 +6,8 @@ import AdminLog from "./pages/AdminLog";
 import AdminHome from "./pages/AdminHome";
 import GasForm from "./pages/GasForm";
 import EvsForm from "./pages/EvsForm";
+import AdminEvsForm from "./pages/AdminEvsForm";
+import AdminGasForm from "./pages/AdminGasForm";
 import ElectricList from "./pages/ElectricList";
 import GasList from "./pages/GasList";
 import WishList from "./pages/WishList";
@@ -15,6 +17,7 @@ import GasBooking from "./pages/GasBooking"
 import React,{useState,createContext} from 'react'
 import BuyerDetails from "./pages/Buyer";
 import User from "./pages/User";
+import AdminUser from "./pages/AdminDashboard";
 import Buyers from "./pages/Adminboard";
 
 import {
@@ -40,6 +43,8 @@ function App() {
           <Route exact path="/home" element={<Home/>}/>
           <Route exact path="/electric-form" element={<EvsForm/>}/>
           <Route exact path="/gas-form" element={<GasForm/>}/>
+          <Route exact path="/admin-electric-form" element={<AdminEvsForm/>}/>
+          <Route exact path="/admin-gas-form" element={<AdminGasForm/>}/>
           <Route exact path="/admin-sign" element={<AdminLog/>}/>
           <Route exact path="/admin-home" element={<AdminHome/>}/>
           <Route exact path="/electric-list" element={<ElectricList/>}/>
@@ -51,7 +56,8 @@ function App() {
           <Route exact path="/dashboard-buyer" element={<BuyerDetails/>}/>
           <Route exact path="/dashboard" element={<User/>}/>
           <Route exact path="/dashboard-admin" element={<Buyers/>}/>
-        </Routes>
+          <Route exact path="/admin-dashboard" element={<AdminUser/>}/>
+        </Routes> 
     </Router>
     </store.Provider>
     </div>

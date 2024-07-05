@@ -68,7 +68,7 @@ router.get("/get-files",async (req,res)=>{
     } catch (error) {
         res.send({status:error})
     }
-})
+}) 
 
 router.get("/orders", async (req, res) => {
     const userId = req.headers['x-user-id'];
@@ -178,7 +178,7 @@ router.post('/admin-cancel', async (req, res) => {
 
 
   router.post('/admin-accept', async (req, res) => {
-    const { buyerId, carType, carId, formId } = req.body;
+    const { buyerId, carType, carId, formId, isAdmin } = req.body; 
   
     try {
 
@@ -195,24 +195,75 @@ router.post('/admin-cancel', async (req, res) => {
       if (!carDetails) {
           return res.status(404).json({ message: 'Car details not found' });
       }
-      form.adminVerified = 'accepted';
+      if (isAdmin) {
+        form.adminVerified = 'accepted';
+        form.ownerVerified = 'accepted';
+        const user = await RegisterUser.findById(buyerId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Determine the type of car order to update
+    if (carType === 'ev') {
+      // Update electric car orders based on carId
+      const electricOrder = user.electricCarOrders.find(order => order.car.toString() === carId);
+      if (electricOrder && electricOrder.status === 'pending') {
+        electricOrder.status = 'accepted';
+      
+      } else {
+        return res.status(404).json({ message: 'Electric car order not found or not pending' });
+      }
+      const car = await ElectricCarModel.findById(carId);
+
+      if (!car) {
+      return res.status(404).json({ message: 'Electric Car not found' });
+      }
+
+      car.isSold = true;
+      await car.save();
+    } else if (carType === 'gas') {
+      const gasOrder = user.gasCarOrders.find(order => order.car.toString() === carId);
+      if (gasOrder && gasOrder.status === 'pending') {
+        gasOrder.status = 'accepted';
+      } else {
+        return res.status(404).json({ message: 'Gas car order not found or not pending' });
+      }
+      const car = await GasCarModel.findById(carId);
+
+      if (!car) {
+      return res.status(404).json({ message: 'Gas Car not found' });
+      }
+
+      car.isSold = true;
+      await car.save();
+    } else {
+      return res.status(400).json({ message: 'Invalid car type' });
+    }
+
+    await user.save();
+    } else {
+        form.adminVerified = 'accepted';
+    }
       
       await form.save();
       
-      const ownerId = carDetails.addedBy;
-      const user = await RegisterUser.findById(ownerId);
-  
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-      user.requestOrders.push(formId);
-      await user.save();
+      if (!isAdmin) {
+        const ownerId = carDetails.addedBy;
+        const user = await RegisterUser.findById(ownerId);
+    
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        user.requestOrders.push(formId);
+        await user.save();
+    }
       res.status(200).json({ message: 'Order accepted successfully' });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Server Error' });
     }
-  });
+  }); 
 
   router.get('/get-requests', async (req, res) => {
     const userId = req.query.userId;

@@ -8,6 +8,7 @@ export const CarCardGas = (props) => {
   const [isFavorite, setIsFavorite] = useState(props.isFavorite);
   const [token] = useContext(store);
   const [data, setData] = useState(null);
+  
   // console.log({car:props.title,truth:props.isFavorite})
     
   useEffect(() => {
@@ -83,7 +84,9 @@ export const CarCardGas = (props) => {
       </button>
         <div className="" style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
         <div className={styles.title}>{props.title}</div>
-        <div className="" style={{fontSize:"19px"}}>Owned by: {props.name}</div>
+        <div className="" style={{fontSize:"19px"}}>
+  {props.isAdmin ? "Owned by: Admin" : `Owned by: ${props.name}`}
+</div>
         </div>
         
         <div className={styles.img_div}><img className={styles.img} src={props.image} ></img></div>

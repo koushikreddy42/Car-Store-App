@@ -32,7 +32,9 @@ function AdminHome(){
                 
                     <button className={styles.gas}><img  className={styles.icon}   src={fire} /> Gas</button>
                 </div></Link>
-                <Link to="/dashboard-admin"><div className={styles.options}><button className={styles.customers}>Orders</button></div></Link>
+                <Link to="/admin-dashboard"><div className={styles.options}><button className={styles.customers}>Dashboard</button></div></Link>
+                <Link to="/admin-electric-form"><div className={styles.options}><button className={styles.customers}>Sell Ev Cars</button></div></Link>
+                <Link to="/admin-gas-form"><div className={styles.options}><button className={styles.customers}>Sell Gas Cars</button></div></Link>
              </div>
         </div>
     );
