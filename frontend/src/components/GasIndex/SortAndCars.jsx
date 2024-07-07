@@ -3,7 +3,7 @@ import styles from './SortAndCars.module.css'
 import { CarCardGas } from './CarCardGas'
 import axios from 'axios';
 import { store } from '../../App'
-export default function SortAndCars() {
+export default function SortAndCars(props) {
     //price
 const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
@@ -59,12 +59,17 @@ const [showOptions, setShowOptions] = useState(false);
 const [gasModels, setGasModels] = useState([]);
 const [favorites, setFavorites] = useState([]);
 
+const [carsForSale, setCarsForSale] = useState(0);
+
 useEffect(() => {
   const fetchGasModels = async () => {
     try {
       const response = await fetch("http://localhost:8080/api/gas-listt");
       const data = await response.json();
       setGasModels(data);
+
+      const ownerCarsForSale = data.filter(car => car.addedBy._id === props.ownerId && !car.isSold).length;
+      setCarsForSale(ownerCarsForSale);
     } catch (error) {
       console.error('Error fetching gas models:', error);
     }
@@ -298,6 +303,11 @@ useEffect(() => {
       )}
     </div>
 
+        </div>
+        <div className={styles.car_for_sale_div}>
+          <div className={styles.cars_for_sale}>
+            <span>For Sale: {carsForSale}</span>
+          </div>
         </div>
         <div className={styles.car_cards}>
             {gas_html}

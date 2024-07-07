@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const electricCarOrderSchema = new mongoose.Schema({
   car: { type: mongoose.Schema.Types.ObjectId, ref: 'electriccarmodel', required: true },
   status: { type: String, enum: ['pending', 'accepted', 'declined'], default: 'pending' }
-});
+}); 
 
 // Define order subschema for gas cars
 const gasCarOrderSchema = new mongoose.Schema({

@@ -4,7 +4,7 @@ import { CarCardEv } from './CarCardEv'
 import axios from 'axios';
 import { store } from '../../App'
 
-export default function SortAndCars() {
+export default function SortAndCars(props) {
     //price 
 const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
@@ -60,12 +60,17 @@ const [showOptions, setShowOptions] = useState(false);
 const [electricModels, setElectricModels] = useState([]);
 const [favorites, setFavorites] = useState([]);
 
+const [carsForSale, setCarsForSale] = useState(0);
+
 useEffect(() => {
   const fetchElectricModels = async () => {
     try {
       const response = await fetch("http://localhost:8080/api/electric-listt");
       const data = await response.json();
       setElectricModels(data);
+
+      const ownerCarsForSale = data.filter(car => car.addedBy._id === props.ownerId && !car.isSold).length;
+      setCarsForSale(ownerCarsForSale);
     } catch (error) {
       console.error('Error fetching electric models:', error);
     }
@@ -284,7 +289,11 @@ useEffect(() => {
         </div>
       )}
     </div>
-
+        </div>
+        <div className={styles.car_for_sale_div}>
+          <div className={styles.cars_for_sale}>
+            <span>For Sale: {carsForSale}</span>
+          </div>
         </div>
         <div className={styles.car_cards}>
             {ev_html}

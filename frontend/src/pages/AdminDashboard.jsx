@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Link,Navigate } from 'react-router-dom';
+import { Link,Navigate,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { store } from '../App';
 import styles from '../components/Dashboard/User.module.css'; 
@@ -102,7 +102,7 @@ function AdminUser() {
 
                     // Map electric cars
                     const mappedElectricCars = electricCars.map((car, index) => ({
-                        id: index + 1,
+                        id: car._id,
                         image: car.image,
                         model: car.title,
                         year: car.year,
@@ -119,7 +119,7 @@ function AdminUser() {
 
                     // Map gas cars
                     const mappedGasCars = gasCars.map((car, index) => ({
-                        id: index + 1,
+                        id: car._id,
                         image: car.image,
                         model: car.title,
                         year: car.year,
@@ -149,6 +149,13 @@ function AdminUser() {
         fetchData();
     }, [userdata]);
     // if(electricData.length>0) console.log(electricData)
+
+    const navigate = useNavigate();
+    const handleEdit = (car) => {
+    const route = car.range ? '/edit-electric-car' : '/edit-gas-car';
+    navigate(route, { state: { carId: car.id } });
+    console.log(`carId: ${car.id}`);
+  };
     
     const combinedData = [...electricData, ...gasData];
     console.log(combinedData)
@@ -205,7 +212,11 @@ function AdminUser() {
                                                     <td>{car.wheel}</td>
                                                     <td>{car.description}</td>
                                                     <td>{car.status}</td>
-                                                    
+                                                    <td>
+                                                        {car.status === 'In Sale' && 
+                                                            <button onClick={() => handleEdit(car)}>Edit</button>
+                                                        }
+                                                    </td>
                                                 </tr>
                                             ))}
                                         </tbody>

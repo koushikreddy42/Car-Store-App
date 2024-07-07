@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Link,Navigate } from 'react-router-dom';
+import { Link,Navigate,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { store } from '../App';
 import styles from '../components/Dashboard/User.module.css'; 
@@ -16,7 +16,7 @@ function User() {
     const [orderDetails, setOrderDetails] = useState([]);
 
     useEffect(() => {
-        if (!token) return;
+        if (!token) return; 
 
         axios.get('http://localhost:8080/api/myprofile', {
             headers: {
@@ -127,7 +127,7 @@ function User() {
 
                     // Map electric cars
                     const mappedElectricCars = electricCars.map((car, index) => ({
-                        id: index + 1,
+                        id: car._id,
                         image: car.image,
                         model: car.title,
                         year: car.year,
@@ -144,7 +144,7 @@ function User() {
 
                     // Map gas cars
                     const mappedGasCars = gasCars.map((car, index) => ({
-                        id: index + 1,
+                        id: car._id,
                         image: car.image,
                         model: car.title,
                         year: car.year,
@@ -181,6 +181,14 @@ function User() {
     const sellAgain = () => {
         console.log('Sell again');
     };
+    
+    const navigate = useNavigate();
+    const handleEdit = (car) => {
+    const route = car.range ? '/edit-electric-car' : '/edit-gas-car';
+    navigate(route, { state: { carId: car.id } });
+    console.log(`carId: ${car.id}`);
+  };
+
     const combinedData = [...electricData, ...gasData];
     console.log(combinedData)
 
@@ -220,6 +228,7 @@ function User() {
                                                 <th>Wheel</th>
                                                 <th>Description</th>
                                                 <th>Status</th>
+                                                <th>Edit</th>
                                                 
                                             </tr>
                                         </thead>
@@ -240,7 +249,11 @@ function User() {
                                                     <td>{car.wheel}</td>
                                                     <td>{car.description}</td>
                                                     <td>{car.status}</td>
-                                                    
+                                                    <td>
+                                                        {car.status === 'In Sale' && 
+                                                            <button onClick={() => handleEdit(car)}>Edit</button>
+                                                        }
+                                                    </td>
                                                 </tr>
                                             ))}
                                         </tbody>
