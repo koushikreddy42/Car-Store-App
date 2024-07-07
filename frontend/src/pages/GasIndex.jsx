@@ -22,7 +22,7 @@ function GasIndex(){
     return (
         <>
         {data && <Header username={data.username} />}
-        <SortAndCars />
+        {data && <SortAndCars ownerId={data._id}/>}
     </>
         
         

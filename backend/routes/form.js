@@ -159,4 +159,48 @@ router.route('/gas-form').post(async (req, res) => {
     }
 });
 
+router.put('/edit-electric-car/:id', async (req, res) => {
+    try {
+      const updatedCar = await electriccarmodel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      res.json(updatedCar);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
+router.put('/edit-gas-car/:id',  async (req, res) => {
+    try {
+      const updatedCar = await gascarmodel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      res.json(updatedCar);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
+  router.get('/get-electric-car/:id',  async (req, res) => {
+    try {
+      const car = await electriccarmodel.findById(req.params.id);
+      if (!car) {
+        return res.status(404).json({ message: 'Electric car not found' });
+      }
+      res.json(car);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  router.get('/get-gas-car/:id',  async (req, res) => {
+    try {
+      const car = await gascarmodel.findById(req.params.id);
+      if (!car) {
+        return res.status(404).json({ message: 'Gas car not found' });
+      }
+      res.json(car);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+  
+  
+
 module.exports = router;

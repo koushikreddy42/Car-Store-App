@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../components/Booking/PlaceOrder.module.css';
 import axios from 'axios';
 
-function PlaceOrder({ isOpen, onClose, carType, buyerId, carId, isAdmin }) { 
+function PlaceOrder({ isOpen, onClose, carType, buyerId, carId, isAdmin, buyerEmail }) { 
     const [isChecked, setIsChecked] = useState(false);
     const [formData, setFormData] = useState({
         firstName: '',
@@ -86,7 +86,7 @@ function PlaceOrder({ isOpen, onClose, carType, buyerId, carId, isAdmin }) {
                         </div>
                         <div className={styles.formGroup}>
                             <label className={styles.form_label}>Email: </label>
-                            <input type="email" className={styles.formControl2} id="email" placeholder="name@gmail.com" onChange={handleInputChange} />
+                            <input type="email" className={styles.formControl2} value={buyerEmail} id="email" placeholder="name@gmail.com" onChange={handleInputChange} />
                         </div>
                         <div className={styles.formGroup}>
                             <label className={styles.form_label}>Phone:</label>
