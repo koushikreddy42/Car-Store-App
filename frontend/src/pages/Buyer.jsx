@@ -113,7 +113,7 @@ const BuyerDetails = () => {
     const [view, setView] = useState('For sale');
 
     const handleAccept = (buyerId, carType, carId,formId) => {
-        const confirm = window.confirm('Are you sure? Request will be sent to the car owner.');
+        const confirm = window.confirm('By accepting this order, you agree to proceed with the sale. The buyer will be notified.');
         if (confirm) {
             axios.post('http://localhost:8080/api/owner-accept', { buyerId, carType, carId, formId })
               .then(response => {
