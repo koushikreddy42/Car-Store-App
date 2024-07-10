@@ -51,10 +51,7 @@ function PlaceOrder({ isOpen, onClose, carType, buyerId, carId, isAdmin }) {
 
     const submitForm = async (e) => {
         e.preventDefault();
-        // if(!isChecked){
-        //     setErrorMessage('Please tick the checkbox to confirm.');
-        //     return;
-        // }
+        
         if (!formRef.current) return;
 
         if (!formRef.current.checkValidity()) {
@@ -84,8 +81,8 @@ function PlaceOrder({ isOpen, onClose, carType, buyerId, carId, isAdmin }) {
         <div className={`${styles.successDialog} ${showSuccessDialog ? styles.show : ''}`}>
             <div className={styles.successIcon}>✓</div>
             <div className={styles.info}>
-                <p>Order placed successfully!</p>
-                <p>You can now check it in the Orders section of the dashboard.</p>
+                <div className={styles.ords}><p>Order placed successfully!</p></div>
+                <div className={styles.check}><p>You can now check it in the Orders section of the dashboard.</p></div>
             </div>
         </div>
     );
