@@ -23,6 +23,7 @@ function EvsForm() {
   const [postImage, setPostImage] = useState( { myFile : ""})
   const [token,setToken]=useContext(store)
   const [data,setData]=useState(null)
+  const [showProcessingDialog, setShowProcessingDialog] = useState(false);
     
     useEffect(()=>{
         axios.get('http://localhost:8080/api/myprofile',{
@@ -58,6 +59,8 @@ function EvsForm() {
         addedBy:data._id,
         isAdmin:false
       };
+
+      setShowProcessingDialog(true);
   
       const response = await axios.post('http://localhost:8080/api/electric-form', formData);
       console.log(response.data);
@@ -260,8 +263,18 @@ function EvsForm() {
             <button type="submit" className={styles.save}> Save </button>
             <button className={styles.back}>Back</button>
         </div>
-                    </form> 
-                </div>
+      </form>
+      {/* Processing dialog */}
+      {showProcessingDialog && (
+        <div className={styles.processingDialog}>
+          <div className={styles.proIcon}><i class="fa-regular fa-hourglass-half"></i></div>
+          <div className={styles.info}>
+            <div className={styles.req}><p><b>Your request to sell is in process...</b></p></div>
+            <div className={styles.dash}><p>You can check it's status in the dashboard.</p></div>
+          </div>
+        </div>
+      )} 
+    </div>
   );
 }
 
