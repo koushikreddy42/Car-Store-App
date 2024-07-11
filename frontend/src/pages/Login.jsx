@@ -1,3 +1,4 @@
+
 import React, { useState,useContext } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
@@ -8,83 +9,90 @@ import axios from 'axios';
 import { store } from '../App';
 import { Navigate, Link } from 'react-router-dom';
 
+
 function Login() {
-    const [token,setToken]=useContext(store)
-    const [isLogin, setIsLogin] = useState(true);
-    const [userId, setUserId] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [success, setSuccess]=useState('');
-    const [successMessage, setSuccessMessage] = useState('');
+  const [token, setToken] = useContext(store);
+  const [isLogin, setIsLogin] = useState(true);
+  const [userId, setUserId] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
-    const switchToLogin = () => {
-        setIsLogin(true);
-        setUserId('');
-        setEmail('');
-        setPassword('');
-        setError('');
-        setSuccess('');
-        setSuccessMessage('');
-    };
+  const switchToLogin = () => {
+    setIsLogin(true);
+    setUserId("");
+    setEmail("");
+    setPassword("");
+    setError("");
+    setSuccess("");
+    setSuccessMessage("");
+  };
 
-    const switchToSignUp = () => {
-        setIsLogin(false);
-        setUserId('');
-        setEmail('');
-        setPassword('');
-        setError('');
-        setSuccess('');
-        setSuccessMessage('');
-    };
+  const handlePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (isLogin) {
-            setError('');
-            setSuccess('');
-            axios.post('http://localhost:8080/api/login', {
-              email: email,
-              password: password
-            })
-            .then(res => {
-              setToken(res.data.token); // Set the token state
-              console.log('Token:', res.data.token);
-            })
-            .catch(err => {
-              if (err.response && err.response.data) {
-                setError(err.response.data);
-              } else {
-                setError('Login failed');
-              }
-              console.error('Login error:', err);
-            });
+  const switchToSignUp = () => {
+    setIsLogin(false);
+    setUserId("");
+    setEmail("");
+    setPassword("");
+    setError("");
+    setSuccess("");
+    setSuccessMessage("");
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isLogin) {
+      setError("");
+      setSuccess("");
+      axios
+        .post("http://localhost:8080/api/login", {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          setToken(res.data.token); // Set the token state
+          console.log("Token:", res.data.token);
+        })
+        .catch((err) => {
+          if (err.response && err.response.data) {
+            setError(err.response.data);
           } else {
-            setError('');
-            setSuccess('');
-            axios.post('http://localhost:8080/api/register', {
-              username: userId,
-              email: email,
-              password: password
-            })
-            .then(res => {
-              setSuccess(res.data)
-            })
-            .catch(error => {
-                if (err.response && err.response.data) {
-                    setError(err.response.data);
-                  } else {
-                setError('An error occurred. Please try again.');
-              }
-            });
+            setError("Login failed");
           }
-    };
-
-    if (token) {
-        return <Navigate to='/home' />;
+          console.error("Login error:", err);
+        });
+    } else {
+      setError("");
+      setSuccess("");
+      axios
+        .post("http://localhost:8080/api/register", {
+          username: userId,
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          setSuccess(res.data);
+        })
+        .catch((error) => {
+          if (err.response && err.response.data) {
+            setError(err.response.data);
+          } else {
+            setError("An error occurred. Please try again.");
+          }
+        });
     }
+  };
+  
+  if (token) {
+    return <Navigate to="/home" />;
+  }
 
-    return (
+  return (
         <div className={styles.pageContainer}>
             <img src={logo} alt="Logo" className={styles.logo} />
                 <div className={styles.container}>
