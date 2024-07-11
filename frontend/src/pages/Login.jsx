@@ -6,7 +6,7 @@ import styles from '../components/Login/Login.module.css';
 import logo from '../components/Assets/logo.png'
 import axios from 'axios';
 import { store } from '../App';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 function Login() {
     const [token,setToken]=useContext(store)
@@ -123,6 +123,9 @@ function Login() {
                                     required
                                 />
                             </div>
+                            </div>
+                            <div className={styles.lost_password}>
+                                <Link to="/forgot-password">Forgot Password?</Link>
                             </div>
                             <div className={styles.bttn}>
                         <button type="submit" className={styles.login_button}>
