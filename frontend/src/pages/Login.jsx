@@ -1,12 +1,14 @@
-import React, { useState, useContext } from "react";
-import { FaUserAlt } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { RiEyeOffLine, RiEyeFill, RiLockPasswordFill } from "react-icons/ri";
-import styles from "../components/Login/Login.module.css";
-import logo from "../components/Assets/logo.png";
-import axios from "axios";
-import { store } from "../App";
-import { Navigate } from "react-router-dom";
+
+import React, { useState,useContext } from 'react';
+import { FaUserAlt } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
+import { RiLockPasswordFill } from 'react-icons/ri';
+import styles from '../components/Login/Login.module.css';
+import logo from '../components/Assets/logo.png'
+import axios from 'axios';
+import { store } from '../App';
+import { Navigate, Link } from 'react-router-dom';
+
 
 function Login() {
   const [token, setToken] = useContext(store);
@@ -85,147 +87,113 @@ function Login() {
         });
     }
   };
-
+  
   if (token) {
     return <Navigate to="/home" />;
   }
 
   return (
-    <div className={styles.pageContainer}>
-      <img src={logo} alt="Logo" className={styles.logo} />
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <button
-            onClick={switchToLogin}
-            className={`${styles.toggle_button} ${
-              isLogin ? styles.active : ""
-            }`}
-          >
-            Login
-          </button>
-          <button
-            onClick={switchToSignUp}
-            value="Register"
-            className={`${styles.toggle_button} ${
-              !isLogin ? styles.active : ""
-            }`}
-          >
-            Sign Up
-          </button>
+        <div className={styles.pageContainer}>
+            <img src={logo} alt="Logo" className={styles.logo} />
+                <div className={styles.container}>
+                    <div className={styles.header}>
+                        <button onClick={switchToLogin} className={`${styles.toggle_button} ${isLogin ? styles.active : ''}`}>
+                            Login
+                        </button>
+                        <button onClick={switchToSignUp} value="Register" className={`${styles.toggle_button} ${!isLogin ? styles.active : ''}`}>
+                            Sign Up
+                        </button>
+                    </div>
+                    <div className={styles.underline}></div>
+                    {error && <div className={styles.error_message}>{error}</div>}
+                    { success && <div className={styles.success_message}>{success}</div>}
+                    <form onSubmit={handleSubmit}>
+                        
+                      {isLogin && ( <div>
+                        <div className={styles.inputs}>
+                        <div className={styles.login_input}>
+                                    <MdEmail className={styles.icon} />
+                                    <input
+                                        placeholder="name@example.com"
+                                        type="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                                <div className={styles.login_input}>
+                                <RiLockPasswordFill className={styles.icon} />
+                                <input
+                                    placeholder="Enter your password"
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            </div>
+                            <div className={styles.lost_password}>
+                                <Link to="/forgot-password">Forgot Password?</Link>
+                            </div>
+                            <div className={styles.bttn}>
+                        <button type="submit" className={styles.login_button}>
+                            Login
+                        </button>
+                        </div>
+
+                        </div> )}
+                        </form>
+
+
+                    <form onSubmit={handleSubmit}>
+                    {!isLogin && ( <div>
+                        <div className={styles.inputs}>
+                        <div className={styles.signup_input}>
+                            <FaUserAlt className={styles.icon} />
+                            <input
+                                placeholder="Enter UserId"
+                                type="text"
+                                value={userId}
+                                onChange={(e) => setUserId(e.target.value)}
+                                pattern="^[a-zA-Z][a-zA-Z0-9]*$"
+                                title="User ID must contain letters, may contain numbers, and must start with a letter."
+                                required
+                            />
+                        </div>
+
+                        <div className={styles.signup_input}>
+                        <MdEmail className={styles.icon} />
+                        <input
+                            placeholder="name@example.com"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className={styles.signup_input}>
+                    <RiLockPasswordFill className={styles.icon} />
+                    <input
+                        placeholder="Enter your password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                        </div>
+                        </div>
+                        <div className={styles.bttn}>
+                    <button type="submit" className={styles.signup_button}>
+                        Sign up
+                    </button>
+                    </div>
+
+                    </div> )}
+
+                    </form>
+                </div>
         </div>
-        <div className={styles.underline}></div>
-        {error && <div className={styles.error_message}>{error}</div>}
-        {success && <div className={styles.success_message}>{success}</div>}
-        <form onSubmit={handleSubmit}>
-          {isLogin && (
-            <div>
-              <div className={styles.inputs}>
-                <div className={styles.login_input}>
-                  <MdEmail className={styles.icon} />
-                  <input
-                    placeholder="name@example.com"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className={styles.login_input}>
-                  <RiLockPasswordFill className={styles.icon} />
-                  <input
-                    placeholder="Enter your password"
-                    type={showPassword ? "text" : "password"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                  <div>
-                    {showPassword ? (
-                      <RiEyeFill
-                        className={styles.eyeicon}
-                        onClick={handlePassword}
-                      />
-                    ) : (
-                      <RiEyeOffLine
-                        className={styles.eyeicon}
-                        onClick={handlePassword}
-                      />
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className={styles.bttn}>
-                <button type="submit" className={styles.login_button}>
-                  Login
-                </button>
-              </div>
-            </div>
-          )}
-        </form>
-
-        <form onSubmit={handleSubmit}>
-          {!isLogin && (
-            <div>
-              <div className={styles.inputs}>
-                <div className={styles.signup_input}>
-                  <FaUserAlt className={styles.icon} />
-                  <input
-                    placeholder="Enter UserId"
-                    type="text"
-                    value={userId}
-                    onChange={(e) => setUserId(e.target.value)}
-                    pattern="^[a-zA-Z][a-zA-Z0-9]*$"
-                    title="User ID must contain letters, may contain numbers, and must start with a letter."
-                    required
-                  />
-                </div>
-
-                <div className={styles.signup_input}>
-                  <MdEmail className={styles.icon} />
-                  <input
-                    placeholder="name@example.com"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className={styles.signup_input}>
-                  <RiLockPasswordFill className={styles.icon} />
-                  <input
-                    placeholder="Enter your password"
-                    type={showPassword ? "text" : "password"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                  <div>
-                    {showPassword ? (
-                      <RiEyeFill
-                        className={styles.eyeicon}
-                        onClick={handlePassword}
-                      />
-                    ) : (
-                      <RiEyeOffLine
-                        className={styles.eyeicon}
-                        onClick={handlePassword}
-                      />
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className={styles.bttn}>
-                <button type="submit" className={styles.signup_button}>
-                  Sign up
-                </button>
-              </div>
-            </div>
-          )}
-        </form>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default Login;

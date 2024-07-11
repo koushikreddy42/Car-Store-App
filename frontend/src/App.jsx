@@ -21,6 +21,8 @@ import AdminUser from "./pages/AdminDashboard";
 import Buyers from "./pages/Adminboard";
 import EditElectricCar from "./pages/EditElectricCar";
 import EditGasCar from "./pages/EditGasCar";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 import {
   BrowserRouter as Router,
@@ -45,8 +47,8 @@ function App() {
           <Route exact path="/home" element={<Home/>}/>
           <Route exact path="/electric-form" element={<EvsForm/>}/>
           <Route exact path="/gas-form" element={<GasForm/>}/>
-          <Route path="/edit-electric-car" element={<EditElectricCar />} />
-          <Route path="/edit-gas-car" element={<EditGasCar />} />
+          <Route exact path="/edit-electric-car" element={<EditElectricCar />} />
+          <Route exact path="/edit-gas-car" element={<EditGasCar />} />
           <Route exact path="/admin-electric-form" element={<AdminEvsForm/>}/>
           <Route exact path="/admin-gas-form" element={<AdminGasForm/>}/>
           <Route exact path="/admin-sign" element={<AdminLog/>}/>
@@ -61,6 +63,8 @@ function App() {
           <Route exact path="/dashboard" element={<User/>}/>
           <Route exact path="/dashboard-admin" element={<Buyers/>}/>
           <Route exact path="/admin-dashboard" element={<AdminUser/>}/>
+          <Route exact path="/forgot-password" element={<ForgotPassword />} />
+          <Route exact path="/reset-password" element={<ResetPassword />} />
         </Routes> 
     </Router> 
     </store.Provider>
