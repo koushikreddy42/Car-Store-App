@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { RiEyeOffLine, RiEyeFill, RiLockPasswordFill } from "react-icons/ri";
+import { RiLockPasswordFill } from "react-icons/ri";
 import styles from "../components/Login/Login.module.css";
 import logo from "../components/Assets/logo.png";
 import axios from "axios";
 import { store } from "../App";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 
 function Login() {
   const [token, setToken] = useContext(store);
@@ -130,30 +130,19 @@ function Login() {
                     required
                   />
                 </div>
-
                 <div className={styles.login_input}>
                   <RiLockPasswordFill className={styles.icon} />
                   <input
                     placeholder="Enter your password"
-                    type={showPassword ? "text" : "password"}
+                    type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
-                  <div>
-                    {showPassword ? (
-                      <RiEyeFill
-                        className={styles.eyeicon}
-                        onClick={handlePassword}
-                      />
-                    ) : (
-                      <RiEyeOffLine
-                        className={styles.eyeicon}
-                        onClick={handlePassword}
-                      />
-                    )}
-                  </div>
                 </div>
+              </div>
+              <div className={styles.lost_password}>
+                <Link to="/forgot-password">Forgot Password?</Link>
               </div>
               <div className={styles.bttn}>
                 <button type="submit" className={styles.login_button}>
@@ -195,24 +184,11 @@ function Login() {
                   <RiLockPasswordFill className={styles.icon} />
                   <input
                     placeholder="Enter your password"
-                    type={showPassword ? "text" : "password"}
+                    type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
-                  <div>
-                    {showPassword ? (
-                      <RiEyeFill
-                        className={styles.eyeicon}
-                        onClick={handlePassword}
-                      />
-                    ) : (
-                      <RiEyeOffLine
-                        className={styles.eyeicon}
-                        onClick={handlePassword}
-                      />
-                    )}
-                  </div>
                 </div>
               </div>
               <div className={styles.bttn}>

@@ -31,7 +31,9 @@ var registeruser = new mongoose.Schema({
   ],
   electricCarOrders: [electricCarOrderSchema], // Add electric car orders field
   gasCarOrders: [gasCarOrderSchema],           // Add gas car orders field
-  requestOrders:[{type: mongoose.Schema.Types.ObjectId, ref: 'buyingform'}]
+  requestOrders:[{type: mongoose.Schema.Types.ObjectId, ref: 'buyingform'}],
+  resetPasswordToken: String,
+  resetPasswordExpires: Date
 });
 
 module.exports = mongoose.model("registeruser", registeruser, "registeruser");

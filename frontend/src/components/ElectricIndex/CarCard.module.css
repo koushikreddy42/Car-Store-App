@@ -70,18 +70,30 @@ p{
   }
 
   .book{
+    background-color: rgb(27, 74, 231);
+    border: none;
+    color: white;
     padding:15px 30px;
     border-radius:30px;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
 
-  .booked{
+  .sold{
+    background-color: rgb(206, 60, 60);
+    color: white;
+    padding:13px 30px;
+    border-radius:30px;
+    border:1px solid;
+  }
+  .sale{
+    background-color: green;
+    color: white;
     padding:13px 30px;
     border-radius:30px;
     border:1px solid;
   }
 
   .book:hover{
-    background-color: rgba(128, 128, 128, 0.364);
+    background-color: rgb(13, 55, 190);
   }

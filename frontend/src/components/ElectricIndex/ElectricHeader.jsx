@@ -1,34 +1,62 @@
-import React, { useState, useContext } from 'react';
-import styles from './Header.module.css'
-import logo from '../Assets/logo.png'
-import {Link} from 'react-router-dom'
-import { FaShoppingCart } from 'react-icons/fa';
-import { FaUser } from 'react-icons/fa';
-import { store } from '../../App';
+import React, { useState, useContext } from "react";
+import styles from "./Header.module.css";
+import logo from "../Assets/logo.png";
+import { Link, useLocation } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
+import { store } from "../../App";
+
 export const Header = (props) => {
-  const [token,setToken]=useContext(store)
+  const [token, setToken] = useContext(store);
+  const location = useLocation();
+
   return (
     <div className={styles.header}>
-        <div className={styles.header_logo}> 
-            <img src={logo} class={styles.logo_image} alt=""></img>
-        </div>
-        <div class={styles.category_div}>
-        <Link to="/electric"><button class={styles.category_button}>EVs</button></Link>
-        <Link to="/gas"><button class={styles.category_button}>Gas</button></Link>
-        <Link to="/electric-form"><button class={styles.category_button}>Sell</button></Link>
-        <Link to="/dashboard"><button class={styles.category_button}>Dashboard</button></Link>
-        <Link to="/wishlist">
-        <button className={styles.category_button}>
-        
-        <span>WishList</span>
-        </button>
+      <div className={styles.header_logo}>
+        <img src={logo} className={styles.logo_image} alt="logo" />
+      </div>
+      <div className={styles.category_div}>
+        <Link to="/electric">
+          <button
+            className={`${styles.category_button} ${
+              location.pathname === "/electric" ? styles.active : ""
+            }`}
+          >
+            EVs
+          </button>
         </Link>
-        <button class={styles.category_button} style={{ color: 'red', border: '1px solid red'  }} onClick={()=>setToken(null)}>Logout</button>
+        <Link to="/gas">
+          <button
+            className={`${styles.category_button} ${
+              location.pathname === "/gas" ? styles.active : ""
+            }`}
+          >
+            Gas
+          </button>
+        </Link>
+        <Link to="/electric-form">
+          <button className={styles.category_button}>Sell</button>
+        </Link>
+        <Link to="/dashboard">
+          <button className={styles.category_button}>Dashboard</button>
+        </Link>
+        <Link to="/wishlist">
+          <button className={styles.category_button}>WishList</button>
+        </Link>
+      </div>
+      <div className={styles.new_div}>
+        <button
+          className={styles.logout_button}
+          style={{ color: "red", border: "1px solid red" }}
+          onClick={() => setToken(null)}
+        >
+          Logout
+        </button>
+
+        <div className={styles.user_section}>
+          <FaUser className={styles.user_icon} />
+          <span className={styles.user_text}>Welcome {props.username}</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', color: 'white',marginLeft:50 }}>
-      <FaUser style={{ fontSize: '1.2em', marginRight: '10px', color: 'white' }} />
-      <span style={{ fontSize: '1.2em', fontWeight: '500', color: 'white',fontFamily: 'Roboto, sans-serif' }}>Welcome {props.username}</span>
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
