@@ -25,7 +25,7 @@ function ForgotPassword() {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h2>Forgot Password</h2>
+        <h2 className={styles.h2}>Forgot Password</h2>
         <form className={styles.box} onSubmit={handleSubmit}>
           {!email && (
             <div className={styles.req}>
@@ -41,7 +41,9 @@ function ForgotPassword() {
             placeholder="Enter your email"
             required
           />
-          <button type="submit">Reset Password</button>
+          <button className={styles.button} type="submit">
+            Reset Password
+          </button>
         </form>
         {message && <p className={styles.success}>{message}</p>}
         {error && <p className={styles.error}>{error}</p>}
