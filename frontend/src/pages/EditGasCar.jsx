@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { store } from '../App';
-import styles from '../components/Forms/GasForm.module.css';
+import React, { useState, useEffect, useContext } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { store } from "../App";
+import styles from "../components/Forms/GasForm.module.css";
 
 function EditGasCar() {
   const [carData, setCarData] = useState(null);
@@ -13,20 +13,25 @@ function EditGasCar() {
 
   useEffect(() => {
     if (carId) {
-      axios.get(`http://localhost:8080/api/get-gas-car/${carId}`, {
-        headers: { 'x-token': token }
-      })
-      .then(res => setCarData(res.data))
-      .catch(err => console.error(err));
+      axios
+        .get(`http://localhost:8080/api/get-gas-car/${carId}`, {
+          headers: { "x-token": token },
+        })
+        .then((res) => setCarData(res.data))
+        .catch((err) => console.error(err));
     }
   }, [carId, token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/api/edit-gas-car/${carId}`, carData, {
-        headers: { 'x-token': token }
-      });
+      await axios.put(
+        `http://localhost:8080/api/edit-gas-car/${carId}`,
+        carData,
+        {
+          headers: { "x-token": token },
+        }
+      );
     } catch (error) {
       console.error(error);
     }
@@ -34,14 +39,14 @@ function EditGasCar() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setCarData(prevData => ({
+    setCarData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
   if (!carData) return <div>Loading...</div>;
-  console.log(carData)
+  console.log(carData);
 
   return (
     <div className={styles.page}>
@@ -54,6 +59,7 @@ function EditGasCar() {
             <input
               name="title"
               value={carData.title}
+              required
               onChange={handleInputChange}
               placeholder="2019 Ford Mustang"
             />
@@ -66,6 +72,7 @@ function EditGasCar() {
               max={2024}
               min={1990}
               value={carData.year}
+              required
               onChange={handleInputChange}
               placeholder="2024"
             />
@@ -76,6 +83,7 @@ function EditGasCar() {
               name="price"
               type="number"
               value={carData.price}
+              required
               onChange={handleInputChange}
               placeholder="58100"
             />
@@ -88,6 +96,7 @@ function EditGasCar() {
             <input
               name="topspeed"
               value={carData.topspeed}
+              required
               onChange={handleInputChange}
               placeholder="185"
             />
@@ -97,6 +106,7 @@ function EditGasCar() {
             <input
               name="time60"
               value={carData.time60}
+              required
               onChange={handleInputChange}
               placeholder="3.8"
             />
@@ -106,6 +116,7 @@ function EditGasCar() {
             <input
               name="mileage"
               value={carData.mileage}
+              required
               onChange={handleInputChange}
               placeholder="19"
             />
@@ -120,6 +131,7 @@ function EditGasCar() {
               type="number"
               step="0.1"
               value={carData.engine}
+              required
               onChange={handleInputChange}
               placeholder="5.0"
             />
@@ -130,6 +142,7 @@ function EditGasCar() {
               name="gearbox"
               value={carData.gearbox}
               onChange={handleInputChange}
+              required
               placeholder="6-Speed SelectShift"
             />
           </div>
@@ -138,6 +151,7 @@ function EditGasCar() {
             <input
               name="transmission"
               value={carData.transmission}
+              required
               onChange={handleInputChange}
               placeholder="Automatic"
             />
@@ -150,6 +164,7 @@ function EditGasCar() {
             <input
               name="colour"
               value={carData.colour}
+              required
               onChange={handleInputChange}
               placeholder="Black"
             />
@@ -159,6 +174,7 @@ function EditGasCar() {
             <input
               name="interior"
               value={carData.interior}
+              required
               onChange={handleInputChange}
               placeholder="Cream Oakwood Interior"
             />
@@ -168,6 +184,7 @@ function EditGasCar() {
             <input
               name="wheel"
               value={carData.wheel}
+              required
               onChange={handleInputChange}
               placeholder="18'' Aluminium Wheels"
             />
@@ -183,6 +200,7 @@ function EditGasCar() {
               min="0"
               max="16"
               value={carData.cylinders}
+              required
               onChange={handleInputChange}
               placeholder="8"
             />
@@ -192,6 +210,7 @@ function EditGasCar() {
             <input
               name="drivetrain"
               value={carData.drivetrain}
+              required
               onChange={handleInputChange}
               placeholder="RWD"
             />
@@ -203,6 +222,7 @@ function EditGasCar() {
           <input
             name="performance"
             value={carData.performance}
+            required
             onChange={handleInputChange}
             placeholder="Performance Description"
           />
@@ -223,6 +243,7 @@ function EditGasCar() {
           <input
             name="technology"
             value={carData.technology}
+            required
             onChange={handleInputChange}
             placeholder="Technology Info"
           />
@@ -239,8 +260,12 @@ function EditGasCar() {
         </div>
 
         <div className={styles.btns}>
-          <button type="submit" className={styles.save}>Update</button>
-          <button type="button" className={styles.back} >Back</button>
+          <button type="submit" className={styles.save}>
+            Update
+          </button>
+          <button type="button" className={styles.back}>
+            Back
+          </button>
         </div>
       </form>
     </div>
