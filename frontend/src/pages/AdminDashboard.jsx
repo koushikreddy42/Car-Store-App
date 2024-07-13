@@ -170,9 +170,11 @@ function AdminUser() {
           <Link to="/dashboard-admin">
             <div>Requests</div>
           </Link>
-          <button className={styles.welcome}>
-            Welcome {userdata.username}
-          </button>
+          <Link to={"/admin-home"}>
+            <button className={styles.welcome}>
+              &#x1F464; Welcome {userdata.username}
+            </button>
+          </Link>
         </div>
         <div className={styles.details}>
           <div className={styles.salesDetails}>
@@ -197,6 +199,7 @@ function AdminUser() {
                         <th>Wheel</th>
                         <th>Description</th>
                         <th>Status</th>
+                        <th>Options</th>
                       </tr>
                     </thead>
                     <tbody>
