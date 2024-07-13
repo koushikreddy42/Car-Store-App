@@ -33,15 +33,17 @@ export const Header = (props) => {
             Gas
           </button>
         </Link>
-        <Link to="/gas-form">
-          <button className={styles.category_button}>Sell</button>
-        </Link>
-        <Link to="/dashboard">
-          <button className={styles.category_button}>Dashboard</button>
-        </Link>
-        <Link to="/wishlist">
-          <button className={styles.category_button}>WishList</button>
-        </Link>
+        <div className={styles.sub}>
+          <Link to="/gas-form">
+            <button className={styles.category_button}>Sell</button>
+          </Link>
+          <Link to="/dashboard">
+            <button className={styles.category_button}>Dashboard</button>
+          </Link>
+          <Link to="/wishlist">
+            <button className={styles.category_button}>WishList</button>
+          </Link>
+        </div>
       </div>
       <div className={styles.new_div}>
         <button
