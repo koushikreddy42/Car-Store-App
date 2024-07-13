@@ -27,6 +27,7 @@ function AdminGasForm() {
   const [postImage, setPostImage] = useState({ myFile: "" });
   const [adminToken, setAdminToken] = useContext(store);
   const [data, setData] = useState(null);
+  const [showProcessingDialog, setShowProcessingDialog] = useState(false);
   if (!adminToken) {
     return <Navigate to="/admin-sign" />;
   }
@@ -68,7 +69,7 @@ function AdminGasForm() {
         description,
         isAdmin: true,
       };
-
+      setShowProcessingDialog(true);
       const response = await axios.post(
         "http://localhost:8080/api/gas-form",
         formData
@@ -330,7 +331,7 @@ function AdminGasForm() {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <div class="btns">
+        <div className={styles.btns}>
           <button type="submit" className={styles.save}>
             {" "}
             Save{" "}
@@ -338,6 +339,23 @@ function AdminGasForm() {
           <button className={styles.back}>Back</button>
         </div>
       </form>
+      {showProcessingDialog && (
+        <div className={styles.processingDialog}>
+          <div className={styles.proIcon}>
+            <i class="fa-regular fa-hourglass-half"></i>
+          </div>
+          <div className={styles.info}>
+            <div className={styles.req}>
+              <p>
+                <b>&#x2705; Car has been added...</b>
+              </p>
+            </div>
+            <div className={styles.dash}>
+              <p>You can check it in the dashboard.</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

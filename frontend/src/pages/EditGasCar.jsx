@@ -10,6 +10,7 @@ function EditGasCar() {
   const location = useLocation();
   const navigate = useNavigate();
   const carId = location.state?.carId;
+  const [showProcessingDialog, setShowProcessingDialog] = useState(false);
 
   useEffect(() => {
     if (carId) {
@@ -25,6 +26,7 @@ function EditGasCar() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setShowProcessingDialog(true);
       await axios.put(
         `http://localhost:8080/api/edit-gas-car/${carId}`,
         carData,
@@ -51,7 +53,9 @@ function EditGasCar() {
   return (
     <div className={styles.page}>
       <form className={styles.gasform} onSubmit={handleSubmit}>
-        <h1 className={styles.heading}>Edit Gas Car</h1>
+        <div className={styles.box}>
+          <h1 className={styles.heading}>Edit Gas Car</h1>
+        </div>
 
         <div className={styles.row}>
           <div className={styles.info}>
@@ -263,11 +267,23 @@ function EditGasCar() {
           <button type="submit" className={styles.save}>
             Update
           </button>
-          <button type="button" className={styles.back}>
-            Back
-          </button>
         </div>
       </form>
+      {/* Processing dialog */}
+      {showProcessingDialog && (
+        <div className={styles.processingDialog}>
+          <div className={styles.info}>
+            <div className={styles.req}>
+              <p>
+                <b>&#x2705; Details have been updated...</b>
+              </p>
+            </div>
+            <div className={styles.dash}>
+              <p>You can check it in the dashboard.</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
