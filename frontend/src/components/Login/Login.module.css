@@ -160,21 +160,22 @@
 }
 
 .lost_password {
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.6);
-    margin-left:45px;
+    
 }
 
 .lost_password a {
-    color: #007BFF;
+    color: #0c7cf5;
     text-decoration: none;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
 .lost_password a:hover {
-    color: #05468a;
+    color: #073362;
 }
 
 .error_message {

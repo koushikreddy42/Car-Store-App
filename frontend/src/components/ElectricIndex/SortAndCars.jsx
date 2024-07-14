@@ -262,7 +262,7 @@ useEffect(() => {
         </div>
       )}
     </div>
-    <div className="sortby-div">
+    {/* <div className="sortby-div">
       <button className={styles.sort_button} onClick={handleButtonClick3}>
         Sort By
       </button>
@@ -288,7 +288,7 @@ useEffect(() => {
           </div>
         </div>
       )}
-    </div>
+    </div> */}
         </div>
         <div className={styles.car_for_sale_div}>
           <div className={styles.cars_for_sale}>

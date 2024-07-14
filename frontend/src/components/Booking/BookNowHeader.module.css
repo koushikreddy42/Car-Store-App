@@ -1,14 +1,13 @@
-body {
-    margin: 0;
-  }
+
   
   .header {
     background-color: black;
     display: flex;
+    height: 120px;
     padding-top: 40px;
     padding-bottom: 40px;
     padding-left: 60px;
-    align-items: center;
+    
     justify-content: space-between;
     
   }
@@ -19,7 +18,7 @@ body {
   }
   
   .logo_image {
-    height: 120px;
+    height: 60px;
     cursor: pointer;
     transition: transform 0.3s ease;
   }

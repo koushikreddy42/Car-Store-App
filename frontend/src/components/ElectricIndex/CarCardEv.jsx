@@ -4,6 +4,10 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import axios from 'axios';
 import styles from './CarCard.module.css';
 import { Link } from 'react-router-dom';
+import { BsPaintBucket, BsJoystick } from 'react-icons/bs';
+import { MdAirlineSeatReclineExtra, MdConnectedTv } from 'react-icons/md';
+import { FaCarSide } from 'react-icons/fa';
+
 
 export const CarCardEv = (props) => {
   const [isFavorite, setIsFavorite] = useState(props.isFavorite);
@@ -108,12 +112,27 @@ export const CarCardEv = (props) => {
         </div> 
       </div>
       <div className={styles.features_div}>
-        <div className="grid-item">{props.colour}</div>
-        <div className="grid-item">{props.interior}</div>
-        <div className="grid-item">AutoPilot</div>
-        <div className="grid-item">Premium Connectivity</div>
-        <div className="grid-item">{props.wheel}</div>
-      </div>
+  <div className="grid-item">
+    <BsPaintBucket style={{marginRight: '5px'}} />
+    {props.colour}
+  </div>
+  <div className="grid-item">
+    <MdAirlineSeatReclineExtra style={{marginRight: '5px'}} />
+    {props.interior}
+  </div>
+  <div className="grid-item">
+    <BsJoystick style={{marginRight: '5px'}} />
+    AutoPilot
+  </div>
+  <div className="grid-item">
+    <MdConnectedTv style={{marginRight: '5px'}} />
+    Premium Connectivity
+  </div>
+  <div className="grid-item">
+    <FaCarSide style={{marginRight: '5px'}} />
+    {props.wheel}
+  </div>
+</div>
       <p>
         {props.description}
       </p>
