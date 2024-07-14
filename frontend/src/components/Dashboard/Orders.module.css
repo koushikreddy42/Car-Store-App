@@ -87,7 +87,7 @@
     color: white;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
+    text-decoration: none;
     font-size: 16px;
     font-weight: 500;
     display: block;
@@ -96,9 +96,11 @@
 }
 .button:hover {
     background-color: #0056b3;
-    transition: all ease 0.3s;
+    cursor: pointer;
     box-shadow: 0px 0px 5px 3px #6aabf2 ;
+    transition: all ease 0.3s;
 }
+
 
 .bttns{
     display:flex;
@@ -107,8 +109,9 @@
 }
 
 .status{
-    border: 1px solid;
-    padding:5px 8px;
+    border: 1px solid black;
+    padding:5px 10px;
+    padding-right: 15px;
     border-radius: 5px;
     margin-right: 10px;
 }

@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
-import styles from "./Header.module.css";
-import logo from "../Assets/logo.png";
+import styles from "../components/Booking/BookNowHeader.module.css";
+import logo from "../components/Assets/logo.png";
 import { Link, useLocation } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
-import { store } from "../../App";
+import { store } from "../App";
 
-export const Header = (props) => {
+export const BookNowHeader = (props) => {
   const [token, setToken] = useContext(store);
   const location = useLocation();
 
@@ -15,28 +15,7 @@ export const Header = (props) => {
         <img src={logo} className={styles.logo_image} alt="logo" />
       </div>
       <div className={styles.category_div}>
-        <Link to="/electric">
-          <button
-            className={`${styles.category_button} ${
-              location.pathname === "/electric" ? styles.active : ""
-            }`}
-          >
-            EVs
-          </button>
-        </Link>
-        <Link to="/gas">
-          <button
-            className={`${styles.category_button} ${
-              location.pathname === "/gas" ? styles.active : ""
-            }`}
-          >
-            Gas
-          </button>
-        </Link>
         <div className={styles.sub}>
-          <Link to="/gas-form">
-            <button className={styles.category_button}>Sell</button>
-          </Link>
           <Link to="/dashboard">
             <button className={styles.category_button}>Dashboard</button>
           </Link>

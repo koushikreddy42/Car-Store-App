@@ -1,6 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { store } from '../../App';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { FaGasPump, FaCar, FaCogs } from 'react-icons/fa';
+import { BsPaintBucket } from 'react-icons/bs';
+import { MdAirlineSeatReclineExtra } from 'react-icons/md';
+import { GiCarWheel } from 'react-icons/gi';
 import axios from 'axios';
 import styles from './CarCard.module.css';
 import { Link } from 'react-router-dom';
@@ -106,14 +110,31 @@ export const CarCardGas = (props) => {
             </div>
         </div>
         <div className={styles.features_div}> 
-            <div class="grid-item">{props.engine}L Turbo Engine</div>
-            <div class="grid-item">{props.colour}</div>
-            <div class="grid-item">{props.gearbox} Transmission</div>
-            <div class="grid-item">{props.interior}</div>
-            <div class="grid-item">{props.transmission}</div>
-            <div class="grid-item">{props.wheel}</div>
-            
+        <div className="grid-item">
+          <FaGasPump style={{marginRight: '5px'}} />
+          {props.engine}L Turbo Engine
         </div>
+        <div className="grid-item">
+          <BsPaintBucket style={{marginRight: '5px'}} />
+          {props.colour}
+        </div>
+        <div className="grid-item">
+          <FaCogs style={{marginRight: '5px'}} />
+          {props.gearbox} Transmission
+        </div>
+        <div className="grid-item">
+          <MdAirlineSeatReclineExtra style={{marginRight: '5px'}} />
+          {props.interior}
+        </div>
+        <div className="grid-item">
+          <FaCar style={{marginRight: '5px'}} />
+          {props.transmission}
+        </div>
+        <div className="grid-item">
+          <GiCarWheel style={{marginRight: '5px'}} />
+          {props.wheel}
+        </div>
+      </div>
         <p>
         {props.description}
         </p>
