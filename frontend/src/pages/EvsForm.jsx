@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import styles from "../components/Forms/EvsForm.module.css";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { store } from "../App";
 
 function EvsForm() {
@@ -282,7 +282,9 @@ function EvsForm() {
             {" "}
             Save{" "}
           </button>
-          <button className={styles.back}>Back</button>
+          <Link to={"/electric"}>
+            <button className={styles.back}>Back</button>
+          </Link>
         </div>
       </form>
       {/* Processing dialog */}

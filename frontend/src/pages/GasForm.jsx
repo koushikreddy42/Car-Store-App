@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import styles from "../components/Forms/GasForm.module.css";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { store } from "../App";
 
 function GasForm() {
@@ -340,7 +340,9 @@ function GasForm() {
             {" "}
             Save{" "}
           </button>
-          <button className={styles.back}>Back</button>
+          <Link to={"/gas"}>
+            <button className={styles.back}>Back</button>
+          </Link>
         </div>
       </form>
       {/* Processing dialog */}
