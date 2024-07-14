@@ -95,7 +95,7 @@ router.post('/forgot-password', async (req, res) => {
       return res.status(404).send('User not found');
     }
 
-    // Generate a password reset token
+    // Generate a password reset token 
     const resetToken = generateResetToken();
     user.resetPasswordToken = resetToken;
     user.resetPasswordExpires = Date.now() + 3600000; // 1 hour

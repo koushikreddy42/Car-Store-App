@@ -5,8 +5,8 @@ function sendVerificationEmail(userEmail, verificationToken) {
   const config = {
     service: 'gmail',
     auth: {
-      user: 'alien64209@gmail.com',
-      pass: 'taisozlosyymbjiu'
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_PASS
     }
   };
 
@@ -39,7 +39,7 @@ function sendVerificationEmail(userEmail, verificationToken) {
 
   const mail = MailGenerator.generate(response);
   const message = {
-    from: 'alien64209@gmail.com',
+    from: process.env.GMAIL_USER,
     to: userEmail,
     subject: 'Verify your email',
     html: mail
@@ -51,8 +51,8 @@ function sendPasswordResetEmail(userEmail, resetLink) {
   const config = {
     service: 'gmail',
     auth: {
-      user: 'alien64209@gmail.com',
-      pass: 'taisozlosyymbjiu'
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_PASS
     }
   };
 
@@ -83,7 +83,7 @@ function sendPasswordResetEmail(userEmail, resetLink) {
   };
   const mail = MailGenerator.generate(response);
   const message = {
-    from: 'alien64209@gmail.com',
+    from: process.env.GMAIL_USER,
     to: userEmail,
     subject: 'Verify your email',
     html: mail
