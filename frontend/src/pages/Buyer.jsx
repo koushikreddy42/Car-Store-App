@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { store } from "../App";
 import styles from "../components/Dashboard/Buyer.module.css";
@@ -203,9 +203,9 @@ const BuyerDetails = () => {
         <div className={styles.header}>
           <img className={styles.logo} src={logo} alt="Logo" />
           <div>Pending Requests: {pendingRequests}</div>
-          <button className={styles.welcome}>
-            Welcome {userdata.username}
-          </button>
+          <Link to={"/dashboard"}>
+            <button className={styles.welcome}>Go Back</button>
+          </Link>
         </div>
         <div className={styles.startline}>
           <h2>Buyers Details</h2>
