@@ -23,7 +23,10 @@ const OrderDetails = ({ orderDetails }) => {
 
       {electricCarOrders.length > 0 || gasCarOrders.length > 0 ? (
         <>
-          <button className={styles.button}>Buy More</button>
+          <Link to={"/electric"} style={{ textDecoration: "none" }}>
+            <button className={styles.button}>Buy More</button>
+          </Link>
+
           <div className={styles.cardsContainer}>
             {/* Render electric car orders */}
             {electricCarOrders.map((order) => (
