@@ -20,7 +20,7 @@ function sendVerificationEmail(userEmail, verificationToken) {
     }
   });
 
-  const verificationLink = `http://localhost:8080/api/verify-email?token=${verificationToken}`;
+  const verificationLink = `https://car-store-app-api.vercel.app/api/verify-email?token=${verificationToken}`;
   const response = {
     body: {
       name: 'Car Store',
