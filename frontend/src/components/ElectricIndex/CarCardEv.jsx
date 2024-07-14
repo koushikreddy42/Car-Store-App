@@ -16,7 +16,7 @@ export const CarCardEv = (props) => {
   // console.log({car:props.title,truth:props.isFavorite})
     
   useEffect(() => {
-    axios.get('http://localhost:8080/api/myprofile', {
+    axios.get('https://car-store-app-api.vercel.app/api/myprofile', {
       headers: {
         'x-token': token
       }
@@ -29,7 +29,7 @@ export const CarCardEv = (props) => {
 
   // const checkFavoriteStatus = async () => {
   //   try {
-  //     const response = await axios.get('http://localhost:8080/api/favourites', {
+  //     const response = await axios.get('https://car-store-app-api.vercel.app/api/favourites', {
   //       headers: {
   //         'x-token': token
   //       }
@@ -43,13 +43,13 @@ export const CarCardEv = (props) => {
   const toggleFavorite = async () => {
     try {
       if (isFavorite) {
-        await axios.post('http://localhost:8080/api/remove-favourite', { carId: props._id }, {
+        await axios.post('https://car-store-app-api.vercel.app/api/remove-favourite', { carId: props._id }, {
           headers: {
             'x-token': token
           }
         });
       } else {
-        await axios.post('http://localhost:8080/api/add-favourite', { carId: props._id, carType: 'electriccarmodel' }, {
+        await axios.post('https://car-store-app-api.vercel.app/api/add-favourite', { carId: props._id, carType: 'electriccarmodel' }, {
           headers: {
             'x-token': token
           }

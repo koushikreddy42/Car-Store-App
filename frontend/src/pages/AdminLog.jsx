@@ -25,7 +25,7 @@ function AdminLog() {
     setSuccessMessage("");
 
     axios
-      .post("http://localhost:8080/api/admin-login", {
+      .post("https://car-store-app-api.vercel.app/api/admin-login", {
         username: userId,
         password: password,
       })

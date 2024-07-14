@@ -15,7 +15,7 @@ function EditGasCar() {
   useEffect(() => {
     if (carId) {
       axios
-        .get(`http://localhost:8080/api/get-gas-car/${carId}`, {
+        .get(`https://car-store-app-api.vercel.app/api/get-gas-car/${carId}`, {
           headers: { "x-token": token },
         })
         .then((res) => setCarData(res.data))
@@ -28,7 +28,7 @@ function EditGasCar() {
     try {
       setShowProcessingDialog(true);
       await axios.put(
-        `http://localhost:8080/api/edit-gas-car/${carId}`,
+        `https://car-store-app-api.vercel.app/api/edit-gas-car/${carId}`,
         carData,
         {
           headers: { "x-token": token },

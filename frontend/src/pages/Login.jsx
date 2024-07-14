@@ -48,7 +48,7 @@ function Login() {
       setError("");
       setSuccess("");
       axios
-        .post("http://localhost:8080/api/login", {
+        .post("https://car-store-app-api.vercel.app/api/login", {
           email: email,
           password: password,
         })
@@ -68,7 +68,7 @@ function Login() {
       setError("");
       setSuccess("");
       axios
-        .post("http://localhost:8080/api/register", {
+        .post("https://car-store-app-api.vercel.app/api/register", {
           username: userId,
           email: email,
           password: password,

@@ -64,7 +64,7 @@ const [carsForSale, setCarsForSale] = useState(0);
 useEffect(() => {
   const fetchGasModels = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/gas-listt");
+      const response = await fetch("https://car-store-app-api.vercel.app/api/gas-listt");
       const data = await response.json();
       setGasModels(data);
 
@@ -77,7 +77,7 @@ useEffect(() => {
 
   const fetchFavorites = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/favourites', {
+      const response = await axios.get('https://car-store-app-api.vercel.app/api/favourites', {
         headers: {
           'x-token': token
         }

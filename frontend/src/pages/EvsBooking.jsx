@@ -36,7 +36,7 @@ function Booking() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/myprofile", {
         headers: {
           "x-token": token,
         },
@@ -56,7 +56,7 @@ function Booking() {
       const fetchCar = async () => {
         try {
           const response = await fetch(
-            `http://localhost:8080/api/${endpoint}/${param1}`
+            `https://car-store-app-api.vercel.app/api/${endpoint}/${param1}`
           );
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -95,7 +95,7 @@ function Booking() {
     try {
       if (isFavorite) {
         await axios.post(
-          "http://localhost:8080/api/remove-favourite",
+          "https://car-store-app-api.vercel.app/api/remove-favourite",
           { carId: car._id },
           {
             headers: {
@@ -105,7 +105,7 @@ function Booking() {
         );
       } else {
         await axios.post(
-          "http://localhost:8080/api/add-favourite",
+          "https://car-store-app-api.vercel.app/api/add-favourite",
           { carId: car._id, carType: "electriccarmodel" },
           {
             headers: {

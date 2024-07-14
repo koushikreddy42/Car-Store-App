@@ -11,7 +11,7 @@ function ForgotPassword() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/forgot-password",
+        "https://car-store-app-api.vercel.app/api/forgot-password",
         { email }
       );
       setMessage(response.data);

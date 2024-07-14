@@ -13,7 +13,7 @@ function GasList() {
   }
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/admin-myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/admin-myprofile", {
         headers: {
           "x-token": adminToken,
         },
@@ -28,7 +28,7 @@ function GasList() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/gas-list");
+      const response = await axios.get("https://car-store-app-api.vercel.app/api/gas-list");
       setData(response.data);
     } catch (error) {
       console.error("Error retrieving gas car data:", error);
@@ -36,7 +36,7 @@ function GasList() {
   };
   const handleAccept = async (carId) => {
     try {
-      await axios.put(`http://localhost:8080/api/gas-list/accept/${carId}`);
+      await axios.put(`https://car-store-app-api.vercel.app/api/gas-list/accept/${carId}`);
       setData((prevData) =>
         prevData.map((car) =>
           car._id === carId ? { ...car, isDisplayed: true } : car
@@ -49,7 +49,7 @@ function GasList() {
 
   const handleDecline = async (carId) => {
     try {
-      await axios.delete(`http://localhost:8080/api/gas-list/decline/${carId}`);
+      await axios.delete(`https://car-store-app-api.vercel.app/api/gas-list/decline/${carId}`);
       setData((d) => d.filter((car) => car._id !== carId));
     } catch (error) {
       console.error("Error declining car:", error);

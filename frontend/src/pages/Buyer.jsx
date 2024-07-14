@@ -14,7 +14,7 @@ const BuyerDetails = () => {
     if (!token) return;
 
     axios
-      .get("http://localhost:8080/api/myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/myprofile", {
         headers: {
           "x-token": token,
         },
@@ -104,7 +104,7 @@ const BuyerDetails = () => {
 
     const userId = userdata._id;
     axios
-      .get(`http://localhost:8080/api/get-requests?userId=${userId}`)
+      .get(`https://car-store-app-api.vercel.app/api/get-requests?userId=${userId}`)
       .then((res) => {
         if (res.data.status === "ok") {
           setBuyingFormData(res.data.data);
@@ -128,7 +128,7 @@ const BuyerDetails = () => {
     );
     if (confirm) {
       axios
-        .post("http://localhost:8080/api/owner-accept", {
+        .post("https://car-store-app-api.vercel.app/api/owner-accept", {
           buyerId,
           carType,
           carId,
@@ -161,7 +161,7 @@ const BuyerDetails = () => {
 
     if (confirm) {
       axios
-        .post("http://localhost:8080/api/owner-cancel", {
+        .post("https://car-store-app-api.vercel.app/api/owner-cancel", {
           buyerId,
           carType,
           carId,
@@ -187,12 +187,12 @@ const BuyerDetails = () => {
     }
   };
 
-  const handleViewDocument = (filename) => {
-    const baseUrl = "http://localhost:8080";
-    const url = `${baseUrl}/files/${encodeURIComponent(filename)}`;
-    console.log(url); // Log the constructed URL for debugging
-    window.open(url, "_blank");
-  };
+  // const handleViewDocument = (filename) => {
+  //   const baseUrl = "http://localhost:8080";
+  //   const url = `${baseUrl}/files/${encodeURIComponent(filename)}`;
+  //   console.log(url); // Log the constructed URL for debugging
+  //   window.open(url, "_blank");
+  // };
   const pendingRequests = buyingFormData.filter(
     (buyer) => buyer.ownerVerified === "pending"
   ).length;

@@ -15,7 +15,7 @@ function EditElectricCar() {
   useEffect(() => {
     if (carId) {
       axios
-        .get(`http://localhost:8080/api/get-electric-car/${carId}`, {
+        .get(`https://car-store-app-api.vercel.app/api/get-electric-car/${carId}`, {
           headers: { "x-token": token },
         })
         .then((res) => setCarData(res.data))
@@ -28,7 +28,7 @@ function EditElectricCar() {
     try {
       setShowProcessingDialog(true);
       await axios.put(
-        `http://localhost:8080/api/edit-electric-car/${carId}`,
+        `https://car-store-app-api.vercel.app/api/edit-electric-car/${carId}`,
         carData,
         {
           headers: { "x-token": token },

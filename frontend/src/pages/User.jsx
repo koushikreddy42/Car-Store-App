@@ -19,7 +19,7 @@ function User() {
     if (!token) return;
 
     axios
-      .get("http://localhost:8080/api/myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/myprofile", {
         headers: {
           "x-token": token,
         },
@@ -33,7 +33,7 @@ function User() {
 
     const fetchOrders = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/orders", {
+        const response = await axios.get("https://car-store-app-api.vercel.app/api/orders", {
           headers: {
             "x-token": token,
             "x-user-id": userdata._id,
@@ -125,7 +125,7 @@ function User() {
         console.log(userdata._id);
         try {
           const response = await axios.get(
-            `http://localhost:8080/api/owner-cars?userId=${userdata._id}`
+            `https://car-store-app-api.vercel.app/api/owner-cars?userId=${userdata._id}`
           );
           const { electricCars, gasCars } = response.data;
 

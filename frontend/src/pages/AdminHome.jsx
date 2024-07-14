@@ -15,7 +15,7 @@ function AdminHome() {
   }
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/admin-myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/admin-myprofile", {
         headers: {
           "x-token": adminToken,
         },

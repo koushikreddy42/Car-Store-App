@@ -64,7 +64,7 @@ function PlaceOrder({ isOpen, onClose, carType, buyerId, carId, isAdmin }) {
             submitData.append(key, formData[key]);
         }
         try {
-            const result = await axios.post('http://localhost:8080/api/submit-form', submitData, {
+            const result = await axios.post('https://car-store-app-api.vercel.app/api/submit-form', submitData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
             console.log(result);

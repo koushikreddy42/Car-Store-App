@@ -33,7 +33,7 @@ function AdminGasForm() {
   }
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/admin-myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/admin-myprofile", {
         headers: {
           "x-token": adminToken,
         },
@@ -71,7 +71,7 @@ function AdminGasForm() {
       };
       setShowProcessingDialog(true);
       const response = await axios.post(
-        "http://localhost:8080/api/gas-form",
+        "https://car-store-app-api.vercel.app/api/gas-form",
         formData
       );
       console.log(response.data);

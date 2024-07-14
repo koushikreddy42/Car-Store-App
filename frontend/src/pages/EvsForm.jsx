@@ -27,7 +27,7 @@ function EvsForm() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/myprofile", {
         headers: {
           "x-token": token,
         },
@@ -66,7 +66,7 @@ function EvsForm() {
       setShowProcessingDialog(true);
 
       const response = await axios.post(
-        "http://localhost:8080/api/electric-form",
+        "https://car-store-app-api.vercel.app/api/electric-form",
         formData
       );
       console.log(response.data);

@@ -34,7 +34,7 @@ function BookNow() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/myprofile", {
         headers: {
           "x-token": token,
         },
@@ -53,7 +53,7 @@ function BookNow() {
       const fetchCar = async () => {
         try {
           const response = await fetch(
-            `http://localhost:8080/api/${endpoint}/${param1}`
+            `https://car-store-app-api.vercel.app/api/${endpoint}/${param1}`
           );
           if (!response.ok) {
             throw new Error("Network response was not ok");

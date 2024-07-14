@@ -13,7 +13,7 @@ function ElectricList() {
   }
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/admin-myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/admin-myprofile", {
         headers: {
           "x-token": adminToken,
         },
@@ -29,7 +29,7 @@ function ElectricList() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/electric-list"
+        "https://car-store-app-api.vercel.app/api/electric-list"
       );
       setData(response.data);
     } catch (error) {
@@ -39,7 +39,7 @@ function ElectricList() {
   const handleAccept = async (carId) => {
     try {
       await axios.put(
-        `http://localhost:8080/api/electric-list/accept/${carId}`
+        `https://car-store-app-api.vercel.app/api/electric-list/accept/${carId}`
       );
       setData((prevData) =>
         prevData.map((car) =>
@@ -54,7 +54,7 @@ function ElectricList() {
   const handleDecline = async (carId) => {
     try {
       await axios.delete(
-        `http://localhost:8080/api/electric-list/decline/${carId}`
+        `https://car-store-app-api.vercel.app/api/electric-list/decline/${carId}`
       );
       setData((d) => d.filter((car) => car._id !== carId));
     } catch (error) {

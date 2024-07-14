@@ -11,7 +11,7 @@ function ElectricIndex() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/myprofile", {
         headers: {
           "x-token": token,
         },

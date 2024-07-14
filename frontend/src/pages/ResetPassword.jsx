@@ -20,7 +20,7 @@ function ResetPassword() {
     }
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/reset-password",
+        "https://car-store-app-api.vercel.app/api/reset-password",
         { token, newPassword: password }
       );
       setMessage(response.data);

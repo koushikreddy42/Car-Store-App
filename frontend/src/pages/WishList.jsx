@@ -13,7 +13,7 @@ function WishList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/myprofile", {
         headers: {
           "x-token": token,
         },
@@ -32,7 +32,7 @@ function WishList() {
     const fetchFavorites = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/favourites",
+          "https://car-store-app-api.vercel.app/api/favourites",
           {
             headers: {
               "x-token": token,
@@ -54,7 +54,7 @@ function WishList() {
   const removeFavorite = async (id) => {
     try {
       await axios.post(
-        "http://localhost:8080/api/remove-favourite",
+        "https://car-store-app-api.vercel.app/api/remove-favourite",
         { carId: id },
         {
           headers: {
