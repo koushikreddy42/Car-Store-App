@@ -2,6 +2,7 @@ import React, { useState,useContext,useEffect } from 'react';
 import { store } from '../App';
 import { Navigate,useParams } from 'react-router-dom';
 import axios from 'axios'
+import Footer from './Footer'
 import PlaceOrder from './PlaceOrder'
 import styles from '../components/Booking/GasBooking.module.css'
 import t3p from '../components/Assets/t3p.png'
@@ -269,6 +270,7 @@ function Booking(){
         <p>Loading...</p> // Placeholder for when car data is being fetched
       ) 
      }
+     <Footer/>
   </div>
   );
 }

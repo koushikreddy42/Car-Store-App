@@ -99,7 +99,7 @@ function GasForm() {
                     <div className={styles.info}>
             <label className={styles.upload_text}>Upload image</label>
             <div>
-              <input type="file" lable="Image" name="myFile" id='file-upload' accept='.jpg, .jpeg, .png' onChange={(e) => handleFileUpload(e)}/>
+              <input type="file" lable="Image" name="myFile" id='file-upload' accept='.jpg, .jpeg, .png' onChange={(e) => handleFileUpload(e)} required/>
             </div>
           </div>
                     </div>
@@ -111,7 +111,7 @@ function GasForm() {
                 placeholder="2019 Ford Mustang"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-              />
+                required/>
                             </div>
                         </div>
                         <div className={styles.info}>
@@ -124,7 +124,7 @@ function GasForm() {
                 placeholder="2024"
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
-              />
+                required/>
                               </div>
                                 
                             
@@ -137,7 +137,7 @@ function GasForm() {
                 placeholder="58,100"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-              />
+                required/>
                         </div>
                      </div>
                     </div>
@@ -151,7 +151,7 @@ function GasForm() {
                 placeholder="185"
                 value={topspeed}
                 onChange={(e) => setTopSpeed(e.target.value)}
-              />
+                required/>
                         </div>
                      </div>
                      <div className={styles.info}>
@@ -162,7 +162,7 @@ function GasForm() {
             placeholder="11"
             value={cylinders}
             onChange={(e) => setCylinders(e.target.value)}
-          />
+            required/>
                         </div>
                      </div>
                      <div className={styles.info}>
@@ -173,7 +173,7 @@ function GasForm() {
                 placeholder="3.8"
                 value={time60}
                 onChange={(e) => setTime60(e.target.value)}
-              />
+                required/>
                         </div>
                         
                      </div>
@@ -188,7 +188,7 @@ function GasForm() {
                 placeholder="19"
                 value={mileage}
                 onChange={(e) => setMileage(e.target.value)}
-              />
+                required/>
                        </div>
                        
                        
@@ -201,7 +201,7 @@ function GasForm() {
                 placeholder="Black"
                 value={colour}
                 onChange={(e) => setColor(e.target.value)}
-              />
+                required/>
                        </div>
                        
                        
@@ -216,7 +216,7 @@ function GasForm() {
                 placeholder="5.0"
                 value={engine}
                 onChange={(e) => setEngine(e.target.value)}
-              />
+                required/>
                             </div>
                             
                         </div>
@@ -227,7 +227,7 @@ function GasForm() {
             placeholder="RWD"
             value={drivetrain}
             onChange={(e) => setDriveTrain(e.target.value)}
-          />
+            required/>
                         </div>
                         
                     </div>
@@ -240,7 +240,7 @@ function GasForm() {
               placeholder="6-Speed SelectShift"
               value={gearbox}
               onChange={(e) => setGearbox(e.target.value)}
-            />
+              required/>
                         </div>
                        
                             <div className={styles.info} >
@@ -250,7 +250,7 @@ function GasForm() {
               placeholder="Automatic"
               value={transmission}
               onChange={(e) => setTransmission(e.target.value)}
-            />
+              required/>
                         </div>
 
                     </div>
@@ -264,7 +264,7 @@ function GasForm() {
             placeholder="Performance Description"
             value={performance}
             onChange={(e) => setPerformance(e.target.value)}
-          />
+            required/>
                             </div>
                         </div>
                     <div className={styles.info}>
@@ -274,7 +274,7 @@ function GasForm() {
               placeholder="Cream Oakwood Interior"
               value={interior}
               onChange={(e) => setInterior(e.target.value)}
-            />
+              required/>
                     </div>
                     
                     
@@ -285,7 +285,7 @@ function GasForm() {
               placeholder="18'' Aluminium Wheels"
               value={wheel}
               onChange={(e) => setWheel(e.target.value)}
-            />
+              required/>
                     </div>
                     
                     </div>
@@ -297,7 +297,7 @@ function GasForm() {
             placeholder="Safety Description"
             value={safety}
             onChange={(e) => setSafety(e.target.value)}
-          />
+            required/>
                             </div>
                         </div>
                         <div className={styles.info}>

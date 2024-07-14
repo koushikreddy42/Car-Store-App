@@ -1,5 +1,5 @@
 import { useState,useContext,useEffect } from 'react';
-import styles from '../components/Forms/EvsForm.module.css';
+import styles from '../components/Forms/AdminEvsForm.module.css';
 import axios from 'axios'
 import { Navigate} from 'react-router-dom';
 import { store } from '../App';
@@ -23,6 +23,7 @@ function AdminEvsForm() {
   const [postImage, setPostImage] = useState( { myFile : ""})
   const [adminToken,setAdminToken]=useContext(store)
     const [data,setData]=useState(null)
+    const [showProcessingDialog, setShowProcessingDialog] = useState(false);
     if(!adminToken){
         return <Navigate to='/admin-sign'/>
     }
@@ -56,6 +57,8 @@ function AdminEvsForm() {
         addedBy:data._id,
         isAdmin:true
       };
+
+      setShowProcessingDialog(true);
   
       const response = await axios.post('http://localhost:8080/api/electric-form', formData);
       console.log(response.data);
@@ -84,9 +87,9 @@ function AdminEvsForm() {
                     
                     <div className={styles.row}>
                     <div className={styles.info}>
-            <label className={styles.upload_text}>Upload image</label>
+            <label className={styles.upload_text}>Upload image </label>
             <div>
-              <input type="file" lable="Image" name="myFile" id='file-upload' accept='.jpg, .jpeg, .png' onChange={(e) => handleFileUpload(e)}/>
+              <input type="file" lable="Image" name="myFile" id='file-upload' accept='.jpg, .jpeg, .png' onChange={(e) => handleFileUpload(e)} required/>
             </div>
           </div>
                     </div>
@@ -98,7 +101,7 @@ function AdminEvsForm() {
                 placeholder="Tesla Model Y Long Range AWD"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-              />
+              required/>
                             </div>
                         </div>
                         
@@ -112,7 +115,7 @@ function AdminEvsForm() {
                 placeholder="2024"
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
-              />
+              required/>
                             </div>
                         </div>
                         <div className={styles.info}>
@@ -123,7 +126,7 @@ function AdminEvsForm() {
             placeholder="Performance Description"
             value={performance}
             onChange={(e) => setPerformance(e.target.value)}
-          />
+          required/>
                             </div>
                         </div>
                     </div>
@@ -136,7 +139,7 @@ function AdminEvsForm() {
                 placeholder="54,000"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-              />
+              required/>
                         </div>
                      </div>
                      <div className={styles.info}>
@@ -147,7 +150,7 @@ function AdminEvsForm() {
                 placeholder="135"
                 value={topspeed}
                 onChange={(e) => setTopSpeed(e.target.value)}
-              />
+              required/>
                         </div>
                      </div>
                      <div className={styles.info}>
@@ -158,7 +161,7 @@ function AdminEvsForm() {
                 placeholder="4.8"
                 value={time60}
                 onChange={(e) => setTime60(e.target.value)}
-              />
+              required/>
                         </div>
                      </div>
 
@@ -172,7 +175,7 @@ function AdminEvsForm() {
               placeholder="346"
               value={range}
               onChange={(e) => setRange(e.target.value)}
-            />
+            required/>
                        
                     </div>
                     
@@ -184,7 +187,7 @@ function AdminEvsForm() {
               placeholder="Black"
               value={colour}
               onChange={(e) => setColor(e.target.value)}
-            />
+            required/>
                        
                     </div>
                     </div>
@@ -197,7 +200,7 @@ function AdminEvsForm() {
               placeholder="Cream Oakwood Interior"
               value={interior}
               onChange={(e) => setInterior(e.target.value)}
-            />
+            required/>
                     </div>
                     
                     
@@ -208,7 +211,7 @@ function AdminEvsForm() {
               placeholder="19'' Induction Wheels"
               value={wheel}
               onChange={(e) => setWheel(e.target.value)}
-            />
+            required/>
                     </div>
                     <div className={styles.info}>
                             <label>Technology</label>
@@ -230,7 +233,7 @@ function AdminEvsForm() {
             placeholder="Safety Description"
             value={safety}
             onChange={(e) => setSafety(e.target.value)}
-          />
+          required/>
                             </div>
                         </div>
                         <div className={styles.info}>
@@ -241,7 +244,7 @@ function AdminEvsForm() {
             placeholder="Range Description Info"
             value={rangedescription}
             onChange={(e) => setRangeDescription(e.target.value)}
-          />
+          required/>
                             </div>
                         </div>
                         
@@ -258,8 +261,18 @@ function AdminEvsForm() {
             <button type="submit" className={styles.save}> Save </button>
             <button className={styles.back}>Back</button>
         </div>
-                    </form> 
-                </div>
+      </form>
+      {/* Processing dialog */}
+      {showProcessingDialog && (
+        <div className={styles.processingDialog}>
+          <div className={styles.successIcon}>✓</div>
+          <div className={styles.info}>
+            <div className={styles.req}><p><b>Car added successfully !</b></p></div>
+            <div className={styles.dash}><p>Visit your dashboard to view or edit details</p></div>
+          </div>
+        </div>
+      )}  
+    </div>
   );
 }
 

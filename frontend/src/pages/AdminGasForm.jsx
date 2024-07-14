@@ -1,5 +1,5 @@
 import { useState,useContext,useEffect } from 'react';
-import styles from '../components/Forms/GasForm.module.css';
+import styles from '../components/Forms/AdminGasForm.module.css';
 import axios from 'axios'
 import { Navigate} from 'react-router-dom';
 import { store } from '../App';
@@ -27,6 +27,7 @@ function AdminGasForm() {
   const [postImage, setPostImage] = useState( { myFile : ""})
   const [adminToken,setAdminToken]=useContext(store) 
     const [data,setData]=useState(null)
+    const [showProcessingDialog, setShowProcessingDialog] = useState(false);
     if(!adminToken){
         return <Navigate to='/admin-sign'/>
     }
@@ -69,6 +70,7 @@ function AdminGasForm() {
       const response = await axios.post('http://localhost:8080/api/gas-form', formData);
       console.log(response.data);
       // Handle success or redirect to another page
+      setShowProcessingDialog(true);
     } catch (error) {
       console.error(error);
       // Handle error
@@ -94,7 +96,7 @@ function AdminGasForm() {
                     <div className={styles.info}>
             <label className={styles.upload_text}>Upload image</label>
             <div>
-              <input type="file" lable="Image" name="myFile" id='file-upload' accept='.jpg, .jpeg, .png' onChange={(e) => handleFileUpload(e)}/>
+              <input type="file" lable="Image" name="myFile" id='file-upload' accept='.jpg, .jpeg, .png' onChange={(e) => handleFileUpload(e)} required/>
             </div>
           </div>
                     </div>
@@ -106,7 +108,7 @@ function AdminGasForm() {
                 placeholder="2019 Ford Mustang"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-              />
+                required/>
                             </div>
                         </div>
                         <div className={styles.info}>
@@ -119,7 +121,7 @@ function AdminGasForm() {
                 placeholder="2024"
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
-              />
+                required/>
                               </div>
                                 
                             
@@ -132,7 +134,7 @@ function AdminGasForm() {
                 placeholder="58,100"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-              />
+                required/>
                         </div>
                      </div>
                     </div>
@@ -146,7 +148,7 @@ function AdminGasForm() {
                 placeholder="185"
                 value={topspeed}
                 onChange={(e) => setTopSpeed(e.target.value)}
-              />
+                required/>
                         </div>
                      </div>
                      <div className={styles.info}>
@@ -157,7 +159,7 @@ function AdminGasForm() {
             placeholder="11"
             value={cylinders}
             onChange={(e) => setCylinders(e.target.value)}
-          />
+            required/>
                         </div>
                      </div>
                      <div className={styles.info}>
@@ -168,7 +170,7 @@ function AdminGasForm() {
                 placeholder="3.8"
                 value={time60}
                 onChange={(e) => setTime60(e.target.value)}
-              />
+                required/>
                         </div>
                         
                      </div>
@@ -183,7 +185,7 @@ function AdminGasForm() {
                 placeholder="19"
                 value={mileage}
                 onChange={(e) => setMileage(e.target.value)}
-              />
+                required/>
                        </div>
                        
                        
@@ -196,7 +198,7 @@ function AdminGasForm() {
                 placeholder="Black"
                 value={colour}
                 onChange={(e) => setColor(e.target.value)}
-              />
+                required/>
                        </div>
                        
                        
@@ -211,7 +213,7 @@ function AdminGasForm() {
                 placeholder="5.0"
                 value={engine}
                 onChange={(e) => setEngine(e.target.value)}
-              />
+                required/>
                             </div>
                             
                         </div>
@@ -222,7 +224,7 @@ function AdminGasForm() {
             placeholder="RWD"
             value={drivetrain}
             onChange={(e) => setDriveTrain(e.target.value)}
-          />
+            required/>
                         </div>
                         
                     </div>
@@ -235,7 +237,7 @@ function AdminGasForm() {
               placeholder="6-Speed SelectShift"
               value={gearbox}
               onChange={(e) => setGearbox(e.target.value)}
-            />
+              required/>
                         </div>
                        
                             <div className={styles.info} >
@@ -245,7 +247,7 @@ function AdminGasForm() {
               placeholder="Automatic"
               value={transmission}
               onChange={(e) => setTransmission(e.target.value)}
-            />
+              required/>
                         </div>
 
                     </div>
@@ -259,7 +261,7 @@ function AdminGasForm() {
             placeholder="Performance Description"
             value={performance}
             onChange={(e) => setPerformance(e.target.value)}
-          />
+            required/>
                             </div>
                         </div>
                     <div className={styles.info}>
@@ -269,7 +271,7 @@ function AdminGasForm() {
               placeholder="Cream Oakwood Interior"
               value={interior}
               onChange={(e) => setInterior(e.target.value)}
-            />
+              required/>
                     </div>
                     
                     
@@ -280,7 +282,7 @@ function AdminGasForm() {
               placeholder="18'' Aluminium Wheels"
               value={wheel}
               onChange={(e) => setWheel(e.target.value)}
-            />
+              required/>
                     </div>
                     
                     </div>
@@ -292,7 +294,7 @@ function AdminGasForm() {
             placeholder="Safety Description"
             value={safety}
             onChange={(e) => setSafety(e.target.value)}
-          />
+            required/>
                             </div>
                         </div>
                         <div className={styles.info}>
@@ -319,8 +321,18 @@ function AdminGasForm() {
             <button type="submit" className={styles.save}> Save </button>
             <button className={styles.back}>Back</button>
         </div>
-                    </form> 
-                </div>
+      </form> 
+      {/* Processing dialog */}
+      {showProcessingDialog && (
+        <div className={styles.processingDialog}>
+          <div className={styles.successIcon}>✓</div>
+          <div className={styles.info}>
+            <div className={styles.req}><p><b>Car added successfully !</b></p></div>
+            <div className={styles.dash}><p>Visit your dashboard to view or edit details</p></div>
+          </div>
+        </div>
+      )}  
+    </div>
   );
 }
 

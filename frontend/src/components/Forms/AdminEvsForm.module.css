@@ -1,0 +1,174 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    font: 1em sans-serif;
+    z-index: 1050;
+}
+.box{
+    margin-right: 20px;
+    border-top: solid 2px gray;
+    border-bottom: solid 2px gray;
+    padding: 5px 5px;
+    box-shadow: 0px 0px 2px 2px rgba(173, 171, 171, 0.6);
+    background-color: rgba(166, 166, 166, 0.1);
+}
+.heading{
+   text-align: center;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   color: rgb(72, 70, 70);
+   font-weight: 500;
+}
+
+
+.evsform{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info input{
+   width: 80%;
+   height: 25px;
+   border: solid rgb(186, 180, 180) 1px;
+   padding: 5px 10px;
+   font-size: 15px;
+   border-radius: 3px;
+}
+
+
+.info input:focus{
+    box-shadow: 0px 0px 3px 3px rgb(129, 181, 234);
+    outline: none;
+}
+
+
+
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 20px;
+}
+
+
+.upload [type="file"] { 
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.upload_text {
+    
+    font-size: 16px;
+    color: black;
+}
+
+.save,.back{
+    background-color: rgb(24, 159, 218);
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+.save:hover{
+    cursor: pointer;
+    background-color:rgb(15, 107, 146) ;
+}
+
+.back{
+    background-color:gray ;
+}
+.back:hover{
+    background-color: rgb(99, 95, 95);
+}
+.save:active{
+    box-shadow: 0px 0px 3px 3px rgb(113, 176, 219);
+}
+.back:active{
+    box-shadow: 0px 0px 3px 3px rgb(167, 164, 164);
+}
+
+
+.processingDialog{
+    position: fixed;
+    top: 50%;
+    left: 38%;
+    width: 20%;
+    display: flex;
+    align-items:center;
+    background-color: #ffffff;
+    padding: 15px 15px;
+    border: 2.3px solid #28a745;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1051;
+    animation: fall 0.5s ease forwards, hide 5s 2s forwards;
+  }
+  
+  .req{
+      color: rgb(0, 0, 0);
+  }
+  
+  .successIcon {
+    font-size: 3rem;
+    margin-right: 20px;
+    color: #28a745; /* Green color */
+  }
+  
+  .dash{
+      margin-top: -5%;
+      font-size: 90%;
+      line-height: 0;
+      color: rgb(17, 17, 17);
+  }
+  @keyframes fall{
+      from{
+        top: -100px;
+        opacity: 0;
+      }
+      to{
+        top: 50px;
+        opacity: 1;
+      }
+    }
+  @keyframes hide {
+      to {
+        opacity: 0;
+      }
+    }    
+
+@media (max-width: 768px) {
+    .page {
+        margin-left: 10px;
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    .info {
+        width: 100%;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .info input {
+        width: 95%;
+    }
+
+    
+}

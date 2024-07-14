@@ -1,8 +1,8 @@
 .container{
     display: block;
-    margin: 2% 2%;
-    max-width: 90%;
-    max-height: 200vh;
+    margin-bottom: 1%;
+    max-width: 100%;
+    max-height: 100%;
     color: black;
     box-sizing:border-box;
   }
@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: column;
     width: 380px;
-    margin: 10% 30%;
+    margin: 10% 10%;
     box-shadow: 10px 10px 50px rgb(199, 199, 199);
     border-radius: 7px;
     padding: 20px;
@@ -55,7 +55,9 @@
   .line{
     color: darkgray;
     margin-top: 5%;
-    width: 80%;
+    margin-bottom: 1%;
+    margin-left: 7%;
+    width: 85%;
   }
   
   .card {
@@ -86,7 +88,7 @@
     border: 1px solid black;
     border-radius: .25rem;
     cursor: pointer;
-    background-color: #343a30;
+    background-color: #464646;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   
@@ -100,7 +102,7 @@
     cursor: pointer;
     margin-left: 10%;
     margin-bottom: 5%;
-    background-color: #343a30;
+    background-color: #464646;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   
@@ -109,7 +111,7 @@
   }
   .tdrive:hover, .order:hover{
     background-color:rgb(251, 249, 245);
-    color: black;
+    color: rgb(250, 249, 249);
   }
   .carModel{
     display:flex;
@@ -161,10 +163,10 @@
   
   .additionalDetails {
    display: flex;
-   
+   width: 95%;
    flex-direction: column;
    align-content: center;
-   margin: 10% 17%;
+   margin: 10% 8%;
    padding: 2%;
    box-sizing: border-box;
   }
@@ -191,7 +193,8 @@
   .endline{
     color: darkgray;
     width: 80%;
-    margin-top: 3%;
+    margin-top: 5%;
+    margin-left: 10%;
     margin-bottom: 5%;
   }
   
@@ -243,18 +246,18 @@
   }
   
   .num {
-    font-size: 1.8vw;
-    font-weight: bold;
+    font-size: 1.5vw;
+    font-weight: 500;
     margin-top: 10%;
-    margin-bottom: 5%;
-    margin-left: 2%;
+    margin-bottom: 2%;
+    margin-left: 0%;
   }
   
   .text {
     font-size: 1.5vw;
     margin-left: 7%;
     margin-right: 15%;
-    margin-top: 0%;
+    margin-top: 5%;
     margin-bottom: 2%;
   }
   .text2{
@@ -262,7 +265,7 @@
     font-family: "Nanum Myeongjo", serif;
     font-style: normal;
     font-size: large;
-    margin-top: 1.5%;
+    margin-top: 1%;
     margin-bottom: 0%;
     margin-left: 10%;
     margin-right: 10%;

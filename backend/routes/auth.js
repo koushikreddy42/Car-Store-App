@@ -28,7 +28,7 @@ router.route('/register').post(async (req,res)=>{
         await newUser.save();
         sendVerificationEmail(email, verificationToken);
         
-        res.status(200).send('Registered Successfully')
+        res.status(200).send('Registered Successfully! Please check your Email.')
     } catch (error) {
         console.log(error)
         return res.status(500).send('Internal Server Error')

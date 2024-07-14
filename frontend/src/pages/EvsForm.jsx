@@ -91,7 +91,7 @@ function EvsForm() {
                     <div className={styles.info}>
             <label className={styles.upload_text}>Upload image</label>
             <div>
-              <input type="file" lable="Image" name="myFile" id='file-upload' accept='.jpg, .jpeg, .png' onChange={(e) => handleFileUpload(e)}/>
+              <input type="file" lable="Image" name="myFile" id='file-upload' accept='.jpg, .jpeg, .png' onChange={(e) => handleFileUpload(e)} required/>
             </div>
           </div>
                     </div>
@@ -103,7 +103,7 @@ function EvsForm() {
                 placeholder="Tesla Model Y Long Range AWD"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-              />
+                required/>
                             </div>
                         </div>
                         
@@ -117,7 +117,7 @@ function EvsForm() {
                 placeholder="2024"
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
-              />
+                required/>
                             </div>
                         </div>
                         <div className={styles.info}>
@@ -128,7 +128,7 @@ function EvsForm() {
             placeholder="Performance Description"
             value={performance}
             onChange={(e) => setPerformance(e.target.value)}
-          />
+            required/>
                             </div>
                         </div>
                     </div>
@@ -141,7 +141,7 @@ function EvsForm() {
                 placeholder="54,000"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-              />
+                required/>
                         </div>
                      </div>
                      <div className={styles.info}>
@@ -152,7 +152,7 @@ function EvsForm() {
                 placeholder="135"
                 value={topspeed}
                 onChange={(e) => setTopSpeed(e.target.value)}
-              />
+                required/>
                         </div>
                      </div>
                      <div className={styles.info}>
@@ -163,7 +163,7 @@ function EvsForm() {
                 placeholder="4.8"
                 value={time60}
                 onChange={(e) => setTime60(e.target.value)}
-              />
+                required/>
                         </div>
                      </div>
 
@@ -177,7 +177,7 @@ function EvsForm() {
               placeholder="346"
               value={range}
               onChange={(e) => setRange(e.target.value)}
-            />
+              required/>
                        
                     </div>
                     
@@ -189,7 +189,7 @@ function EvsForm() {
               placeholder="Black"
               value={colour}
               onChange={(e) => setColor(e.target.value)}
-            />
+              required/>
                        
                     </div>
                     </div>
@@ -202,7 +202,7 @@ function EvsForm() {
               placeholder="Cream Oakwood Interior"
               value={interior}
               onChange={(e) => setInterior(e.target.value)}
-            />
+              required/>
                     </div>
                     
                     
@@ -213,7 +213,7 @@ function EvsForm() {
               placeholder="19'' Induction Wheels"
               value={wheel}
               onChange={(e) => setWheel(e.target.value)}
-            />
+              required/>
                     </div>
                     <div className={styles.info}>
                             <label>Technology</label>
@@ -235,7 +235,7 @@ function EvsForm() {
             placeholder="Safety Description"
             value={safety}
             onChange={(e) => setSafety(e.target.value)}
-          />
+            required/>
                             </div>
                         </div>
                         <div className={styles.info}>
@@ -246,7 +246,7 @@ function EvsForm() {
             placeholder="Range Description Info"
             value={rangedescription}
             onChange={(e) => setRangeDescription(e.target.value)}
-          />
+            required/>
                             </div>
                         </div>
                         
