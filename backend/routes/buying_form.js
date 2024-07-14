@@ -3,6 +3,7 @@ const router = express.Router()
 const multer = require('multer')
 const fs = require('fs')
 const path = require('path')
+const os = require('os');
 require('../models/buyingform')
 const mongoose = require('mongoose')
 const buyingformschema = mongoose.model("buyingform")
@@ -13,20 +14,20 @@ const ElectricCarModel = mongoose.model("electriccarmodel");
 const GasCarModel = mongoose.model("gascarmodel");
 
 // Create the 'files' directory if it doesn't exist
-const uploadDir = './files' 
-if (!fs.existsSync(uploadDir)) { 
-    fs.mkdirSync(uploadDir)
+const uploadDir = path.join(os.tmpdir(), 'files');
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
 }
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, uploadDir)
+        cb(null, uploadDir);
     },
     filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now()
-      cb(null, uniqueSuffix + file.originalname)
+        const uniqueSuffix = Date.now();
+        cb(null, uniqueSuffix + file.originalname);
     }
-})
+});
   
 const upload = multer({ storage: storage })
 
