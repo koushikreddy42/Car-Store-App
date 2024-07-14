@@ -9,9 +9,6 @@ import logo from "../components/Assets/logo.png";
 function Home() {
   const [token, setToken] = useContext(store);
   const [data, setData] = useState(null);
-  if (!token) {
-    return <Navigate to="/sign" />;
-  }
   useEffect(() => {
     axios
       .get("https://car-store-app-api.vercel.app/api/myprofile", {
@@ -22,6 +19,9 @@ function Home() {
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
+  if (!token) {
+    return <Navigate to="/sign" />;
+  }
   return (
     <div className={styles.homebody}>
       {data && (
@@ -44,7 +44,7 @@ function Home() {
               <Link to="/gas">
                 <button className={styles.category}>Gas</button>
               </Link>
-              <button className={styles.category}>Rent</button>
+              <button className={styles.category} onClick={() => setToken(null)}>Logout</button>
             </div>
           </div>
         </>
