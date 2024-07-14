@@ -15,7 +15,7 @@ const mongoose=require('mongoose')
 
 //middleware
 app.use(cors({
-    origin: ["https://autorizz.vercel.app"],
+    origin: ["https://autozen-one.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true
 }));

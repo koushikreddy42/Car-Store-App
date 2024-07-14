@@ -102,7 +102,7 @@ router.post('/forgot-password', async (req, res) => {
     await user.save();
 
     // Send password reset email
-    const resetLink = `https://autorizz.vercel.app/reset-password?token=${resetToken}`;
+    const resetLink = `https://autozen-one.vercel.app/reset-password?token=${resetToken}`;
     sendPasswordResetEmail(email, resetLink);
 
     res.status(200).send('Password reset email sent');
