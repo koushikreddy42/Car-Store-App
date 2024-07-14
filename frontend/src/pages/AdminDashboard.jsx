@@ -14,7 +14,7 @@ function AdminUser() {
     if (!token) return;
 
     axios
-      .get("http://localhost:8080/api/admin-myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/admin-myprofile", {
         headers: {
           "x-token": token,
         },
@@ -98,7 +98,7 @@ function AdminUser() {
         console.log(userdata._id);
         try {
           const response = await axios.get(
-            `http://localhost:8080/api/admin-cars`
+            `https://car-store-app-api.vercel.app/api/admin-cars`
           );
           const { electricCars, gasCars } = response.data;
 
