@@ -15,7 +15,7 @@ const Buyers = () => {
   }
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/admin-myprofile", {
+      .get("https://car-store-app-api.vercel.app/api/admin-myprofile", {
         headers: {
           "x-token": adminToken,
         },
@@ -98,7 +98,7 @@ const Buyers = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/get-filess")
+      .get("https://car-store-app-api.vercel.app/api/get-filess")
       .then((res) => {
         if (res.data.status === "ok") {
           setBuyingFormData(res.data.data);
@@ -123,7 +123,7 @@ const Buyers = () => {
     );
     if (confirm) {
       axios
-        .post("http://localhost:8080/api/admin-accept", {
+        .post("https://car-store-app-api.vercel.app/api/admin-accept", {
           buyerId,
           carType,
           carId,
@@ -157,7 +157,7 @@ const Buyers = () => {
 
     if (confirm) {
       axios
-        .post("http://localhost:8080/api/admin-cancel", {
+        .post("https://car-store-app-api.vercel.app/api/admin-cancel", {
           buyerId,
           carType,
           carId,
@@ -183,12 +183,12 @@ const Buyers = () => {
     }
   };
 
-  const handleViewDocument = (filename) => {
-    const baseUrl = "http://localhost:8080";
-    const url = `${baseUrl}/files/${encodeURIComponent(filename)}`;
-    console.log(url); // Log the constructed URL for debugging
-    window.open(url, "_blank");
-  };
+  // const handleViewDocument = (filename) => {
+  //   const baseUrl = "https://car-store-app-api.vercel.app/";
+  //   const url = `${baseUrl}/files/${encodeURIComponent(filename)}`;
+  //   console.log(url); // Log the constructed URL for debugging
+  //   window.open(url, "_blank");
+  // };
   const pendingRequests = buyingFormData.filter(
     (buyer) => buyer.adminVerified === "pending"
   ).length;
