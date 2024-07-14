@@ -14,7 +14,11 @@ const uploadRouter = require('./routes/buying_form')
 const mongoose=require('mongoose')
 
 //middleware
-app.use(cors());
+app.use(cors({
+    origin: ["https://autorizz.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true
+}));
 app.use(express.json());
 app.use("/files",express.static("files"))
 
